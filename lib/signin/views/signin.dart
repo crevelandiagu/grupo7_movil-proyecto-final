@@ -67,7 +67,7 @@ class Signin extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(50),
                 ),
-                onPressed: null,
+                onPressed: (){},
                 child: Text(
                   "Sign in",
                   style: GoogleFonts.workSans(
@@ -90,7 +90,7 @@ class Signin extends StatelessWidget {
                 children: [
                   const Text("Don't have an account yet?"),
                   TextButton(
-                    onPressed: null,
+                    onPressed: (){},
                      child: Text(
                       "Sign up",
                       style: GoogleFonts.workSans(
