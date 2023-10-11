@@ -26,8 +26,8 @@ jobs:
       uses: devmasx/merge-branch@master
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        source-branch: ${{ github.ref }}
-        target-branch: develop
+        from_branch: ${{ github.ref }}
+        target_branch: develop
 
 
       
