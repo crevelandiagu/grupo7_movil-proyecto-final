@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Mezcla release -> develop
-      uses: tukasz/direct-merge-action@master
+      uses: devmasx/merge-branch@master
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         source-branch: develop
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Mezcla ${{ github.ref }} -> develop
-      uses: tukasz/direct-merge-action@master
+      uses: devmasx/merge-branch@master
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         source-branch: release
