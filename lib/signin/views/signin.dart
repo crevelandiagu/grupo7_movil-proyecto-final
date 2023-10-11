@@ -40,7 +40,7 @@ class Signin extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0)
                   ),
                   labelText: "username",
-                  hintText: "Enter valid username",
+                  hintText: "Enter username",
                 ),
               ),
               ),
