@@ -1,3 +1,13 @@
 {
-    "helloWorld": "¡Hola Mundo!"
+    "create_Account": "Crear Cuenta",
+    "signup": "Registrarse",
+    "password": "contraseña",
+    "repeat_password": "Repetir contraseña",
+    "already_account": "¿Ya tienes una cuenta?",
+    "signin": "Iniciar Sesión",
+    "valid_email": "Ingresa un email valido",
+    "secure_password": "Ingresa una contraseña valida",
+    "email": "Ingresa email",
+    "password_error_length": "La contraseña debe tener minimo 8 caractéres",
+    "password_error_equal": "Las contraseñas no son iguales"
 }

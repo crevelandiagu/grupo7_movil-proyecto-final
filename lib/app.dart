@@ -1,8 +1,9 @@
-import 'package:abc_jobs/signin/views/signin.dart';
+import 'package:abc_jobs/signup/views/signup.dart';
 import 'package:abc_jobs/utils/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import "package:get/get.dart";
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -15,6 +16,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.light,
 
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,  
       ],
@@ -23,7 +25,7 @@ class App extends StatelessWidget {
         Locale("es"),
         
       ],
-      home: Signin(),
+      home: Signup(),
     );
   }
 }

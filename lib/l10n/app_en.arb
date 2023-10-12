@@ -1,7 +1,59 @@
 {
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-        "description": "The conventional newborn programer greeting"
+    "create_Account": "Create Account",
+    "@create_Account": {
+        "description": "Title of signup's activity"
+    },
+
+    "valid_email": "Enter a valid email",
+    "@valid_email": {
+        "description": "hint message to enter a valid email"
+    },
+
+    "email": "Enter email",
+    "@email": {
+        "description": "hint message to enter a email"
+    },
+
+    "secure_password": "Enter secure password",
+    "@secure_password": {
+        "description": "hint message to enter a secure password"
+    },
+
+    "signup": "Sign Up",
+    "@signup": {
+        "description": "Create candidate's account"
+    },
+
+    "signin": "Sign In",
+    "@signin": {
+        "description": "Log in candidate's account"
+    },
+
+    "password": "password",
+    "@password": {
+        "description": "candidate's account password"
+    },
+
+    "repeat_password": "repeat password",
+    "@repeat_password": {
+        "description": "repeat candidate's account password"
+    },
+
+    "already_account": "Already have an account?",
+    "@already_account": {
+        "description": "message to create an account"
+    },
+
+    "password_error_length": "Password length must be at least 8 characters long",
+    "@password_error_length": {
+        "description": "Error in length of password "
+    },
+
+    "password_error_equal": "Passwords are not equal",
+    "@password_error_equal": {
+        "description": "Error in passwords. Not equal "
     }
+
+
 }
 
