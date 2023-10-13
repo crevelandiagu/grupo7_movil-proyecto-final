@@ -1,4 +1,4 @@
-import 'package:abc_jobs/utils/validator_controller.dart';
+import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
