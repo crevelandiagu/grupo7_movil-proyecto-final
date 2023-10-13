@@ -1,4 +1,4 @@
-import 'package:abc_jobs/signup/views/signup.dart';
+import 'package:abc_jobs/candidates/views/signup.dart';
 import 'package:abc_jobs/utils/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
