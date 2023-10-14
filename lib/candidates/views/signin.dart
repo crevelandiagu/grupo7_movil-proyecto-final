@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class Signin extends StatelessWidget {
@@ -20,7 +21,7 @@ class Signin extends StatelessWidget {
               padding: const EdgeInsets.only(top: 80.0),
               child: Center(
                 child: Text(
-                  "Welcome",
+                  AppLocalizations.of(context).welcome,
                   style: GoogleFonts.workSans(
                     textStyle: const TextStyle(color: Colors.black, letterSpacing: 0.0),
                     fontSize: 24,
@@ -39,8 +40,8 @@ class Signin extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)
                   ),
-                  labelText: "username",
-                  hintText: "Enter valid username",
+                  labelText: "email",
+                  hintText: AppLocalizations.of(context).email,
                 ),
               ),
               ),
@@ -54,8 +55,8 @@ class Signin extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)
                   ),
-                  labelText: "password",
-                  hintText: "Enter secure password",
+                  labelText: AppLocalizations.of(context).password,
+                  hintText: AppLocalizations.of(context).secure_password,
                 ),
               ),
               ),
@@ -69,7 +70,7 @@ class Signin extends StatelessWidget {
                 ),
                 onPressed: (){},
                 child: Text(
-                  "Sign in",
+                  AppLocalizations.of(context).signin,
                   style: GoogleFonts.workSans(
                     textStyle: const TextStyle(
                       color: Colors.white,
@@ -88,11 +89,11 @@ class Signin extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Don't have an account yet?"),
+                  Text(AppLocalizations.of(context).dont_account),
                   TextButton(
                     onPressed: (){},
                      child: Text(
-                      "Sign up",
+                      AppLocalizations.of(context).signup,
                       style: GoogleFonts.workSans(
                         textStyle: const TextStyle(
                           color: Colors.blueAccent,

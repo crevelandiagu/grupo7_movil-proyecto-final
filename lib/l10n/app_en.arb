@@ -44,6 +44,11 @@
         "description": "message to create an account"
     },
 
+    "dont_account": "Don''t have an account yet?",
+    "@dont_account": {
+        "description": "message to create account"
+    },
+
     "password_error_length": "Password length must be at least 8 characters long",
     "@password_error_length": {
         "description": "Error in length of password "
@@ -52,7 +57,24 @@
     "password_error_equal": "Passwords are not equal",
     "@password_error_equal": {
         "description": "Error in passwords. Not equal "
+    },
+
+    "message_signup_success": "Account created Signin with the same credentials",
+    "@message_signup_success": {
+        "description": "Message shown when a candidate is created"
+    },
+
+    "account_created": "Account Created ",
+    "@account_created": {
+        "description": "snackbar's title when a candidate is created"
+    },
+
+    "welcome": "Welcome ",
+    "@welcome": {
+        "description": "welcome message"
     }
+
+
 
 
 }

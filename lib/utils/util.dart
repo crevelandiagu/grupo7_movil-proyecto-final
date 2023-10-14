@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 
@@ -25,17 +27,83 @@ void httpErrorHandle({
 }) {
 
   switch(response.statusCode) {
-    case 200:
+    case 201:
      onSuccess();
      break;
-    case 201:
-     Get.snackbar("title", "message", snackPosition: SnackPosition.BOTTOM);
+    case 412:
+     Get.snackbar(
+      "",
+      "",
+      titleText: Text(
+        "Error",
+        style: GoogleFonts.workSans(
+          textStyle: const TextStyle(
+            color: Colors.white60,
+          ),
+          fontSize: 16,
+        ),
+        ),
+      messageText: Text(
+        jsonDecode(response.body)['msg'],
+        style:  GoogleFonts.workSans(
+          textStyle: const TextStyle(
+            color: Colors.white60,
+          ),
+          fontSize: 16,
+        ),
+        ),
+      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM);
      break;
     case 400:
-    case 500:
+      Get.snackbar(
+      "",
+      "",
+      titleText: Text(
+        "Error",
+        style: GoogleFonts.workSans(
+          textStyle: const TextStyle(
+            color: Colors.white60,
+          ),
+          fontSize: 16,
+        ),
+        ),
+      messageText: Text(
+        jsonDecode(response.body)['msg'],
+        style:  GoogleFonts.workSans(
+          textStyle: const TextStyle(
+            color: Colors.white60,
+          ),
+          fontSize: 16,
+        ),
+        ),
+      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM);
      break;
     default:
-
+      Get.snackbar(
+      "",
+      "",
+      titleText: Text(
+        "Error",
+        style: GoogleFonts.workSans(
+          textStyle: const TextStyle(
+            color: Colors.white60,
+          ),
+          fontSize: 16,
+        ),
+        ),
+      messageText: Text(
+        response.body,
+        style:  GoogleFonts.workSans(
+          textStyle: const TextStyle(
+            color: Colors.white60,
+          ),
+          fontSize: 16,
+        ),
+        ),
+      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM);
   }
 
 }
