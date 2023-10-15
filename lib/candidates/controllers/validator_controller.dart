@@ -16,11 +16,16 @@ class ValidatorController extends GetxController {
   }
 
   void validatePassword(String passwordStr) {
-    if (passwordStr.length < 8) {
-      password.value = false; 
-    } else {
-      password.value = true;
+    RegExp regex =
+        RegExp(r'^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+    
+    if (!regex.hasMatch(passwordStr)) {
+      password.value = false;
+      return;
     }
+
+    password.value = true;
+
   }
 
   void validateEqualPassword(String password1, String password2) {

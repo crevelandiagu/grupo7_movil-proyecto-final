@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:abc_jobs/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -10,18 +11,19 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AuthService {
 
-  Future<void> signUp({
+  Future<int> signUp({
    required String username,
    required String password,
    required BuildContext context
    }) async{
+
     
     try {
       
       http.Response response = await http.post(Uri.parse(Constants.signUpUri), headers: buildHeaders(),
                         body: jsonEncode(
                           {
-                          "user": username,
+                          "email": username,
                           "password": password
                           }
                         ));
@@ -33,8 +35,8 @@ class AuthService {
         Get.snackbar(
           "",
           "",
-          titleText: Text(
-            AppLocalizations.of(context).account_created,
+          messageText: Text(
+            AppLocalizations.of(context).message_signup_success,
             style: GoogleFonts.workSans(
               textStyle: const TextStyle(
                 color: Colors.white70
@@ -42,26 +44,32 @@ class AuthService {
               fontSize: 16
 
           ),
-          ),
-          messageText: Text(
-            AppLocalizations.of(context).message_signup_success,
+          ),       
+          titleText: Text(
+            AppLocalizations.of(context).success,
             style: GoogleFonts.workSans(
               textStyle: const TextStyle(
                 color: Colors.white70
               ),
-              fontSize: 16,
+              fontSize: 16
+
           ),
-          ),        
+          ),       
           backgroundColor: Colors.green,
           duration: const Duration(days: 1),
+          snackPosition: SnackPosition.BOTTOM,
           mainButton: TextButton(
           onPressed: (){
-
+            Get.back(closeOverlays: true);
             //Get.to('/signin');
 
           },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.green[600]),
+            alignment: Alignment.centerRight,
+          ),
           child: Text(
-            "", 
+            AppLocalizations.of(context).signin, 
             style: GoogleFonts.workSans(
               textStyle: const TextStyle(
                 color: Colors.white70
@@ -72,6 +80,8 @@ class AuthService {
           ),
           );    
        });
+
+    return Future.value(response.statusCode);
 
 
     } catch (e) {
@@ -100,10 +110,68 @@ class AuthService {
       snackPosition: SnackPosition.BOTTOM);
     }
 
+    return Future.value(1);
+
 
   }
 
-  Future<void> signIn(String username, String password) async {
+
+
+  Future<int> signIn({ required String username,
+                       required String password,
+                       required BuildContext context}) async {
+    
+    try {
+
+      http.Response response = await http.post(Uri.parse(Constants.signInUri),
+                                headers: buildHeaders(), 
+                                body: jsonEncode(
+                                  {
+                                    "email": username,
+                                    "password": password,
+                                  }
+                                ));
+
+      httpErrorHandleSi(
+        response: response,
+        onSuccess: (){
+
+          //Todo
+          
+
+        });
+    
+    return Future.value(response.statusCode);
+      
+    } catch (e) {
+
+      Get.snackbar(
+      "",
+      "",
+      titleText: Text(
+        "Error",
+        style: GoogleFonts.workSans(
+          textStyle: const TextStyle(
+            color: Colors.white60,
+          ),
+          fontSize: 16,
+        ),
+        ),
+      messageText: Text(
+        e.toString(),
+        style:  GoogleFonts.workSans(
+          textStyle: const TextStyle(
+            color: Colors.white60,
+          ),
+          fontSize: 16,
+        ),
+        ),
+      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM);     
+    }
+
+    return Future.value(1);
+
 
   }
 

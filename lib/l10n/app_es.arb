@@ -13,5 +13,6 @@
     "message_signup_success": "La cuenta fue creada. Por favor inicia sesión con las mismas credenciales",
     "account_created": "Cuenta Creada",
     "welcome": "Bienvenido",
-    "dont_account": "¿Aun no tienes una cuenta?"
+    "dont_account": "¿Aun no tienes una cuenta?",
+    "success": "Éxito"
 }

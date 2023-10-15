@@ -49,7 +49,7 @@
         "description": "message to create account"
     },
 
-    "password_error_length": "Password length must be at least 8 characters long",
+    "password_error_length": "Password should contain at least one upper case, one special character, one number and Must be at least 8 characters in length ",
     "@password_error_length": {
         "description": "Error in length of password "
     },
@@ -59,7 +59,7 @@
         "description": "Error in passwords. Not equal "
     },
 
-    "message_signup_success": "Account created Signin with the same credentials",
+    "message_signup_success": "Account created Sign in with the same credentials",
     "@message_signup_success": {
         "description": "Message shown when a candidate is created"
     },
@@ -72,6 +72,11 @@
     "welcome": "Welcome ",
     "@welcome": {
         "description": "welcome message"
+    },
+
+    "success": "Success",
+    "@success": {
+        "description": "success"
     }
 
 

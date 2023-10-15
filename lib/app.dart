@@ -1,3 +1,4 @@
+import 'package:abc_jobs/candidates/views/signin.dart';
 import 'package:abc_jobs/candidates/views/signup.dart';
 import 'package:abc_jobs/utils/themes.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,11 @@ class App extends StatelessWidget {
       title: "ABC Jobs",
       theme: lightTheme,
       themeMode: ThemeMode.light,
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: ()=>Signin()),
+        GetPage(name:'/signup', page: () => Signup()),
+      ],
 
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -25,7 +31,7 @@ class App extends StatelessWidget {
         Locale("es"),
         
       ],
-      home: Signup(),
+     // home: Signup(),
     );
   }
 }
