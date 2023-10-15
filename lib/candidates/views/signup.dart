@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
+import 'package:abc_jobs/candidates/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,12 +14,14 @@ class Signup extends StatelessWidget {
   Signup({super.key});
 
   final controller = Get.put(ValidatorController());
-  final textPasswordEditingController = TextEditingController();
- 
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final service = AuthService();
+
   @override
   Widget build(BuildContext context) {
 
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sigup"), 
@@ -45,6 +50,7 @@ class Signup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(15, 80, 15, 40),
               child: TextField(
+                controller: emailController,
                 onChanged: (value) {
                   controller.validateEmail(value);
                 },
@@ -66,7 +72,7 @@ class Signup extends StatelessWidget {
                 onChanged: (value) {
                   controller.validatePassword(value);
                 },
-                controller: textPasswordEditingController,
+                controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -84,7 +90,7 @@ class Signup extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40.0),
               child: TextField(
                 onChanged: (value) {
-                  controller.validateEqualPassword(value, textPasswordEditingController.text);
+                  controller.validateEqualPassword(value, passwordController.text);
                 },
                 obscureText: true,
                 decoration: InputDecoration(
@@ -105,7 +111,14 @@ class Signup extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(50),
                 ),
-                onPressed: (controller.email.value && controller.password.value && controller.isPasswordEqual.value) ? submitSignupButton : null,
+                onPressed: () async {
+                   if (controller.email.value && controller.password.value && controller.isPasswordEqual.value) {
+                      service.signUp(
+                        username: emailController.text, 
+                        password: passwordController.text,
+                         context: context);
+                   }
+                },
                 child: Text(
                   AppLocalizations.of(context).signup,
                   style: GoogleFonts.workSans(
@@ -149,9 +162,5 @@ class Signup extends StatelessWidget {
       ),
       ),
     );
-  }
-
-  void submitSignupButton() {
-
   }
 }

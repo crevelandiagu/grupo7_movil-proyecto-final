@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 class ValidatorController extends GetxController {
+  
   var email = false.obs;
   var password = false.obs;
   var isPasswordEqual = false.obs;
@@ -25,18 +26,17 @@ class ValidatorController extends GetxController {
   void validateEqualPassword(String password1, String password2) {
 
 
-    if (!password.value) {
+    if (password1.isNotEmpty && password2.isNotEmpty) {
+
+      if (password1 == password2) {
+          isPasswordEqual.value = true;
+      } else {
+        isPasswordEqual.value = false;
+      }
+
+    } else {
       isPasswordEqual.value = false;
     }
-
-/*     if (password1.isEmpty || password2.isEmpty) {
-      isPasswordEqual.value = false;
-    } */
-
-    if (password1 == password2) {
-      isPasswordEqual.value = true;
-    }
-
 
   }
 

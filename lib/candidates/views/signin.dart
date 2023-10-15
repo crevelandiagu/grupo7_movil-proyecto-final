@@ -1,10 +1,16 @@
+import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class Signin extends StatelessWidget {
-  const Signin({super.key});
+  Signin({super.key});
+
+  final controller = Get.put(ValidatorController());
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +42,16 @@ class Signin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 50.0),
               child: TextField(
+                controller: emailController,
+                onChanged: (value) {
+                  controller.validateEmail(value);
+                },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)
                   ),
                   labelText: "email",
+                  errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
                   hintText: AppLocalizations.of(context).email,
                 ),
               ),
@@ -50,6 +61,10 @@ class Signin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10.0),
               child: TextField(
+                controller: passwordController,
+                onChanged: (value) {
+                  controller.validatePassword(value);
+                },
                 obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -57,6 +72,7 @@ class Signin extends StatelessWidget {
                   ),
                   labelText: AppLocalizations.of(context).password,
                   hintText: AppLocalizations.of(context).secure_password,
+                  errorText: controller.password.value ? null : AppLocalizations.of(context).password_error_length
                 ),
               ),
               ),
@@ -68,7 +84,7 @@ class Signin extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(50),
                 ),
-                onPressed: (){},
+                onPressed: (controller.email.value && controller.password.value) ? signIn : null,
                 child: Text(
                   AppLocalizations.of(context).signin,
                   style: GoogleFonts.workSans(
@@ -111,5 +127,10 @@ class Signin extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void signIn() async {
+    //call service function
+
   }
 }
