@@ -12,7 +12,7 @@ En este repositorio se encuentra el codigo de la aplicación movil ABC Jobs
 ├── macos                   # Archivos de la aplicación para macos
 ├── web                     # Archivos de la aplicaión para web
 ├── windows                 # Archivos de la aplicación para windows
-├── users                   # Microservicio usuarios
+├── test                    # Archivos de test unitarios
 ├── pubspec.yaml            # Archivo de configuración de las dependencias necesarias para correr la aplicación
 └── README.md               # Estás aquí
 ````
@@ -25,6 +25,9 @@ En este repositorio se encuentra el codigo de la aplicación movil ABC Jobs
 4. Escoger el ambiente de ejecución movil
 5. Encontrar en el directorio lib el archivo main.dart y darle run en la función main
 
+
+## Como ejecutar las pruebas
+1. Posicionarse en el directorio raiz y ejecutar `flutter test`
 
 
 ## Tecnologias utilizadas
