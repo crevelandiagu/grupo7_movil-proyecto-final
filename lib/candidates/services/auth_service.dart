@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:ffi';
 
 import 'package:abc_jobs/utils/constants.dart';
@@ -60,8 +61,10 @@ class AuthService {
           snackPosition: SnackPosition.BOTTOM,
           mainButton: TextButton(
           onPressed: (){
+            
             Get.back(closeOverlays: true);
             //Get.to('/signin');
+            Get.offNamed('/');
 
           },
           style: ButtonStyle(
@@ -85,6 +88,7 @@ class AuthService {
 
 
     } catch (e) {
+
       Get.snackbar(
       "",
       "",
@@ -128,13 +132,15 @@ class AuthService {
                                 body: jsonEncode(
                                   {
                                     "email": username,
-                                    "password": password,
+                                    "password": password
                                   }
                                 ));
 
       httpErrorHandleSi(
         response: response,
         onSuccess: (){
+
+          Get.snackbar("token", jsonDecode(response.body)['token']);
 
           //Todo
           
@@ -144,7 +150,7 @@ class AuthService {
     return Future.value(response.statusCode);
       
     } catch (e) {
-
+      log(e.toString());
       Get.snackbar(
       "",
       "",

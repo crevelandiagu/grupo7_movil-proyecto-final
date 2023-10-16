@@ -145,6 +145,9 @@ void httpErrorHandleSi({
 }) {
 
   switch(response.statusCode) {
+    case 200:
+     onSuccess();
+     break;
     case 400:
       Get.snackbar(
       "",

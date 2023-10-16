@@ -141,7 +141,9 @@ class Signup extends StatelessWidget {
                 children: [
                   Text(AppLocalizations.of(context).already_account),
                   TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Get.toNamed('/');
+                    },
                      child: Text(
                       AppLocalizations.of(context).signin,
                       style: GoogleFonts.workSans(

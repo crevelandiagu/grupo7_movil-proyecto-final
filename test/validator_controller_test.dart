@@ -25,7 +25,7 @@ void main(){
      final controller = ValidatorController();
 
 
-      var password = "12345678";
+      var password = "1@Abcdef";
 
       controller.validatePassword(password);
 
@@ -38,8 +38,8 @@ void main(){
      final controller = ValidatorController();
 
 
-      var password1 = "12345678";
-      var password2 = "12345678";
+      var password1 = "1@Abcdef";
+      var password2 = "1@Abcdef";
 
       controller.validateEqualPassword(password1, password2);
 

@@ -50,7 +50,6 @@ class Signin extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0)
                   ),
                   labelText: "email",
-                  errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
                 ),
               ),
               ),
@@ -111,7 +110,9 @@ class Signin extends StatelessWidget {
                 children: [
                   Text(AppLocalizations.of(context).dont_account),
                   TextButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Get.toNamed('signup');
+                    },
                      child: Text(
                       AppLocalizations.of(context).signup,
                       style: GoogleFonts.workSans(
