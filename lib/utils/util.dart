@@ -108,8 +108,6 @@ void httpErrorHandle({
       backgroundColor: Colors.red,
       snackPosition: SnackPosition.BOTTOM);
      break;
-     
-     break;
     default:
       Get.snackbar(
       "",

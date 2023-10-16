@@ -1,9 +1,11 @@
 import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
 import 'package:abc_jobs/candidates/services/auth_service.dart';
+import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:http/http.dart' as http;
 
 
 class Signin extends StatelessWidget {
@@ -79,11 +81,45 @@ class Signin extends StatelessWidget {
                 ),
                 onPressed: () async {
                  if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-
-                  service.signIn(
+                  
+                  try {
+                    
+                    http.Response response = await service.signIn(
                     username: emailController.text,
                     password: passwordController.text,
-                    context: context);
+                    client: http.Client());
+
+                    httpErrorHandleSi(
+                      response: response,
+                      onSuccess: (){
+
+                      });
+
+                  } catch (e) {
+                      Get.snackbar(
+                      "",
+                      "",
+                      titleText: Text(
+                        "Error",
+                        style: GoogleFonts.workSans(
+                          textStyle: const TextStyle(
+                            color: Colors.white60,
+                          ),
+                          fontSize: 16,
+                        ),
+                        ),
+                      messageText: Text(
+                        e.toString(),
+                        style:  GoogleFonts.workSans(
+                          textStyle: const TextStyle(
+                            color: Colors.white60,
+                          ),
+                          fontSize: 16,
+                        ),
+                        ),
+                      backgroundColor: Colors.red,
+                      snackPosition: SnackPosition.BOTTOM);
+                  }
 
                  }
 

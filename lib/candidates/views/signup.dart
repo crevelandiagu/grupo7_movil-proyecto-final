@@ -2,10 +2,12 @@ import 'dart:developer';
 
 import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
 import 'package:abc_jobs/candidates/services/auth_service.dart';
+import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:http/http.dart' as http;
 
 
 
@@ -113,11 +115,85 @@ class Signup extends StatelessWidget {
                 ),
                 onPressed: () async {
                    if (controller.email.value && controller.password.value && controller.isPasswordEqual.value) {
-                      service.signUp(
+
+                    try {
+                      
+                      http.Response response = await service.signUp(
                         username: emailController.text, 
                         password: passwordController.text,
-                         context: context);
-                   }
+                         client: http.Client());
+
+                         httpErrorHandle(response: response,
+                        onSuccess: (){
+                          Get.snackbar(
+                            "",
+                            "",
+                            messageText: Text(
+                              AppLocalizations.of(context).message_signup_success,
+                              style:  GoogleFonts.workSans(
+                                textStyle: const TextStyle(
+                                  color: Colors.white60,
+                                ),
+                                fontSize: 16,
+                              ),
+                              ),
+                            backgroundColor: Colors.green,
+                            mainButton: TextButton(
+                              onPressed: (){
+
+                               Get.back(closeOverlays: true);
+                               Get.offNamed('/');
+
+                              },
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Colors.green[600])
+                              ),
+                              child: Text(
+                                AppLocalizations.of(context).signin,
+                                style: GoogleFonts.workSans(
+                                  textStyle: const TextStyle(
+                                  color: Colors.white60
+                                  ),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              ),
+                            duration: const Duration(days: 1),
+                            snackPosition: SnackPosition.BOTTOM);
+
+                        });
+
+                    } catch (e) {
+
+                      Get.snackbar(
+                        "",
+                        "",
+                        titleText: Text(
+                          "Error",
+                          style: GoogleFonts.workSans(
+                            textStyle: const TextStyle(
+                              color: Colors.white60,
+                            ),
+                            fontSize: 16,
+                          ),
+                          ),
+                        messageText: Text(
+                          e.toString(),
+                          style:  GoogleFonts.workSans(
+                            textStyle: const TextStyle(
+                              color: Colors.white60,
+                            ),
+                            fontSize: 16,
+                          ),
+                          ),
+                        backgroundColor: Colors.red,
+                        snackPosition: SnackPosition.BOTTOM);
+
+                    }
+
+
+                }
                 },
                 child: Text(
                   AppLocalizations.of(context).signup,
