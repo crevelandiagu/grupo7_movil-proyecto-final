@@ -27,7 +27,8 @@ En este repositorio se encuentra el codigo de la aplicación movil ABC Jobs
 
 
 ## Como ejecutar las pruebas
-1. Posicionarse en el directorio raiz y ejecutar `flutter test`
+1. Posicionarse en el directorio raiz y ejecutar en una terminal `dart run build_runner build`
+2. Posicionarse en el directorio raiz y ejecutar en una terminal `flutter test`
 
 
 ## Tecnologias utilizadas
