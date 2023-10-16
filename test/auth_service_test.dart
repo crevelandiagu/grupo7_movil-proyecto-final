@@ -30,10 +30,23 @@ void main() {
       username: "mock@mock.com", 
       password: "password",
       client: client), isA<http.Response>());
-      
+           
+    });
 
-      
+     test("test signup status code 412", () async {
 
+      final client = MockClient();
+
+      when(client.post(Uri.parse(Constants.signUpUri),
+       headers: buildHeaders(), body: jsonEncode({'email': 'mock@mock.com', 'password':'password'})))
+      .thenAnswer((_) async => http.Response( '{"message": "Account already exists. Try with a different one"}', 412));
+
+
+      expect(await AuthService().signUp(
+      username: "mock@mock.com", 
+      password: "password",
+      client: client), isA<http.Response>());
+           
     });
 
   });
