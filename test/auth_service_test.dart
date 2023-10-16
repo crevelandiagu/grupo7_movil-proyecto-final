@@ -23,12 +23,13 @@ void main() {
       when(client.post(Uri.parse(Constants.signUpUri),
        headers: buildHeaders(), body: jsonEncode({'email': 'mock@mock.com', 'password':'password'})))
       .thenAnswer((_) async => http.Response( '{"message": "User successfully added"}', 201));
-
-
-      expect(await AuthService().signUp(
+     
+     http.Response response = await AuthService().signUp(
       username: "mock@mock.com", 
       password: "password",
-      client: client), isA<http.Response>());
+      client: client);
+
+      expect(response.statusCode, 201);
            
     });
 
@@ -40,11 +41,12 @@ void main() {
        headers: buildHeaders(), body: jsonEncode({'email': 'mock@mock.com', 'password':'password'})))
       .thenAnswer((_) async => http.Response( '{"message": "Account already exists. Try with a different one"}', 412));
 
-
-      expect(await AuthService().signUp(
+      http.Response response = await AuthService().signUp(
       username: "mock@mock.com", 
       password: "password",
-      client: client), isA<http.Response>());
+      client: client);
+
+      expect(response.statusCode, 412);
            
     });
 
