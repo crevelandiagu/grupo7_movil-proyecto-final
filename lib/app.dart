@@ -1,3 +1,4 @@
+import 'package:abc_jobs/candidates/views/dashboard.dart';
 import 'package:abc_jobs/candidates/views/signin.dart';
 import 'package:abc_jobs/candidates/views/signup.dart';
 import 'package:abc_jobs/utils/themes.dart';
@@ -12,13 +13,15 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "ABC Jobs",
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: '/',
+      initialRoute: '/dashboard',
       getPages: [
         GetPage(name: '/', page: ()=>Signin()),
         GetPage(name:'/signup', page: () => Signup()),
+        GetPage(name: '/dashboard', page: ()=>Dashboard()),
       ],
 
       localizationsDelegates: const [
