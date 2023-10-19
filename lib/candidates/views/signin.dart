@@ -93,6 +93,8 @@ class Signin extends StatelessWidget {
                       response: response,
                       onSuccess: (){
 
+                        Get.offNamed('/dashboard');
+
                       });
 
                   } catch (e) {

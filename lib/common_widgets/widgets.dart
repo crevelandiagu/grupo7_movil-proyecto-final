@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Widget bottomNavigation(Function(int index) onTap) {
   NavigationBar navigation = NavigationBar(
@@ -22,21 +23,35 @@ Widget bottomNavigation(Function(int index) onTap) {
 
 Widget cardDashboard(String title) {
   return Container(
+    width: 250,
+    padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 8),
     decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(8.0),
       border: Border.all(
-        width: 2.0,
-        color: Colors.blue
+        width: 3.0,
+        color: const Color.fromARGB(255, 58, 0, 229),
       )
     ),
     child: Column(
+      
       children: [
-        Text(title),
+        Text(
+          title,
+          style: GoogleFonts.workSans(
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 58, 0, 229))),
               onPressed: (){},
-               child: const Text('Details'))
+               child: const Text('View Details'))
           ],
         )
       ],

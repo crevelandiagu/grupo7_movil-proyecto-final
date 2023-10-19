@@ -88,7 +88,13 @@ class Dashboard extends StatelessWidget {
                     ),
                    const SizedBox(
                       height: 10,
-                    )
+                    ),
+
+                    cardDashboard("Applications"),
+                    SizedBox(height: 10,),
+                    cardDashboard("Interviews"),
+                    SizedBox(height: 10,),
+                    cardDashboard("Tests"),
                   ],
                 ),
 
