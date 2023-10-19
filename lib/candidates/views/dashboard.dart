@@ -1,8 +1,8 @@
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -80,21 +80,22 @@ class Dashboard extends StatelessWidget {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.mail, color: Colors.blue,),
-                        SizedBox(width: 5,),
-                        Text('email@email.com', style: TextStyle(fontSize: 16),),
+                      children: [
+                        const Icon(Icons.mail, color: Colors.blue,),
+                       const SizedBox(width: 5,),
+                        Text(Get.arguments['email'] ?? "email@email.com",
+                         style: const TextStyle(fontSize: 16),),
                       ],
                     ),
                    const SizedBox(
                       height: 10,
                     ),
 
-                    cardDashboard("Applications"),
+                    cardDashboard(AppLocalizations.of(context).applications, context),
                     SizedBox(height: 10,),
-                    cardDashboard("Interviews"),
+                    cardDashboard(AppLocalizations.of(context).interviews, context),
                     SizedBox(height: 10,),
-                    cardDashboard("Tests"),
+                    cardDashboard(AppLocalizations.of(context).tests, context),
                   ],
                 ),
 
@@ -102,7 +103,7 @@ class Dashboard extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: bottomNavigation((index) => null),
+      bottomNavigationBar: bottomNavigation((index) => null, context),
     );
   }
 }

@@ -93,7 +93,7 @@ class Signin extends StatelessWidget {
                       response: response,
                       onSuccess: (){
 
-                        Get.offNamed('/dashboard');
+                        Get.offNamed('/dashboard', arguments: {'email': emailController.text});
 
                       });
 

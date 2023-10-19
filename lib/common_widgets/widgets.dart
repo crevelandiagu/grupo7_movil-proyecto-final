@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-Widget bottomNavigation(Function(int index) onTap) {
+Widget bottomNavigation(Function(int index) onTap, BuildContext context) {
   NavigationBar navigation = NavigationBar(
     selectedIndex: 0,
     onDestinationSelected: onTap,
     
     
     
-    destinations: const [
+    destinations: [
       NavigationDestination(icon: Icon(Icons.home_outlined), label: "Dashboard"),
      // BottomNavigationBarItem(icon: Icon(Icons.work_outline), label: "Applications"),
-      NavigationDestination(icon: Icon(Icons.school_outlined), label: "Tests"),
-      NavigationDestination(icon: Icon(Icons.co_present_outlined), label: "Interviews"),
-      NavigationDestination(icon: Icon(Icons.person_outline), label: "Profile"),
+      NavigationDestination(icon: Icon(Icons.school_outlined), label: AppLocalizations.of(context).tests),
+      NavigationDestination(icon: Icon(Icons.co_present_outlined), label: AppLocalizations.of(context).interviews),
+      NavigationDestination(icon: Icon(Icons.person_outline), label: AppLocalizations.of(context).profile),
       
     ]);
 
@@ -21,7 +22,7 @@ Widget bottomNavigation(Function(int index) onTap) {
 
 }
 
-Widget cardDashboard(String title) {
+Widget cardDashboard(String title, BuildContext context) {
   return Container(
     width: 250,
     padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 8),
@@ -51,7 +52,8 @@ Widget cardDashboard(String title) {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 58, 0, 229))),
               onPressed: (){},
-               child: const Text('View Details'))
+               child: Text(AppLocalizations.of(context).details),
+               ),
           ],
         )
       ],

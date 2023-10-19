@@ -14,5 +14,10 @@
     "account_created": "Cuenta Creada",
     "welcome": "Bienvenido",
     "dont_account": "¿Aun no tienes una cuenta?",
-    "success": "Éxito"
+    "success": "Éxito",
+    "applications": "Applicaciones",
+    "tests": "Pruebas",
+    "interviews": "Entrevistas",
+    "details": "Ver Detalles",
+    "profile": "Perfil"
 }

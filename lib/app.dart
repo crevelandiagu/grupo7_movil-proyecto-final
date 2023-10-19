@@ -17,7 +17,7 @@ class App extends StatelessWidget {
       title: "ABC Jobs",
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: '/dashboard',
+      initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: ()=>Signin()),
         GetPage(name:'/signup', page: () => Signup()),
