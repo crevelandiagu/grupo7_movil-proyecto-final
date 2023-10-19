@@ -103,7 +103,7 @@ class Dashboard extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: bottomNavigation((index) => null, context),
+      bottomNavigationBar: bottomNavigation((index) => null, context, 0),
     );
   }
 }

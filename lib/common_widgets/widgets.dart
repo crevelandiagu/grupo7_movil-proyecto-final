@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-Widget bottomNavigation(Function(int index) onTap, BuildContext context) {
+Widget bottomNavigation(Function(int index) onTap, BuildContext context, int index) {
   NavigationBar navigation = NavigationBar(
-    selectedIndex: 0,
+    selectedIndex: index,
     onDestinationSelected: onTap,
     
     
