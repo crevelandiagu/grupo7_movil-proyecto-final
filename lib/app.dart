@@ -1,4 +1,6 @@
 import 'package:abc_jobs/candidates/views/dashboard.dart';
+import 'package:abc_jobs/candidates/views/profile_personal_info.dart';
+import 'package:abc_jobs/candidates/views/profile_work_info.dart';
 import 'package:abc_jobs/candidates/views/signin.dart';
 import 'package:abc_jobs/candidates/views/signup.dart';
 import 'package:abc_jobs/utils/themes.dart';
@@ -17,7 +19,7 @@ class App extends StatelessWidget {
       title: "ABC Jobs",
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      initialRoute: '/',
+   //   initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: ()=>Signin()),
         GetPage(name:'/signup', page: () => Signup()),
@@ -34,7 +36,7 @@ class App extends StatelessWidget {
         Locale("es"),
         
       ],
-     // home: Signup(),
+      home: WorkInfo(),
     );
   }
 }

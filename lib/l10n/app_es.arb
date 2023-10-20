@@ -19,5 +19,20 @@
     "tests": "Pruebas",
     "interviews": "Entrevistas",
     "details": "Ver Detalles",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "name": "nombre",
+    "lastname": "apellido",
+    "phoneNumber": "Número de teléfono",
+    "numberId": "Número de identificación",
+    "nameLabel": "Ingresa tu nombre",
+    "lastnameLabel": "Ingresa tu apellido",
+    "numberIdLabel": "Ingresa tu número de identificacíon",
+    "locationLabel": "Ingresa tu localización actual",
+    "location": "localización",
+    "phoneLabel": "Ingresa tu número de telefono",
+    "position": "position",
+    "positionLabel": "Ingresa tu posición",
+    "employmentType": "typo de empleo",
+    "companyName": "Nombre empresa",
+    "companyLabel": "Ingresa nombre de la empresa"
 }

@@ -79,7 +79,7 @@
         "description": "success"
     },
 
-    "applications": "My Applications",
+    "applications": "Applications",
     "@applications": {
         "description": "applications"
     },
@@ -89,7 +89,7 @@
         "description": "tests"
     },
 
-    "interviews": "My Interviews",
+    "interviews": "Interviews",
     "@interviews": {
         "description": "interviews"
     },
@@ -99,10 +99,91 @@
         "description": "details"
     },
 
-    "profile": "My Profile",
+    "profile": "Profile",
     "@profile": {
         "description": "profile"
+    },
+
+    "name": "name",
+    "@name": {
+        "description": "name"
+    },
+
+    "lastname": "lastname",
+    "@lastname": {
+        "description": "lastname"
+    },
+
+    "phoneNumber": "phone",
+    "@phoneNumber": {
+        "description": "phone"
+    },
+
+    "numberId": "number Id",
+    "@numberId": {
+        "description": "numberID"
+    },
+
+    "nameLabel": "Enter your name",
+    "@nameLabel": {
+        "description": "name label"
+    },
+
+    "lastnameLabel": "Enter your lastname",
+    "@lastnameLabel": {
+        "description": "lastname label"
+    },
+
+    "numberIdLabel": "Enter your Id",
+    "@numberIdLabel": {
+        "description": "numberId Label"
+    },
+
+    "location": "location",
+    "@location": {
+        "description": "location"
+    },
+
+    "locationLabel": "Enter your location",
+    "@locationLabel": {
+        "description": "location"
+    },
+
+    "phoneLabel": "Enter your phone",
+    "@phoneLabel": {
+        "description": "phone"
+    },
+    
+    "position": "position",
+    "@position": {
+        "description": "position"
+    },
+
+    
+    "positionLabel": "Enter your position",
+    "@positionLabel": {
+        "description": "positionLabel"
+    },
+
+    "employmentType": "employment type",
+    "@employmentType": {
+        "description": "employment type"
+    },
+
+    "companyName": "company name",
+    "@companyName": {
+        "description": "company name"
+    },
+
+    "companyLabel": "Enter company name",
+    "@companyLabel": {
+        "description": "company label"
     }
+
+    
+
+
+
 
 
 

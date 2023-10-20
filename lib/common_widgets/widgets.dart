@@ -62,3 +62,27 @@ Widget cardDashboard(String title, BuildContext context) {
   );
 }
 
+PreferredSizeWidget customAppBar() {
+  return AppBar(
+    leading: IconButton(
+      onPressed: (){},
+      icon: const Icon(Icons.menu),
+      ),
+    actions: [
+      IconButton(
+            onPressed: (){},
+            icon: const Icon(Icons.language),
+            ),
+          IconButton(
+            onPressed: (){},
+             icon: const Icon(Icons.notifications),
+             ),
+          IconButton(
+            onPressed: (){},
+            icon: const Icon(Icons.account_circle),
+            ),
+
+    ],
+  );
+}
+
