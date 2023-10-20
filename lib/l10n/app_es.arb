@@ -8,7 +8,7 @@
     "valid_email": "Ingresa un email valido",
     "secure_password": "Ingresa una contraseña valida",
     "email": "Ingresa email",
-    "password_error_length": "La contraseña debe tener minimo 8 caractéres",
+    "password_error_length": "La contraseña debe tener 1 numero, 1 mayúscula, 1 character especial y una longitud de 8 charactéres",
     "password_error_equal": "Las contraseñas no son iguales",
     "message_signup_success": "La cuenta fue creada. Por favor inicia sesión con las mismas credenciales",
     "account_created": "Cuenta Creada",
