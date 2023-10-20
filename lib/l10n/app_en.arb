@@ -49,7 +49,7 @@
         "description": "message to create account"
     },
 
-    "password_error_length": "Password should contain at least one upper case, one special character, one number and Must be at least 8 characters in length ",
+    "password_error_length": "Password should contain at least one upper case, one special character, one number and must be at least 8 characters in length ",
     "@password_error_length": {
         "description": "Error in length of password "
     },
@@ -77,7 +77,34 @@
     "success": "Success",
     "@success": {
         "description": "success"
+    },
+
+    "applications": "My Applications",
+    "@applications": {
+        "description": "applications"
+    },
+
+    "tests": "My Tests",
+    "@tests": {
+        "description": "tests"
+    },
+
+    "interviews": "My Interviews",
+    "@interviews": {
+        "description": "interviews"
+    },
+
+    "details": "View Details",
+    "@details": {
+        "description": "details"
+    },
+
+    "profile": "My Profile",
+    "@profile": {
+        "description": "profile"
     }
+
+
 
 
 

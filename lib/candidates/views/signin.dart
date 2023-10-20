@@ -46,6 +46,7 @@ class Signin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 50.0),
               child: TextField(
+                key: const Key('emailText'),
                 controller: emailController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -60,6 +61,7 @@ class Signin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10.0),
               child: TextField(
+                key: const Key('passwordText'),
                 controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
@@ -76,6 +78,7 @@ class Signin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(15, 90, 15, 20),
               child: ElevatedButton(
+                key: const Key("signinButton"),
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(50),
                 ),
@@ -93,6 +96,8 @@ class Signin extends StatelessWidget {
                       response: response,
                       onSuccess: (){
 
+                        Get.offNamed('/dashboard', arguments: {'email': emailController.text});
+
                       });
 
                   } catch (e) {
@@ -103,24 +108,47 @@ class Signin extends StatelessWidget {
                         "Error",
                         style: GoogleFonts.workSans(
                           textStyle: const TextStyle(
-                            color: Colors.white60,
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
                           ),
-                          fontSize: 16,
+                          
                         ),
                         ),
                       messageText: Text(
                         e.toString(),
                         style:  GoogleFonts.workSans(
                           textStyle: const TextStyle(
-                            color: Colors.white60,
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
                           ),
-                          fontSize: 16,
                         ),
                         ),
                       backgroundColor: Colors.red,
                       snackPosition: SnackPosition.BOTTOM);
                   }
 
+                 } else {
+
+                  Get.snackbar("",
+                   "",
+                   titleText: Text("Error", style: GoogleFonts.workSans(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                   ),
+                   ),
+                   messageText: Text("No puede haber campos vacíos", style: GoogleFonts.workSans(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                   ),),
+                   snackPosition: SnackPosition.BOTTOM,
+                   backgroundColor: Colors.red,
+                   isDismissible: true,
+                   dismissDirection: DismissDirection.horizontal,
+                   );
                  }
 
                 },

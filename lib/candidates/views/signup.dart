@@ -52,6 +52,7 @@ class Signup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(15, 80, 15, 40),
               child: TextField(
+                key: const Key('textEmail'),
                 controller: emailController,
                 onChanged: (value) {
                   controller.validateEmail(value);
@@ -71,6 +72,7 @@ class Signup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
               child: TextField(
+                key: const Key('textPassword'),
                 onChanged: (value) {
                   controller.validatePassword(value);
                 },
@@ -91,6 +93,7 @@ class Signup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40.0),
               child: TextField(
+                key: const Key('textPasswordr'),
                 onChanged: (value) {
                   controller.validateEqualPassword(value, passwordController.text);
                 },
@@ -110,6 +113,7 @@ class Signup extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(15, 60, 15, 20),
               child: ElevatedButton(
+                key: const Key('signupButton'),
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size.fromHeight(50),
                 ),

@@ -50,6 +50,41 @@ void main() {
            
     });
 
+
+     test("test signin status code 200", () async {
+
+      final client = MockClient();
+
+      when(client.post(Uri.parse(Constants.signInUri),
+       headers: buildHeaders(), body: jsonEncode({'email': 'mock@mock.com', 'password':'password'})))
+      .thenAnswer((_) async => http.Response( '{"mensaje": "Inicio de sesión exitoso"}', 200));
+     
+     http.Response response = await AuthService().signIn(
+      username: "mock@mock.com", 
+      password: "password",
+      client: client);
+
+      expect(response.statusCode, 200);
+           
+    });
+
+    test("test signup status code 404", () async {
+
+      final client = MockClient();
+
+      when(client.post(Uri.parse(Constants.signInUri),
+       headers: buildHeaders(), body: jsonEncode({'email': 'mock@mock.com', 'password':'password'})))
+      .thenAnswer((_) async => http.Response( '{"mensaje": "Usuario con username no exista o contrasena incorrecta"}', 404));
+
+      http.Response response = await AuthService().signIn(
+      username: "mock@mock.com", 
+      password: "password",
+      client: client);
+
+      expect(response.statusCode, 404);
+           
+    });
+
   });
 
 }
