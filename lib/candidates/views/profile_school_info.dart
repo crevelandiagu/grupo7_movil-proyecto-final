@@ -6,21 +6,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 
-class WorkInfo extends StatelessWidget {
-  WorkInfo({super.key});
+class SchoolInfo extends StatelessWidget {
+  SchoolInfo({super.key});
 
-  var currentValue = "Tipo Trabajo 1".obs;
-
-  final items = [
-    "Tipo Trabajo 1",
-    "Tipo Trabajo 2",
-    "Tipo Trabajo 3",
-    "Tipo Trabajo 4",
-    "Tipo Trabajo 5",
-    "Tipo Trbajo 6",
-    "Tipo Trabajo 7"
-  ];
-
+ 
   var skills = [].obs;
 
   TextEditingController skillController = TextEditingController();
@@ -38,62 +27,33 @@ class WorkInfo extends StatelessWidget {
              Padding(
               padding: const EdgeInsets.fromLTRB(15, 40, 15, 40),
               child: TextField(
-                key: const Key('textPosition'),
+                key: const Key('textSchool'),
                 onChanged: (value) {
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).companyName,
+                  labelText: AppLocalizations.of(context).school,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).companyLabel,
+                  hintText: AppLocalizations.of(context).schoolLabel,
                 ),
               ),
               ),
 
              Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: DropdownButtonFormField(
-                icon: Icon(Icons.keyboard_arrow_down),
-                
-
-                value: currentValue.value,
-
-                items: items.map((String item){
-                      return DropdownMenuItem(
-                        value: item,
-                        child: Text(item)
-                        ); 
-                      }).toList(),
-                onChanged: (String? value){
-                  currentValue.value = value as String;
-
-                },
-                decoration: InputDecoration(
-                  labelText: AppLocalizations.of(context).employmentType,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                ),
-
-                
-              ),
-
-             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 40, 15, 0),
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
               child: TextField(
-                key: const Key('company'),
+                key: const Key('textDegree'),
                 onChanged: (value) {
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).companyName,
+                  labelText: AppLocalizations.of(context).degree,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).companyLabel,
+                  hintText: AppLocalizations.of(context).degreeLabel,
                 ),
               ),
               ),

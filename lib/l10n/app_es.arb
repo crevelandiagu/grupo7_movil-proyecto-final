@@ -34,5 +34,15 @@
     "positionLabel": "Ingresa tu posición",
     "employmentType": "typo de empleo",
     "companyName": "Nombre empresa",
-    "companyLabel": "Ingresa nombre de la empresa"
+    "companyLabel": "Ingresa nombre de la empresa",
+    "school": "Institución",
+    "schoolLabel": "Ingresa nombre de la institución",
+    "degree": "grado",
+    "degreeLabel": "Ingresa grado",
+    "next": "Siguiente",
+    "organization": "Organización que expedió el certificado",
+    "organizationLabel": "Ingresa el nombre de la organnización",
+    "certification": "certificado",
+    "certificationLabel": "Ingresa el certificado",
+    "createButton": "Crear"
 }

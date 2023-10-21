@@ -122,7 +122,7 @@ class PersonalInfo extends StatelessWidget {
                  backgroundColor: Color.fromARGB(255, 58, 0, 229),
                 ),
                 onPressed: (){},
-                child: Text('Next', style: GoogleFonts.workSans(
+                child: Text(AppLocalizations.of(context).next, style: GoogleFonts.workSans(
                   textStyle: const TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500,

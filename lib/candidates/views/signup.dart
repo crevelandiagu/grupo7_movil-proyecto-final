@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
 import 'package:abc_jobs/candidates/services/auth_service.dart';
+import 'package:abc_jobs/candidates/views/signin.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -146,7 +147,7 @@ class Signup extends StatelessWidget {
                               onPressed: (){
 
                                Get.back(closeOverlays: true);
-                               Get.offNamed('/');
+                               Get.off(()=> Signin());
 
                               },
                               style: ButtonStyle(

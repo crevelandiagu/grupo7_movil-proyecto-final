@@ -178,7 +178,59 @@
     "companyLabel": "Enter company name",
     "@companyLabel": {
         "description": "company label"
+    },
+
+    "school": "school",
+    "@school": {
+        "description": "school"
+    },
+
+    "schoolLabel": "Enter school name",
+    "@schoolLabel": {
+        "description": "school Label"
+    },
+
+    "degree": "degree",
+    "@degree": {
+        "description": "degree"
+    },
+
+    "degreeLabel": "Enter degree",
+    "@degreeLabel": {
+        "description": "degreeLabel"
+    },
+
+    "next": "Next",
+    "@next": {
+        "description": "next"
+    },
+
+    "certification": "certification name",
+    "@certification": {
+        "description": "certification"
+    },
+
+    "certificationLabel": "Enter certification name",
+    "@certificationLabel": {
+        "description": "certification"
+    },
+
+    "organization": "Issuing organization",
+    "@organization": {
+        "description": "organization"
+    },
+
+    "organizationLabel": "Enter Issuing organization",
+    "@organizationLabel": {
+        "description": "organization label"
+    },
+
+    "createButton": "Create",
+    "@createButton": {
+        "description": "Create"
     }
+
+
 
     
 

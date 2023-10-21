@@ -30,71 +30,28 @@ class Dashboard extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.only(top: 10),
-                width: 180,
-                height: 180,
-                child: const CircleAvatar(
-                  backgroundColor: Colors.grey,
-                  child: Text('Image'),
-                  ),
-              ),
+              
               const SizedBox(
                 height: 40,
               ),
                   Column(
                   children: [
-                   const Text('Nombre',
+                   const Text('Hola, Nombre',
                     style: TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.w500
                     ),
+
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 40,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.location_on, color: Colors.blue,),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text('Location', style: TextStyle(fontSize: 16),),                       
-                      ],
-                    ),
-                      const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.phone, color: Colors.blue,),
-                        SizedBox(width: 5,),
-                        Text('phone number',
-                        style: TextStyle( fontSize: 16),),
-                      ],
-                    ),
-                      const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.mail, color: Colors.blue,),
-                       const SizedBox(width: 5,),
-                        Text(Get.arguments['email'] ?? "email@email.com",
-                         style: const TextStyle(fontSize: 16),),
-                      ],
-                    ),
-                   const SizedBox(
-                      height: 10,
-                    ),
-
+                    
+                  
                     cardDashboard(AppLocalizations.of(context).applications, context),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 40,),
                     cardDashboard(AppLocalizations.of(context).interviews, context),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 40,),
                     cardDashboard(AppLocalizations.of(context).tests, context),
                   ],
                 ),

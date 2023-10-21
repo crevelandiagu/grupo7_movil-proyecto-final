@@ -1,5 +1,6 @@
 import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
 import 'package:abc_jobs/candidates/services/auth_service.dart';
+import 'package:abc_jobs/candidates/views/dashboard.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -96,7 +97,7 @@ class Signin extends StatelessWidget {
                       response: response,
                       onSuccess: (){
 
-                        Get.offNamed('/dashboard', arguments: {'email': emailController.text});
+                        Get.off(()=> Dashboard());
 
                       });
 
