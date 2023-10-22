@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-class SkillCertification extends StatelessWidget {
-  const SkillCertification({super.key});
+class Certification extends StatelessWidget {
+  const Certification({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class SkillCertification extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                        Text('Skill and certification'),
+                        Text('Certification'),
                         ListTile(        
                           minVerticalPadding: 0,                  
                           title: Text('CGP professional'),

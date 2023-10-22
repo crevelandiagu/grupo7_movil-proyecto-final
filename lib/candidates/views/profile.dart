@@ -3,7 +3,7 @@ import 'package:abc_jobs/candidates/views/experience.dart';
 import 'package:abc_jobs/candidates/views/profile_certification_info.dart';
 import 'package:abc_jobs/candidates/views/profile_school_info.dart';
 import 'package:abc_jobs/candidates/views/profile_work_info.dart';
-import 'package:abc_jobs/candidates/views/skill_certification.dart';
+import 'package:abc_jobs/candidates/views/certification.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -104,9 +104,9 @@ class Profile extends StatelessWidget {
            (){Get.to(()=>SchoolInfo());},
            (){Get.to(()=>Education());}),
           SizedBox(height: 10,),
-          cardDashboardProfile("Skill and certification", context,
+          cardDashboardProfile("Certification", context,
           (){Get.to(()=>CertificationInfo());},
-          (){Get.to(()=>SkillCertification());}),
+          (){Get.to(()=>Certification());}),
 
           
           //listViews
