@@ -8,44 +8,31 @@ import "package:http/http.dart" as http;
 
 class CVService {
 
-   Future<http.Response> sendSkills(
-    {required List<String> skills,
-     required http.Client client}
-  ) async {
-    
-    try {
-
-    http.Response response = await http.post(Uri.parse(Constants.cvUri),
-                            headers: buildHeaders(),
-                            body: jsonEncode(
-                              {
-                                'skills' : skills,
-                              }
-                            )
-                            );
-    
-    return response;
-    
-    } catch (e){ 
-      throw Exception(e);
-    }
-
-  }
-
-
-  Future<http.Response> sendExperience(
-    {required List<String> experience,
+   
+  Future<http.Response> postExperience(
+    {required String position,
+     required String companyName,
+     required String startDate,
+     required String endDate,
+     required String place,
+     required List<dynamic> skills,
+     required int candidateId,
      required http.Client client}
 
   ) async {
     
     try {
 
-    http.Response response = await http.post(Uri.parse(Constants.cvUri),
+    http.Response response = await http.post(Uri.parse('${Constants.experienceUri}$candidateId'),
                                     headers: buildHeaders(),
                                     body: jsonEncode(
                                       {
-                                        "experience": experience
+                                        "position": position,
+                                        "company_name": companyName,
+                                        "start_date": startDate,
+                                        "end_date": endDate,
+                                        "place": place,
+                                        "skills": skills
                                       }
 
                                     ),
@@ -60,19 +47,28 @@ class CVService {
 
 
 
-  Future<http.Response> sendEducation(
-    {required List<String> education,
+  Future<http.Response> postEducation(
+    {required String university,
+     required String subject,
+     required String startDate,
+     required String endDate,
+     required List<dynamic> skills,
+     required int candidateId,
      required http.Client client}
 
   ) async {
     
     try {
 
-    http.Response response = await http.post(Uri.parse(Constants.cvUri),
+    http.Response response = await http.post(Uri.parse('${Constants.educationUri}$candidateId'),
                                     headers: buildHeaders(),
                                     body: jsonEncode(
                                       {
-                                        "education": education
+                                        "university": university,
+                                        "subject": subject,
+                                        "start_date": startDate,
+                                        "end_date": endDate,
+                                        "skills": skills
                                       }
 
                                     ),
@@ -85,19 +81,26 @@ class CVService {
     }
   }
 
-  Future<http.Response> sendCertificates(
-    {required List<String> certificates,
+  Future<http.Response> postCertificates(
+    {required String nameCertificate,
+     required String company,
+     required String expeditionDate,
+     required String dateExpiry,
+     required int candidateId,
      required http.Client client}
 
   ) async {
     
     try {
 
-    http.Response response = await http.post(Uri.parse(Constants.cvUri),
+    http.Response response = await http.post(Uri.parse('${Constants.certificatesUri}$candidateId'),
                                     headers: buildHeaders(),
                                     body: jsonEncode(
                                       {
-                                        "certificates": certificates
+                                        "name_certificate": nameCertificate,
+                                        "company": company,
+                                        "start_date": expeditionDate,
+                                        "end_date": dateExpiry 
                                       }
 
                                     ),
@@ -111,25 +114,31 @@ class CVService {
   }
 
 
-  Future<http.Response> sendBasicInfo(
+  Future<http.Response> postBasicInfo(
     {required String name,
      required String lastname,
+     required String phoneNumber,
+     required String numberId,
+     required String location,
+     required int candidateId,
      required http.Client client}
 
   ) async {
     
     try {
 
-    http.Response response = await http.post(Uri.parse(Constants.cvUri),
+    http.Response response = await http.post(Uri.parse('${Constants.basicinfoUri}$candidateId'),
                                     headers: buildHeaders(),
                                     body: jsonEncode(
-                                      {
-                                        "basicinfo": {
+                                      
+                                        {
                                         "name": name,
-                                        "lastname": lastname
-
+                                        "lastname": lastname,
+                                        "nacionality": location,
+                                        "phone_number": phoneNumber,
+                                        "number_id": numberId
                                         }
-                                      }
+                            
 
                                     ),
                                     );
@@ -140,6 +149,98 @@ class CVService {
       throw Exception(e);
     }
   }
+
+  Future<http.Response> getBasicinfo(
+    {required int candidateId,
+     required http.Client client}
+  ) async  {
+    
+     
+    try {
+
+      http.Response response = await http.get(Uri.parse('${Constants.basicinfoUri}$candidateId'),
+                            headers: buildHeaders());
+      
+      return response;
+      
+    } catch (e) {
+
+      throw Exception(e);
+      
+    }
+                          
+
+  }
+
+
+  Future<http.Response> getEducation(
+    {required int candidateId,
+     required http.Client client}
+  ) async  {
+    
+     
+    try {
+
+      http.Response response = await http.get(Uri.parse('${Constants.educationUri}$candidateId'),
+                            headers: buildHeaders());
+      
+      return response;
+      
+    } catch (e) {
+
+      throw Exception(e);
+      
+    }
+                          
+
+  }
+
+
+  Future<http.Response> getExperience(
+    {required int candidateId,
+     required http.Client client}
+  ) async  {
+    
+     
+    try {
+
+      http.Response response = await http.get(Uri.parse('${Constants.experienceUri}$candidateId'),
+                            headers: buildHeaders());
+      
+      return response;
+      
+    } catch (e) {
+
+      throw Exception(e);
+      
+    }
+                          
+
+  }
+
+  Future<http.Response> getCertificates(
+    {required int candidateId,
+     required http.Client client}
+  ) async  {
+    
+     
+    try {
+
+      http.Response response = await http.get(Uri.parse('${Constants.certificatesUri}$candidateId'),
+                            headers: buildHeaders());
+      
+      return response;
+      
+    } catch (e) {
+
+      throw Exception(e);
+      
+    }
+                          
+
+  }
+
+  
 
 
 

@@ -1,16 +1,29 @@
+import 'dart:convert';
+
+import 'package:abc_jobs/candidates/services/cv_service.dart';
+import 'package:abc_jobs/candidates/views/profile.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:abc_jobs/utils/constants.dart';
+import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:date_time_picker/date_time_picker.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SchoolInfo extends StatelessWidget {
   SchoolInfo({super.key});
 
  
   var skills = [].obs;
+  TextEditingController institutionController = TextEditingController();
+  TextEditingController gradeController = TextEditingController();
+  var startDate = "";
+  var endDate = "";
+
+  CVService service = CVService();
+
 
   TextEditingController skillController = TextEditingController();
 
@@ -27,6 +40,7 @@ class SchoolInfo extends StatelessWidget {
              Padding(
               padding: const EdgeInsets.fromLTRB(15, 40, 15, 40),
               child: TextField(
+                controller: institutionController,
                 key: const Key('textSchool'),
                 onChanged: (value) {
                 },
@@ -44,6 +58,7 @@ class SchoolInfo extends StatelessWidget {
              Padding(
               padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
               child: TextField(
+                controller: gradeController,
                 key: const Key('textDegree'),
                 onChanged: (value) {
                 },
@@ -68,11 +83,21 @@ class SchoolInfo extends StatelessWidget {
                   Flexible(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal:15.0),
-                      child: DateTimePicker(
-                        type: DateTimePickerType.date,
+                      child: DateTimeFormField(
+                        mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
-                        dateLabelText: 'start date',                  
+                        decoration: const InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black45),
+                          errorStyle: TextStyle(color: Colors.redAccent),
+                          border: OutlineInputBorder(),
+                          suffixIcon: Icon(Icons.event_note),
+                          labelText: 'start time',
+                        ),
+                        onDateSelected: (DateTime value) {
+                          startDate = value.toString();
+                          debugPrint(startDate);                        
+                        },                 
                       ),
                     ),
                   ),
@@ -80,12 +105,23 @@ class SchoolInfo extends StatelessWidget {
                   Flexible(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: DateTimePicker(
-                        type: DateTimePickerType.date,
+                      child: DateTimeFormField(
+                        mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
-                        dateLabelText: 'end date',                   
+                        decoration: const InputDecoration(
+                          hintStyle: TextStyle(color: Colors.black45),
+                          errorStyle: TextStyle(color: Colors.redAccent),
+                          border: OutlineInputBorder(),
+                          suffixIcon: Icon(Icons.event_note),
+                          labelText: 'end time',
+                        ),
+                        onDateSelected: (DateTime value) {
+                          endDate = value.toString();
+                          debugPrint(endDate);                        
+                        },                    
                       ),
+                      
                     ),
                   ),
                 ],
@@ -160,7 +196,38 @@ class SchoolInfo extends StatelessWidget {
                  // minimumSize: const Size.fromHeight(50),
                  backgroundColor: Color.fromARGB(255, 58, 0, 229),
                 ),
-                onPressed: (){},
+                onPressed: () async {
+                  
+                  if (!validateFields(institutionController.text, gradeController.text, startDate, endDate)){
+                    debugPrint('Alguna false');
+                        return;
+                  } else {
+                    try {
+                      SharedPreferences pfres = await SharedPreferences.getInstance();
+                      int candidateId = pfres.getInt('id') as int;
+                      var listskills = skills.value;
+                      debugPrint("candidateId: " + candidateId.toString());
+
+                      http.Response res = await service.postEducation(
+                        university: institutionController.text.toLowerCase(),
+                       subject: gradeController.text.toLowerCase(),
+                       startDate: startDate, endDate: endDate, skills: listskills,
+                        candidateId: candidateId, client: http.Client());
+
+                      if (res.statusCode == 201) {
+                        debugPrint('mensage: ' + jsonDecode(res.body)['message']);
+
+                        Get.off(()=> Profile());
+                      }
+                      
+                    } catch (e) {
+
+                      debugPrint(e.toString());
+                      
+                    }
+                  }
+
+                },
                 child: Text(AppLocalizations.of(context).next, style: GoogleFonts.workSans(
                   textStyle: const TextStyle(
                     fontSize: 23,
@@ -177,5 +244,12 @@ class SchoolInfo extends StatelessWidget {
         ),
       ),    
     );
+  }
+
+  bool validateFields(String intituStr, String gradeStr, String startStr, String endStr) {
+    if (intituStr.isNotEmpty && gradeStr.isNotEmpty && startStr.isNotEmpty && endStr.isNotEmpty) {
+      return true;
+    }
+    return false;
   }
 }

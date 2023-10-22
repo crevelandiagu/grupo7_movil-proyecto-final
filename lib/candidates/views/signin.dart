@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
 import 'package:abc_jobs/candidates/services/auth_service.dart';
 import 'package:abc_jobs/candidates/views/dashboard.dart';
+import 'package:abc_jobs/candidates/views/signup.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class Signin extends StatelessWidget {
@@ -95,7 +99,12 @@ class Signin extends StatelessWidget {
 
                     httpErrorHandleSi(
                       response: response,
-                      onSuccess: (){
+                      onSuccess: () async {
+                        
+                        int candidateId = jsonDecode(response.body)['id'];
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        prefs.setInt("id", candidateId);
+                        debugPrint("id: $candidateId" );
 
                         Get.off(()=> Dashboard());
 
@@ -176,7 +185,7 @@ class Signin extends StatelessWidget {
                   Text(AppLocalizations.of(context).dont_account),
                   TextButton(
                     onPressed: (){
-                      Get.toNamed('signup');
+                      Get.to(()=> Signup());
                     },
                      child: Text(
                       AppLocalizations.of(context).signup,
