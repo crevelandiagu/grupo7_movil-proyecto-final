@@ -89,7 +89,7 @@ class Profile extends StatelessWidget {
                             width: 5,
                           ),
                           Text(
-                            data['nacionality'],
+                            data['nacionality'] ?? "",
                             key: const Key('nacionality'),
                              style: const TextStyle(fontSize: 16),
                              ),                       
@@ -104,7 +104,7 @@ class Profile extends StatelessWidget {
                           const Icon(Icons.phone, color: Colors.blue,),
                           const SizedBox(width: 5,),
                           Text(
-                          data['phone_number'],
+                          data['phone_number'] ?? "",
                           key: const Key('phone_number'),
                           style: const TextStyle( fontSize: 16),
                           ),
