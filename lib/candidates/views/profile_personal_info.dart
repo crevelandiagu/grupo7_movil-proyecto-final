@@ -4,6 +4,7 @@ import 'package:abc_jobs/candidates/services/cv_service.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +21,9 @@ class PersonalInfo extends StatelessWidget {
   TextEditingController phonenumberController = TextEditingController();
   CVService service = CVService();
 
+  var validPhoneNumber = false.obs;
+  var validNumberId = false.obs;
+
   
 
   @override
@@ -29,7 +33,7 @@ class PersonalInfo extends StatelessWidget {
       bottomNavigationBar: bottomNavigation((index) => null, context, 0),
       body: SingleChildScrollView(
         key: Key('scroll'),
-        child: Column(
+        child: Obx(()=>Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
@@ -87,15 +91,21 @@ class PersonalInfo extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 40),
               child: TextField(
                 controller: numberidController,
+                inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), 
+                FilteringTextInputFormatter.digitsOnly
+                ],
+                keyboardType: TextInputType.number,
                 key: const Key('numberId'),
                 onChanged: (value) {
+                  validateNumberId(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).numberId,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText:  validNumberId.value ? null : "superó el limite de 11 dígitos",
                   hintText: AppLocalizations.of(context).numberIdLabel,
                 ),
               ),
@@ -114,7 +124,7 @@ class PersonalInfo extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).location,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                 // errorText: validNumberId.value ? null : "superó el limite de 11 dígitos",
                   hintText: AppLocalizations.of(context).locationLabel,
                 ),
               ),
@@ -124,6 +134,11 @@ class PersonalInfo extends StatelessWidget {
               key: const Key('pad4'),
               padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 40),
               child: TextField(
+                inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), 
+                FilteringTextInputFormatter.digitsOnly
+                ],
+                keyboardType: TextInputType.phone,
                 controller: phonenumberController,
                 key: const Key('phone'),
                 onChanged: (value) {
@@ -151,6 +166,17 @@ class PersonalInfo extends StatelessWidget {
                  backgroundColor: Color.fromARGB(255, 58, 0, 229),
                 ),
                 onPressed: () async{
+
+                  if (!validateFields(nameController.text,
+                   lastnameController.text,
+                    locationController.text,
+                     numberidController.text,
+                      phonenumberController.text)) {
+
+                        return;
+                                           
+                      }
+
                   try {
 
                     
@@ -195,19 +221,28 @@ class PersonalInfo extends StatelessWidget {
 
               ),
               
-
-
-
-            
-
-
-        
-            
-
           ],
         ),
-        ),      
+        ),
+      ),      
     );
+  }
+
+  void validateNumberId(String number) {
+    if (number.length < 11) {
+      validNumberId.value = true;
+    } else {
+      validNumberId.value = false;
+    }
+  }
+
+  bool validateFields(String name, String lastname, String location, String numberId, String phone){
+    if (name.isNotEmpty && lastname.isNotEmpty && location.isNotEmpty && numberId.isNotEmpty && phone.isNotEmpty) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
 
   
