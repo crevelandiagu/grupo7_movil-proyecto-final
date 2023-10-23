@@ -81,6 +81,7 @@ class CertificationInfo extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal:15.0),
                       child: DateTimeFormField(
+                        key: const Key('startdate'),
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
@@ -102,6 +103,7 @@ class CertificationInfo extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       child: DateTimeFormField(
+                        key: const Key('enddate'),
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),

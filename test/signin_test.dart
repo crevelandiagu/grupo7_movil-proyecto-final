@@ -21,10 +21,20 @@ void main(){
     final foundButton = find.byKey(const Key("signinButton"));
     final foundPasswordText = find.byKey(const Key("passwordText"));
     final foundemailText = find.byKey(const Key("emailText"));
+    final scroll = find.byKey(const Key('scroll'));
+    final pad1 = find.byKey(const Key('pad1'));
+    final pad2 = find.byKey(const Key('pad2'));
+    final pad3 = find.byKey(const Key('pad3'));
+    final pad4 = find.byKey(const Key('pad4'));
 
     expect(foundButton, findsOneWidget);
     expect(foundPasswordText, findsOneWidget);
     expect(foundemailText, findsOneWidget);
+    expect(scroll, findsOneWidget);
+    expect(pad1, findsOneWidget);
+    expect(pad2, findsOneWidget);
+    expect(pad3, findsOneWidget);
+    expect(pad4, findsOneWidget);
 
   });
 }

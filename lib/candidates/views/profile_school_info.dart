@@ -33,6 +33,7 @@ class SchoolInfo extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigation((index) => null, context, 0),
       body: SingleChildScrollView(
+        key: const Key('scroll'),
         child: Obx(()=>Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -84,6 +85,7 @@ class SchoolInfo extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal:15.0),
                       child: DateTimeFormField(
+                        key: const Key('startdate'),
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
@@ -92,7 +94,7 @@ class SchoolInfo extends StatelessWidget {
                           errorStyle: TextStyle(color: Colors.redAccent),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.event_note),
-                          labelText: 'start time',
+                          labelText: 'start date',
                         ),
                         onDateSelected: (DateTime value) {
                           startDate = value.toString();
@@ -106,6 +108,7 @@ class SchoolInfo extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       child: DateTimeFormField(
+                        key: const Key('enddate'),
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
@@ -129,6 +132,7 @@ class SchoolInfo extends StatelessWidget {
 
              Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 40),
+              key: const Key('padding'),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -138,16 +142,21 @@ class SchoolInfo extends StatelessWidget {
                     children: [
                       Flexible(
                         child: TextField(
+                          key: const Key('skill'),
                           controller: skillController,
                           
                         )),
                       IconButton(
+                        key: const Key('skillbutton'),
                         onPressed:() {
+                          if (skillController.text.isEmpty) {
+                            return;
+                          }
                           skills.add(skillController.text);
                           skillController.text = '';
                           
                         },
-                        icon: const Icon(Icons.add_circle),
+                        icon: const Icon(Icons.add_circle, key: Key('iconkey'),),
                         color: const Color.fromARGB(255, 13, 110, 253),
                         ),
 
@@ -163,20 +172,26 @@ class SchoolInfo extends StatelessWidget {
 
               SizedBox(
                 height: 30,
+                key: const Key('boxskill'),
                 child: skills.isNotEmpty ? 
                        ListView.builder(
+                      //  key: const Key('listView'),
                         scrollDirection: Axis.horizontal,
                         
                         itemCount: skills.length,
                         itemBuilder: (context, index){
                           return Padding(
+                         //   key: const Key('paddList'),
                             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                             
                             child: ElevatedButton(   
+                          //    key: const Key('elevated'),
                               onPressed: () {
                                 
                               },
-                              child: Text(skills[index]),
+                              child: Text(skills[index], 
+                              //key: const Key('skiText'),
+                              ),
                             ),
                           );
 
@@ -188,6 +203,7 @@ class SchoolInfo extends StatelessWidget {
 
              const  SizedBox(
                 height: 20,
+                key: Key('box'),
               ),
 
                 ElevatedButton(
@@ -228,12 +244,14 @@ class SchoolInfo extends StatelessWidget {
                   }
 
                 },
-                child: Text(AppLocalizations.of(context).next, style: GoogleFonts.workSans(
+                child: Text(
+                  AppLocalizations.of(context).next, style: GoogleFonts.workSans(
                   textStyle: const TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                key: const Key('nextKey'),
                 ),
 
               ),

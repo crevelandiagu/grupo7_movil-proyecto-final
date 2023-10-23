@@ -54,6 +54,7 @@ class Profile extends StatelessWidget {
                   width: 180,
                   height: 180,
                   child: CircleAvatar(
+                    key: const Key('circle'),
                     backgroundColor: Colors.grey,
                     child: Text(data['initial_latter']),
                     ),
@@ -64,12 +65,14 @@ class Profile extends StatelessWidget {
               ),
 
               InkWell(
+                key: const Key('ink'),
                 onTap: () {
                   Get.to(()=>PersonalInfo());
                 },
                 child: Column(
                     children: [
                      Text(data['full_name'],
+                     key: const Key('fullname'),
                       style: TextStyle(
                         fontSize: 23,
                         fontWeight: FontWeight.w500
@@ -85,7 +88,11 @@ class Profile extends StatelessWidget {
                           const SizedBox(
                             width: 5,
                           ),
-                          Text(data['nacionality'], style: TextStyle(fontSize: 16),),                       
+                          Text(
+                            data['nacionality'],
+                            key: const Key('nacionality'),
+                             style: const TextStyle(fontSize: 16),
+                             ),                       
                         ],
                       ),
                         const SizedBox(
@@ -96,8 +103,11 @@ class Profile extends StatelessWidget {
                         children:  [
                           const Icon(Icons.phone, color: Colors.blue,),
                           const SizedBox(width: 5,),
-                          Text(data['phone_number'],
-                          style: const TextStyle( fontSize: 16),),
+                          Text(
+                          data['phone_number'],
+                          key: const Key('phone_number'),
+                          style: const TextStyle( fontSize: 16),
+                          ),
                         ],
                       ),
                         const SizedBox(
@@ -108,7 +118,9 @@ class Profile extends StatelessWidget {
                         children:[
                           const Icon(Icons.mail, color: Colors.blue,),
                          const SizedBox(width: 5,),
-                          Text(data['email'],
+                          Text(
+                           data['email'],
+                           key: const Key('email'),
                            style: const TextStyle(fontSize: 16),
                            ),
                         ],
@@ -128,11 +140,11 @@ class Profile extends StatelessWidget {
           cardDashboardProfile("Experience", context,
            (){ Get.to(()=>WorkInfo());},
           (){Get.to(()=>Experience());}),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           cardDashboardProfile("Education", context,
            (){Get.to(()=>SchoolInfo());},
            (){Get.to(()=>Education());}),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           cardDashboardProfile("Certification", context,
           (){Get.to(()=>CertificationInfo());},
           (){Get.to(()=>Certification());}),

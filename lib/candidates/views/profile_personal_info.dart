@@ -28,15 +28,18 @@ class PersonalInfo extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigation((index) => null, context, 0),
       body: SingleChildScrollView(
+        key: Key('scroll'),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
            Container(
+            key: Key('1container'),
                 padding: EdgeInsets.only(top: 10),
                 width: 150,
                 height: 150,
                 child: const CircleAvatar(
+                  key: Key('image'),
                   backgroundColor: Colors.grey,
                   child: Text('Image'),
                   ),
@@ -61,6 +64,7 @@ class PersonalInfo extends StatelessWidget {
               ),
 
              Padding(
+              key: const Key('padd1'),
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: TextField(
                 controller: lastnameController,
@@ -79,6 +83,7 @@ class PersonalInfo extends StatelessWidget {
               ),
 
              Padding(
+              key: const Key('pad2'),
               padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 40),
               child: TextField(
                 controller: numberidController,
@@ -97,6 +102,7 @@ class PersonalInfo extends StatelessWidget {
               ),
             
              Padding(
+              key: Key('pad3'),
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: TextField(
                 controller: locationController,
@@ -115,6 +121,7 @@ class PersonalInfo extends StatelessWidget {
               ),
 
              Padding(
+              key: const Key('pad4'),
               padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 40),
               child: TextField(
                 controller: phonenumberController,
@@ -133,6 +140,7 @@ class PersonalInfo extends StatelessWidget {
               ),
 
              const  SizedBox(
+              key: Key('box1'),
                 height: 20,
               ),
 
@@ -174,12 +182,15 @@ class PersonalInfo extends StatelessWidget {
                   }
                   
                 },
-                child: Text(AppLocalizations.of(context).next, style: GoogleFonts.workSans(
+                child: Text(
+                  AppLocalizations.of(context).next,
+                  style: GoogleFonts.workSans(
                   textStyle: const TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                key: const Key('next'),
                 ),
 
               ),

@@ -39,6 +39,7 @@ dependencies:
   build_runner: ^2.3.0
   date_field: ^3.0.0
   shared_preferences: ^2.2.2
+  test_cov_console: ^0.2.2
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -70,7 +70,8 @@ class WorkInfo extends StatelessWidget {
              Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: DropdownButtonFormField(
-                icon: Icon(Icons.keyboard_arrow_down),                
+                key: const Key("place"),
+                icon: const Icon(Icons.keyboard_arrow_down),                
                 value: currentValue.value,
                 items: items.map((String item){
                       return DropdownMenuItem(
@@ -122,6 +123,7 @@ class WorkInfo extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal:15.0),
                       child:DateTimeFormField(
+                        key: const Key('startdate'),
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
@@ -143,6 +145,7 @@ class WorkInfo extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
                       child: DateTimeFormField(
+                        key: const Key('enddate'),
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
@@ -178,6 +181,7 @@ class WorkInfo extends StatelessWidget {
                         )),
                       IconButton(
                         onPressed:() {
+                          if(skillController.text.isEmpty) return;
                           skills.add(skillController.text);
                           skillController.text = '';
                           

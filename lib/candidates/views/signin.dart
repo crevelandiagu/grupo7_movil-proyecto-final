@@ -30,11 +30,15 @@ class Signin extends StatelessWidget {
       ),
 
       body: SingleChildScrollView(
+        key: Key('scroll'),
         child: Column(
+          key: Key('col1'),
           children: <Widget>[
             Padding(
+              key: Key('pad1'),
               padding: const EdgeInsets.only(top: 80.0),
               child: Center(
+                key: Key('center1'),
                 child: Text(
                   AppLocalizations.of(context).welcome,
                   style: GoogleFonts.workSans(
@@ -43,12 +47,14 @@ class Signin extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
                   ),
+                  key: Key('text1'),
                   ),
               ),
               ),
 
             // TextField username
             Padding(
+              key: Key('pad2'),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 50.0),
               child: TextField(
                 key: const Key('emailText'),
@@ -64,6 +70,7 @@ class Signin extends StatelessWidget {
 
             // TextField password
             Padding(
+              key: Key('pad3'),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10.0),
               child: TextField(
                 key: const Key('passwordText'),
@@ -81,6 +88,7 @@ class Signin extends StatelessWidget {
             
             //Signin button
             Padding(
+              key: Key('pad4'),
               padding: const EdgeInsets.fromLTRB(15, 90, 15, 20),
               child: ElevatedButton(
                 key: const Key("signinButton"),
