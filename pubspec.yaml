@@ -31,7 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.5.0
-  patrol: ^2.2.0
   google_fonts: ^4.0.0
   flutter_localizations:
     sdk: flutter
@@ -60,10 +59,7 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-patrol:
-  app_name: ABC Jobs
-  android:
-    package_name: com.example.abc_jobs
+
 
 # The following section is specific to Flutter packages.
 flutter:

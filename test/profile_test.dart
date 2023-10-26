@@ -8,7 +8,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main(){
 
   testWidgets("My widget should have a button sign in", (WidgetTester tester) async{
+    
+    tester.pump(
+      
+    );
 
+    });
 
-  });
 }
+
