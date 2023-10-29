@@ -1,7 +1,6 @@
 name: App
 run-name: ${{ github.actor }} is deploy App Mobile 🚀
 on:
-  workflow_dispatch:
   push:
     branches: [main]
 
