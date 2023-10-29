@@ -30,4 +30,4 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v0'
 
     - name: 'Use gcloud CLI'
-      run: 'gsutil -m rsync -R -d kavach gs://abc-jobs-apk/**'
+      run: 'gsutil rm gs://abc-jobs-apk/**'
