@@ -1,6 +1,6 @@
 # Proyectos movil final
 
-En este repositorio se encuentra el codigo de la aplicación movil ABC Jobs.
+En este repositorio se encuentra el codigo de la aplicación movil ABC Jobs
 
 # Estructura
 ````
