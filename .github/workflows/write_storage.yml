@@ -1,0 +1,15 @@
+name: GCP Bucket Deploy
+on: workflow_dispatch       # set the triggers to your liking
+#   push:
+#     branches: [ main ]
+
+jobs:
+  Bucket-Deploy:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - id: 'deploy'
+        uses: 'bitovi/github-actions-gcp-bucket'
+        with:
+          gcp_access_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          bucket_name: abc-jobs-apk
+          file_name: pubspec.yaml
