@@ -25,10 +25,11 @@ jobs:
           flutter-version: "2.7.5"
           channel: "stable"
           cache: true
-        run: | 
-          flutter pub get
-          flutter gen-l10n
-          flutter build apk
+    - name: apk
+      run: | 
+        flutter pub get
+        flutter gen-l10n
+        flutter build apk
 
 
     - id: 'auth'
