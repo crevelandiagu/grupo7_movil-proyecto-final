@@ -11,17 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       salida: ${{ steps.imprimir.outputs.respuesta }}
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Set current date as env variable
-      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
 
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Set current date as env variable
-      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-    
+    steps:    
     - uses: actions/checkout@v3
     - uses: subosito/flutter-action@v2
       with:
