@@ -13,16 +13,20 @@ jobs:
       salida: ${{ steps.imprimir.outputs.respuesta }}
 
     steps:
-      - name: Checkout de repositorio
-        uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-        run: | 
-            flutter pub get
-            flutter gen-l10n
-            dart run build_runner build
-            flutter test
+      steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Set current date as env variable
+      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+    
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2
+      with:
+        channel: "stable"
+    - run: flutter pub get
+    - run: flutter gen-l10n
+    - run: dart build-runner build
+    - run: flutter test
 
       - name: Validar resultado con errores
         if: ${{ failure() }}
