@@ -1,0 +1,13 @@
+name: App Mobile
+run-name: ${{ github.actor }} is deploy App Mobile 🚀
+
+jobs:
+  Bucket-Deploy:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - id: 'deploy'
+        uses: 'bitovi/github-actions-gcp-bucket'
+        with:
+          gcp_access_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+          bucket_name: abc-jobs-apk
+          file_name: pubspec.lock
