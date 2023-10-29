@@ -24,7 +24,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         flutter-version: "2.7.5"
-        channel: "stable"
+      #  channel: "stable"
         cache: true
     - run: flutter pub get
     - run: flutter gen-l10n
