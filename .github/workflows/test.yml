@@ -34,4 +34,4 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v0'
 
     - name: 'Use gcloud CLI'
-      run: gsutil cp /android/app/src/main/kotlin/com/example/abc_jobs/MainActivity.kt gs://abc-jobs-apk/$NOW/
+      run: gsutil cp ./android/app/src/main/kotlin/com/example/abc_jobs/MainActivity.kt gs://abc-jobs-apk/$NOW/
