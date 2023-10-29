@@ -1,6 +1,7 @@
 
 
 
+import 'package:abc_jobs/candidates/services/cv_service.dart';
 import 'package:abc_jobs/candidates/views/profile_personal_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,7 +14,7 @@ void main(){
 
     await tester.pumpWidget(
       GetMaterialApp(
-        home: PersonalInfo(),
+        home: PersonalInfo(service: CVService(),),
         localizationsDelegates: [
         AppLocalizations.delegate,
         ],
