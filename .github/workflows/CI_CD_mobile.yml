@@ -1,54 +1,55 @@
-# name: App Mobile
-# run-name: ${{ github.actor }} is deploy App Mobile 🚀
-# on:
-#   push:
-#     branches: [feature/PROY**, fix/FIX**]
+name: App Mobile
+run-name: ${{ github.actor }} is deploy App Mobile 🚀
+on:
+  push:
+    branches: [feature/PROY**, fix/FIX**]
 
-# jobs:
-#   test-app-mobile:
-#     name: Correr-test
-#     if:  ${{ contains(github.event.head_commit.message, 'done') }}
-#     runs-on: ubuntu-latest
-#     outputs:
-#       salida: ${{ steps.imprimir.outputs.respuesta }}
+jobs:
+  test-app-mobile:
+    name: Correr-test
+    if:  ${{ contains(github.event.head_commit.message, 'done') }}
+    runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.respuesta }}
 
-#     steps:
-#       - name: Checkout de repositorio
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout de repositorio
+        uses: actions/checkout@v2
 
-#       - uses: subosito/flutter-action@v2
-#         with:
-#           flutter-version: "2.7.5"
-#           channel: "stable"
-#           cache: true
-#       - run: flutter pub get
-#       - run: flutter test
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "2.7.5"
+          channel: "stable"
+          cache: true
+      - run: | 
+            flutter pub get
+            flutter test
 
-#       - name: Validar resultado con errores
-#         if: ${{ failure() }}
-#         env:
-#           MENSAJE_ERROR: Una o varias pruebas fallaron
-#         run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
-#       - name: Validar resultado sin errores
-#         if: ${{ success() }}
-#         env:
-#           MENSAJE_EXITO: Todas las pruebas fueron exitosas
-#         run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
+      - name: Validar resultado con errores
+        if: ${{ failure() }}
+        env:
+          MENSAJE_ERROR: Una o varias pruebas fallaron
+        run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
+      - name: Validar resultado sin errores
+        if: ${{ success() }}
+        env:
+          MENSAJE_EXITO: Todas las pruebas fueron exitosas
+        run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
 
 
-#   merge-branch-develop:
-#     name: Merge-dev
-#     needs: [test-app-candidate, ci-app-candidate]
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@master
-#       - name: Branch name
-#         run: |
-#           echo running on branch ${GITHUB_REF##*/}
-#       - name: Mezcla ${GITHUB_REF##*/} -> develop
-#         uses: devmasx/merge-branch@master
-#         with:
-#           type: now
-#           target_branch: develop
-#           message: Merge ${GITHUB_REF##*/} into develop
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
+  merge-branch-develop:
+    name: Merge-dev
+    needs: [test-app-mobile]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Branch name
+        run: |
+          echo running on branch ${GITHUB_REF##*/}
+      - name: Mezcla ${GITHUB_REF##*/} -> develop
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          target_branch: develop
+          message: Merge ${GITHUB_REF##*/} into develop
+          github_token: ${{ secrets.GITHUB_TOKEN }}
