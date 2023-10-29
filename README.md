@@ -24,8 +24,8 @@ En este repositorio se encuentra el codigo de la aplicación movil ABC Jobs
 3. Instalar plugin Flutter en Visual Studio Code
 4. Ejecutar ´flutter pub get´
 5. Ejecutar ´flutter gen-l10n´
-4. Escoger el ambiente de ejecución movil
-5. Encontrar en el directorio lib el archivo main.dart y darle run en la función main
+6. Escoger el ambiente de ejecución movil
+7. Encontrar en el directorio lib el archivo main.dart y darle run en la función main
 
 
 
