@@ -1,7 +1,7 @@
 name: GCP Bucket Deploy
-on: workflow_dispatch 
+on: workflow_dispatch
   push:
-    branches: [ HU-prueba-actions ]
+    branches: [HU-prueba-actions]
 
 jobs:
   Bucket-Deploy:
