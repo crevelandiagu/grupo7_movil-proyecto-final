@@ -2,7 +2,7 @@ name: App Mobile
 run-name: ${{ github.actor }} is deploy App Mobile 🚀
 on:
   push:
-    branches: [feature/PROY**, fix/FIX**]
+    branches: [PROY**, FIX**]
 
 jobs:
   test-app-mobile:
@@ -15,14 +15,13 @@ jobs:
     steps:
       - name: Checkout de repositorio
         uses: actions/checkout@v2
-
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: "2.7.5"
           channel: "stable"
-          cache: true
         run: | 
             flutter pub get
+            flutter gen-l10n
+            dart run build_runner build
             flutter test
 
       - name: Validar resultado con errores

@@ -6,7 +6,7 @@ on:
 
 jobs: 
   copy-files-gcs:
-    name: Copy directory to GCS
+    name: Create apk
     runs-on: ubuntu-latest
 
     # Add "id-token" with the intended permissions.
@@ -35,7 +35,6 @@ jobs:
       with:
         project_id: ${{ secrets.PROJECT_ID }}
         credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-        # export_default_credentials: true
 
 
     - name: 'Set up Cloud SDK'
