@@ -26,9 +26,9 @@ jobs:
           channel: "stable"
           cache: true
       - run: | 
-            flutter pub get
-            flutter gen-l10n
-            flutter build apk
+          flutter pub get
+          flutter gen-l10n
+          flutter build apk
 
 
     - id: 'auth'
