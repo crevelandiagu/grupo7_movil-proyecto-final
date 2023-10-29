@@ -30,4 +30,4 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v0'
 
     - name: 'Use gcloud CLI'
-      run: 'gsutil rm gs://abc-jobs-apk/**'
+      run: 'gsutil ls gs://abc-jobs-apk/'
