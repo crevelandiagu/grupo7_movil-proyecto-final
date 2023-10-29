@@ -18,12 +18,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+      run: |
+        echo "${secrets.SERVICE_ACCOUNT_KEY}"
 
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
       with:
         project_id: ${{ secrets.PROJECT_ID }}
         credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+
         export_default_credentials: true
 
 
