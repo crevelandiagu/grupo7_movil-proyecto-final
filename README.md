@@ -19,11 +19,14 @@ En este repositorio se encuentra el codigo de la aplicación movil ABC Jobs
 
 
 ## Como ejecutar la aplicación 
-1. Tener instalado el SDK flutter versión 3.7.12
+1. Tener instalado el SDK flutter versión 3.13.9
 2. Ejecutar ´flutter doctor´ para revisar que la instalación se hizó de manera correcta.
 3. Instalar plugin Flutter en Visual Studio Code
+4. Ejecutar ´flutter pub get´
+5. Ejecutar ´flutter gen-l10n´
 4. Escoger el ambiente de ejecución movil
 5. Encontrar en el directorio lib el archivo main.dart y darle run en la función main
+
 
 
 ## Como ejecutar las pruebas
