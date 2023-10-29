@@ -30,4 +30,4 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v0'
 
     - name: 'Use gcloud CLI'
-      run: 'gsutil ls gs://abc-jobs-apk/'
+      run: 'gsutil cp pubspec.yaml gs://abc-jobs-apk/'
