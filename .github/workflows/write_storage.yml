@@ -1,7 +1,7 @@
 name: GCP Bucket Deploy
 on: workflow_dispatch       # set the triggers to your liking
-#   push:
-#     branches: [ main ]
+  push:
+    branches: [ HU-prueba-actions ]
 
 jobs:
   Bucket-Deploy:
