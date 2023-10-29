@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:abc_jobs/candidates/controllers/profile_work_controller.dart';
 import 'package:abc_jobs/candidates/services/cv_service.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
@@ -13,16 +14,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class WorkInfo extends StatelessWidget {
-  WorkInfo({super.key});
+  WorkInfo({super.key, required this.service});
 
-  var currentValue = "Tipo Trabajo 1".obs;
+  ProfileWorkController controller = Get.put(ProfileWorkController());
+
   var startDate = "";
   var endDate = "";
 
   TextEditingController positionContoller = TextEditingController();
   TextEditingController companyController = TextEditingController();
 
-  CVService service = CVService();
+  CVService service;
 
 
   final items = [
@@ -41,6 +43,7 @@ class WorkInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigation((index) => null, context, 0),
@@ -50,18 +53,19 @@ class WorkInfo extends StatelessWidget {
           children: [
 
              Padding(
-              padding: const EdgeInsets.fromLTRB(15, 40, 15, 40),
+              padding: const EdgeInsets.fromLTRB(15, 40, 15, 30),
               child: TextField(
                 controller: positionContoller,
                 key: const Key('textPosition'),
                 onChanged: (value) {
+                  controller.validatePosition(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).position,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.position.value ? null : AppLocalizations.of(context).validPosition,
                   hintText: AppLocalizations.of(context).positionLabel,
                 ),
               ),
@@ -72,7 +76,7 @@ class WorkInfo extends StatelessWidget {
               child: DropdownButtonFormField(
                 key: const Key("place"),
                 icon: const Icon(Icons.keyboard_arrow_down),                
-                value: currentValue.value,
+                value: controller.workTye.value,
                 items: items.map((String item){
                       return DropdownMenuItem(
                         value: item,
@@ -80,7 +84,7 @@ class WorkInfo extends StatelessWidget {
                         ); 
                       }).toList(),
                 onChanged: (String? value){
-                  currentValue.value = value as String;
+                  controller.workTye.value = value as String;
 
                 },
                 decoration: InputDecoration(
@@ -88,6 +92,7 @@ class WorkInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
+                  
                 ),
                 ),
 
@@ -100,20 +105,22 @@ class WorkInfo extends StatelessWidget {
                 controller: companyController,
                 key: const Key('company'),
                 onChanged: (value) {
+                  controller.validatCompany(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).companyName,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.company.value ? null : AppLocalizations.of(context).validCompanyName,
                   hintText: AppLocalizations.of(context).companyLabel,
                 ),
               ),
               ),
 
               const SizedBox(
-                height: 18,),
+                height: 30,
+                ),
             
              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,15 +134,17 @@ class WorkInfo extends StatelessWidget {
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.black45),
                           errorStyle: TextStyle(color: Colors.redAccent),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.event_note),
-                          labelText: 'start date',
+                          labelText: AppLocalizations.of(context).startDate,
+                          errorText: controller.startDate.value ? null : AppLocalizations.of(context).chooseDate,
                        ),
                        onDateSelected: (DateTime value){
                         startDate = value.toString();
+                        controller.startDate.value = true;
                        },               
                       ),
                     ),
@@ -149,15 +158,17 @@ class WorkInfo extends StatelessWidget {
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.black45),
                           errorStyle: TextStyle(color: Colors.redAccent),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.event_note),
-                          labelText: 'end date',
+                          labelText: AppLocalizations.of(context).endDate,
+                          errorText: controller.endDate.value ? null : AppLocalizations.of(context).chooseDate,
                       ),
                       onDateSelected: (DateTime value){
                         endDate = value.toString();
+                        controller.endDate.value = true;
                       },                 
                       ),
                     ),
@@ -170,7 +181,7 @@ class WorkInfo extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("skills"),
+                   Text(AppLocalizations.of(context).skills),
 
                   Row(
                     children: [
@@ -182,7 +193,7 @@ class WorkInfo extends StatelessWidget {
                       IconButton(
                         onPressed:() {
                           if(skillController.text.isEmpty) return;
-                          skills.add(skillController.text);
+                          controller.skills.add(skillController.text);
                           skillController.text = '';
                           
                         },
@@ -202,11 +213,11 @@ class WorkInfo extends StatelessWidget {
 
               SizedBox(
                 height: 30,
-                child: skills.isNotEmpty ? 
+                child: controller.skills.isNotEmpty ? 
                        ListView.builder(
                         scrollDirection: Axis.horizontal,
                         
-                        itemCount: skills.length,
+                        itemCount: controller.skills.length,
                         itemBuilder: (context, index){
                           return Padding(
                             padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -215,7 +226,7 @@ class WorkInfo extends StatelessWidget {
                               onPressed: () {
                                 
                               },
-                              child: Text(skills[index]),
+                              child: Text(controller.skills[index]),
                             ),
                           );
 
@@ -233,22 +244,21 @@ class WorkInfo extends StatelessWidget {
                 key: const Key('nextButton'),
                 style: ElevatedButton.styleFrom(
                  // minimumSize: const Size.fromHeight(50),
-                 backgroundColor: Color.fromARGB(255, 58, 0, 229),
+                 backgroundColor: const Color.fromARGB(255, 58, 0, 229),
                 ),
                 onPressed: () async {
 
-                   if (!validateFields(
-                    positionContoller.text,
-                     currentValue.value,
-                    companyController.text,
-                    startDate, endDate)) {
+                   if (!controller.validateForm()) {                   
+                      
                       return;
+
                     } else {
 
                       try {
+
                       SharedPreferences pfres = await SharedPreferences.getInstance();
                       int candidateId = pfres.getInt('id') as int;
-                      var listskills = skills.value;
+                      var listskills = controller.skills.value;
                       debugPrint("candidateId: " + candidateId.toString());
 
                     
@@ -257,7 +267,7 @@ class WorkInfo extends StatelessWidget {
                         companyName: companyController.text.toLowerCase(),
                          startDate: startDate,
                         endDate: endDate,
-                        place: currentValue.value,
+                        place: controller.workTye.value,
                         skills: listskills,
                         candidateId: candidateId,
                          client: http.Client());
@@ -297,14 +307,6 @@ class WorkInfo extends StatelessWidget {
         ),
       ),    
     );
-  }
-
-
-  bool validateFields(String posStr, String typeStr, String companyStr, String startStr, String endStr) {
-    if (posStr.isNotEmpty && typeStr.isNotEmpty && companyStr.isNotEmpty && startStr.isNotEmpty && endStr.isNotEmpty) {
-      return true;
-    }
-    return false;
   }
 
 

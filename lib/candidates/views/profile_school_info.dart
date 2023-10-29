@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:abc_jobs/candidates/controllers/profile_school_controller.dart';
 import 'package:abc_jobs/candidates/services/cv_service.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
@@ -13,16 +14,18 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SchoolInfo extends StatelessWidget {
-  SchoolInfo({super.key});
+  SchoolInfo({super.key, required this.service});
 
- 
-  var skills = [].obs;
+
+  ProfileSchoolController controller = Get.put(ProfileSchoolController());
+
+
   TextEditingController institutionController = TextEditingController();
   TextEditingController gradeController = TextEditingController();
   var startDate = "";
   var endDate = "";
 
-  CVService service = CVService();
+  CVService service;
 
 
   TextEditingController skillController = TextEditingController();
@@ -39,18 +42,19 @@ class SchoolInfo extends StatelessWidget {
           children: [
 
              Padding(
-              padding: const EdgeInsets.fromLTRB(15, 40, 15, 40),
+              padding: const EdgeInsets.fromLTRB(15, 40, 15, 30),
               child: TextField(
                 controller: institutionController,
                 key: const Key('textSchool'),
                 onChanged: (value) {
+                  controller.validateSchool(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).school,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.school.value ? null : AppLocalizations.of(context).validSchool,
                   hintText: AppLocalizations.of(context).schoolLabel,
                 ),
               ),
@@ -62,20 +66,22 @@ class SchoolInfo extends StatelessWidget {
                 controller: gradeController,
                 key: const Key('textDegree'),
                 onChanged: (value) {
+                  controller.validateDegree(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).degree,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.degree.value ? null : AppLocalizations.of(context).validDegree,
                   hintText: AppLocalizations.of(context).degreeLabel,
                 ),
               ),
               ),
 
               const SizedBox(
-                height: 18,),
+                height: 30,
+                ),
             
              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,16 +95,18 @@ class SchoolInfo extends StatelessWidget {
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.black45),
                           errorStyle: TextStyle(color: Colors.redAccent),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.event_note),
-                          labelText: 'start date',
+                          labelText: AppLocalizations.of(context).startDate,
+                          errorText: controller.startDate.value ? null : AppLocalizations.of(context).chooseDate,
                         ),
                         onDateSelected: (DateTime value) {
                           startDate = value.toString();
-                          debugPrint(startDate);                        
+                          controller.startDate.value = true;
+                                                 
                         },                 
                       ),
                     ),
@@ -112,16 +120,17 @@ class SchoolInfo extends StatelessWidget {
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.black45),
                           errorStyle: TextStyle(color: Colors.redAccent),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.event_note),
-                          labelText: 'end time',
+                          labelText: AppLocalizations.of(context).endDate,
+                          errorText: controller.endDate.value ? null : AppLocalizations.of(context).chooseDate,
                         ),
                         onDateSelected: (DateTime value) {
                           endDate = value.toString();
-                          debugPrint(endDate);                        
+                          controller.endDate.value = true;                        
                         },                    
                       ),
                       
@@ -136,7 +145,7 @@ class SchoolInfo extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("skills"),
+                   Text(AppLocalizations.of(context).skills),
 
                   Row(
                     children: [
@@ -152,7 +161,7 @@ class SchoolInfo extends StatelessWidget {
                           if (skillController.text.isEmpty) {
                             return;
                           }
-                          skills.add(skillController.text);
+                          controller.skills.add(skillController.text);
                           skillController.text = '';
                           
                         },
@@ -173,12 +182,12 @@ class SchoolInfo extends StatelessWidget {
               SizedBox(
                 height: 30,
                 key: const Key('boxskill'),
-                child: skills.isNotEmpty ? 
+                child: controller.skills.isNotEmpty ? 
                        ListView.builder(
                       //  key: const Key('listView'),
                         scrollDirection: Axis.horizontal,
                         
-                        itemCount: skills.length,
+                        itemCount: controller.skills.length,
                         itemBuilder: (context, index){
                           return Padding(
                          //   key: const Key('paddList'),
@@ -189,7 +198,7 @@ class SchoolInfo extends StatelessWidget {
                               onPressed: () {
                                 
                               },
-                              child: Text(skills[index], 
+                              child: Text(controller.skills[index], 
                               //key: const Key('skiText'),
                               ),
                             ),
@@ -214,14 +223,14 @@ class SchoolInfo extends StatelessWidget {
                 ),
                 onPressed: () async {
                   
-                  if (!validateFields(institutionController.text, gradeController.text, startDate, endDate)){
-                    debugPrint('Alguna false');
+                  if (!controller.validateFields()){
                         return;
                   } else {
+
                     try {
                       SharedPreferences pfres = await SharedPreferences.getInstance();
                       int candidateId = pfres.getInt('id') as int;
-                      var listskills = skills.value;
+                      var listskills = controller.skills.value;
                       debugPrint("candidateId: " + candidateId.toString());
 
                       http.Response res = await service.postEducation(
@@ -264,10 +273,4 @@ class SchoolInfo extends StatelessWidget {
     );
   }
 
-  bool validateFields(String intituStr, String gradeStr, String startStr, String endStr) {
-    if (intituStr.isNotEmpty && gradeStr.isNotEmpty && startStr.isNotEmpty && endStr.isNotEmpty) {
-      return true;
-    }
-    return false;
-  }
 }

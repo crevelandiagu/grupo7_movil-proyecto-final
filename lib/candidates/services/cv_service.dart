@@ -5,6 +5,7 @@ import "dart:convert";
 import "package:abc_jobs/utils/constants.dart";
 import "package:abc_jobs/utils/util.dart";
 import "package:http/http.dart" as http;
+import "package:shared_preferences/shared_preferences.dart";
 
 class CVService {
 
@@ -237,6 +238,33 @@ class CVService {
       
     }
                           
+
+  }
+
+  Future<Map<String, dynamic>> getResponse(http.Client client, String Url) async {
+
+    try {
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int id = prefs.getInt('id') as int;
+
+      http.Response res = await client.get(Uri.parse('$Url$id'), headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+
+      return {};
+
+      
+
+    } catch (e) {
+
+      throw Exception(e);
+
+    }
+
+
 
   }
 

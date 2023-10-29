@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:abc_jobs/candidates/controllers/profile_personal_indo_controller.dart';
+import 'package:abc_jobs/candidates/controllers/profile_work_controller.dart';
 import 'package:abc_jobs/candidates/services/cv_service.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
@@ -9,20 +11,23 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PersonalInfo extends StatelessWidget {
-  PersonalInfo({super.key});
+  PersonalInfo({super.key, required this.service});
 
   TextEditingController nameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController numberidController = TextEditingController();
   TextEditingController phonenumberController = TextEditingController();
-  CVService service = CVService();
 
-  var validPhoneNumber = false.obs;
-  var validNumberId = false.obs;
+  ProfilePersonalController controller = Get.put(ProfilePersonalController());
+
+
+  CVService service;
+
 
   
 
@@ -55,13 +60,15 @@ class PersonalInfo extends StatelessWidget {
                 controller: nameController,
                 key: const Key('textName'),
                 onChanged: (value) {
+                  controller.validateLastname(value);
+
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).name,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.name.value ? null : AppLocalizations.of(context).validName,
                   hintText: AppLocalizations.of(context).nameLabel,
                 ),
               ),
@@ -74,13 +81,14 @@ class PersonalInfo extends StatelessWidget {
                 controller: lastnameController,
                 key: const Key('textLastname'),
                 onChanged: (value) {
+                  controller.validateLastname(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).lastname,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.lastname.value ? null : AppLocalizations.of(context).validLastname,
                   hintText: AppLocalizations.of(context).lastnameLabel,
                 ),
               ),
@@ -93,19 +101,18 @@ class PersonalInfo extends StatelessWidget {
                 controller: numberidController,
                 inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), 
-                FilteringTextInputFormatter.digitsOnly
                 ],
                 keyboardType: TextInputType.number,
                 key: const Key('numberId'),
                 onChanged: (value) {
-                  validateNumberId(value);
+                  controller.validateNumberId(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).numberId,
-                  errorText:  validNumberId.value ? null : "superó el limite de 11 dígitos",
+                  errorText:  controller.numberId.value ? null : AppLocalizations.of(context).validnumberId,
                   hintText: AppLocalizations.of(context).numberIdLabel,
                 ),
               ),
@@ -118,13 +125,14 @@ class PersonalInfo extends StatelessWidget {
                 controller: locationController,
                 key: const Key('location'),
                 onChanged: (value) {
+                  controller.validateLocation(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).location,
-                 // errorText: validNumberId.value ? null : "superó el limite de 11 dígitos",
+                  errorText: controller.location.value ? null : AppLocalizations.of(context).validlocation,
                   hintText: AppLocalizations.of(context).locationLabel,
                 ),
               ),
@@ -133,7 +141,7 @@ class PersonalInfo extends StatelessWidget {
              Padding(
               key: const Key('pad4'),
               padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 40),
-              child: TextField(
+              child: IntlPhoneField(
                 inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp(r'[0-9]')), 
                 FilteringTextInputFormatter.digitsOnly
@@ -142,13 +150,14 @@ class PersonalInfo extends StatelessWidget {
                 controller: phonenumberController,
                 key: const Key('phone'),
                 onChanged: (value) {
+                  controller.validatePhoneNumber(value.toString());
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).phoneNumber,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.phoneNumber.value ? null : AppLocalizations.of(context).validphone,
                   hintText: AppLocalizations.of(context).phoneLabel,
                 ),
               ),
@@ -167,11 +176,7 @@ class PersonalInfo extends StatelessWidget {
                 ),
                 onPressed: () async{
 
-                  if (!validateFields(nameController.text,
-                   lastnameController.text,
-                    locationController.text,
-                     numberidController.text,
-                      phonenumberController.text)) {
+                  if (!controller.validateFields()) {
 
                         return;
                                            
@@ -228,24 +233,6 @@ class PersonalInfo extends StatelessWidget {
     );
   }
 
-  void validateNumberId(String number) {
-    if (number.length < 11) {
-      validNumberId.value = true;
-    } else {
-      validNumberId.value = false;
-    }
-  }
-
-  bool validateFields(String name, String lastname, String location, String numberId, String phone){
-    if (name.isNotEmpty && lastname.isNotEmpty && location.isNotEmpty && numberId.isNotEmpty && phone.isNotEmpty) {
-      return true;
-    } else {
-      return false;
-    }
-
-  }
-
-  
 
 
 }

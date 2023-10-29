@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:abc_jobs/candidates/controllers/profile_certification_controller.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:abc_jobs/utils/constants.dart';
@@ -14,11 +15,14 @@ import 'package:http/http.dart' as http;
 import '../services/cv_service.dart';
 
 class CertificationInfo extends StatelessWidget {
-  CertificationInfo({super.key});
+  CertificationInfo({super.key, required this.service});
 
-  CVService service = CVService();
+  CVService service;
+
   TextEditingController certController = TextEditingController();
   TextEditingController orgContoller = TextEditingController();
+
+  ProfileCertificationController controller = Get.put(ProfileCertificationController());
   String startDate = "";
   String endDate = "";
 
@@ -30,7 +34,7 @@ class CertificationInfo extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigation((index) => null, context, 0),
       body: SingleChildScrollView(
-        child: Column(
+        child: Obx(()=>Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
@@ -40,13 +44,15 @@ class CertificationInfo extends StatelessWidget {
                 controller: certController,
                 key: const Key('textCertification'),
                 onChanged: (value) {
+                  controller.validateCertification(value);
+                  
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).certification,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.certification.value ? null : AppLocalizations.of(context).validcertification,
                   hintText: AppLocalizations.of(context).certificationLabel,
                 ),
               ),
@@ -58,13 +64,14 @@ class CertificationInfo extends StatelessWidget {
                 controller: orgContoller,
                 key: const Key('textOrg'),
                 onChanged: (value) {
+                  controller.validateOrganization(value);
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: AppLocalizations.of(context).organization,
-                  //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.organization.value ? null : AppLocalizations.of(context).validorganization,
                   hintText: AppLocalizations.of(context).organizationLabel,
                 ),
               ),
@@ -85,15 +92,17 @@ class CertificationInfo extends StatelessWidget {
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.black45),
                           errorStyle: TextStyle(color: Colors.redAccent),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.event_note),
-                          labelText: 'start date',
+                          labelText: AppLocalizations.of(context).startDate,
+                          errorText: controller.startDate.value ? null : AppLocalizations.of(context).chooseDate,
                         ),
                         onDateSelected: (DateTime value) {
                           startDate = value.toString();
+                          controller.startDate.value = true;
                         },                 
                       ),
                     ),
@@ -107,15 +116,17 @@ class CertificationInfo extends StatelessWidget {
                         mode: DateTimeFieldPickerMode.date,
                         firstDate: DateTime(1960),
                         lastDate: DateTime(2100),
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.black45),
                           errorStyle: TextStyle(color: Colors.redAccent),
                           border: OutlineInputBorder(),
                           suffixIcon: Icon(Icons.event_note),
-                          labelText: 'end date',
+                          labelText: AppLocalizations.of(context).endDate,
+                          errorText: controller.endDate.value ? null : AppLocalizations.of(context).chooseDate,
                         ),
                         onDateSelected: (DateTime value) {
                           endDate = value.toString();
+                          controller.endDate.value = true;
                         },                 
                       ),
                     ),
@@ -139,11 +150,7 @@ class CertificationInfo extends StatelessWidget {
                 ),
                 onPressed: () async {
 
-                  if (!validateFields(
-                    certController.text,
-                    orgContoller.text,
-                    startDate,
-                    endDate)) {
+                  if (!controller.validateFields()) {
                       return;
                     } else {
 
@@ -187,14 +194,9 @@ class CertificationInfo extends StatelessWidget {
 
           ],
         ),
-        ),   
+        ),
+      ),   
     );
   }
 
-  bool validateFields(String certStr, String orgStr, String startStr, String endStr) {
-    if (certStr.isNotEmpty && orgStr.isNotEmpty && endStr.isNotEmpty) {
-      return true;
-    }
-    return false;
-  }
 }

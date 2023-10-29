@@ -10,22 +10,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: (){},
-            icon: const Icon(Icons.language),
-            ),
-          IconButton(
-            onPressed: (){},
-             icon: const Icon(Icons.notifications),
-             ),
-          IconButton(
-            onPressed: (){},
-            icon: const Icon(Icons.account_circle),
-            ),
-        ],
-        ),
+      appBar: customAppBar(),
       body: SingleChildScrollView(
         child: Center(
           child: Column(

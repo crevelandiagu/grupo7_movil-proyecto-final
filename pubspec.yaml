@@ -39,6 +39,8 @@ dependencies:
   date_field: ^3.0.0
   shared_preferences: ^2.2.2
   test_cov_console: ^0.2.2
+  intl_phone_field: ^3.1.0
+  jiffy: ^5.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

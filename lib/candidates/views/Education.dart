@@ -2,15 +2,21 @@ import 'dart:convert';
 
 import 'package:abc_jobs/candidates/services/cv_service.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
+import 'package:abc_jobs/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:jiffy/jiffy.dart';
 
 class Education extends StatelessWidget {
-  const Education({super.key});
+  Education({super.key, required this.service});
+
+  CVService service;
+
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,7 @@ class Education extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigation((index) => null, context, 0),
       body: FutureBuilder<Map<String, dynamic>>(
-        future: getResponse(),
+        future: service.getResponse(http.Client(), Constants.educationUri),
         builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot){
 
           if (!snapshot.hasData) {
@@ -32,20 +38,20 @@ class Education extends StatelessWidget {
            debugPrint(data.toString());
 
         return education.isNotEmpty ? ListView.separated(
-          padding: EdgeInsets.all(40),
+          padding: const EdgeInsets.all(40),
           separatorBuilder: (BuildContext context, int index) => Divider(),
           itemCount: education.length,
           itemBuilder: (context, index){
 
             return Container(           
-              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
               color: Colors.grey[200],      
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     //crossAxisAlignment: CrossAxisAlignment.start,
 
                     children: [
-                      Text('University ',
+                      Text(AppLocalizations.of(context).university,
                            style: GoogleFonts.workSans(
                             fontSize: 20,
                             fontWeight: FontWeight.w500
@@ -59,12 +65,12 @@ class Education extends StatelessWidget {
                             fontWeight: FontWeight.w400
                            )),
                       
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       
                       
-                      Text('Grade ',
+                      Text(AppLocalizations.of(context).grade,
                            style: GoogleFonts.workSans(
                             fontSize: 20,
                             fontWeight: FontWeight.w500
@@ -77,36 +83,37 @@ class Education extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w400
                            )),
-                      SizedBox(
+
+                      const SizedBox(
                         height: 5,
                       ),
                       
-                      Text('Start Date ',
+                      Text(AppLocalizations.of(context).startDate_e,
                            style: GoogleFonts.workSans(
                             fontSize: 20,
                             fontWeight: FontWeight.w500
                            )
                            ),
-                      Text(education[index]['start_date'],
+                      Text(Jiffy(education[index]['start_date']).format("MMM do yy"),
 
                       style: GoogleFonts.workSans(
                             fontSize: 16,
                             fontWeight: FontWeight.w400
                            )),
 
-                      SizedBox(
+                     const  SizedBox(
                         height: 5,
                       ),
 
 
-                      Text('End Date ',
+                      Text(AppLocalizations.of(context).endDate_e,
                            style: GoogleFonts.workSans(
                             fontSize: 20,
                             fontWeight: FontWeight.w500
                            )
                            ),
 
-                      Text(education[index]['end_date'],
+                      Text(Jiffy(education[index]['end_date']).format("MMM do yy"),
                       style: GoogleFonts.workSans(
                             fontSize: 16,
                             fontWeight: FontWeight.w400
@@ -117,7 +124,7 @@ class Education extends StatelessWidget {
                       ),
 
                       
-                      Text(education[index]['skills'].isNotEmpty ? 'Skills ' : "", 
+                      Text(education[index]['skills'].isNotEmpty ? AppLocalizations.of(context).skills_e : "", 
                            style: GoogleFonts.workSans(
                             fontSize: 20,
                             fontWeight: FontWeight.w500
@@ -150,38 +157,12 @@ class Education extends StatelessWidget {
             );
           }
           
-      ) : const Center(child: Text('No education registered'),);
+      ) :  Center(child: Text(AppLocalizations.of(context).noEducation),);
 
         },
         ),
       );
 
-  }
-
-  Future<Map<String, dynamic>> getResponse() async {
-    
-    CVService service = CVService();
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int candidateId = prefs.getInt("id") as int;
-     
-     try {
-
-       http.Response response = await service.getEducation(candidateId: candidateId, client: http.Client());
-       
-       if (response.statusCode == 200) {
-
-        var decodedJson = jsonDecode(response.body);
-
-        return decodedJson;
-
-       }
-
-       return {'education': []};
-      
-         
-     } catch (e) {
-       throw Exception(e);
-     }
   }
 
 

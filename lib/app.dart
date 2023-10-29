@@ -1,3 +1,5 @@
+import 'package:abc_jobs/candidates/controllers/profile_work_controller.dart';
+import 'package:abc_jobs/candidates/services/cv_service.dart';
 import 'package:abc_jobs/candidates/views/dashboard.dart';
 import 'package:abc_jobs/candidates/views/experience.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
@@ -20,7 +22,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-    //  debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: "ABC Jobs",
       theme: lightTheme,
       themeMode: ThemeMode.light,
@@ -43,7 +45,7 @@ class App extends StatelessWidget {
         Locale("es"),
         
       ],
-      home: Signin(),
+      home: CertificationInfo(service: CVService()),
     );
   }
 }

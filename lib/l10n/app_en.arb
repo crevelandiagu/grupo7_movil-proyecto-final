@@ -228,7 +228,171 @@
     "createButton": "Create",
     "@createButton": {
         "description": "Create"
+    },
+
+    "startDate": "start date",
+    "@startDate": {
+        "description": "Create"
+    },
+
+    "endDate": "end date",
+    "@endDate": {
+        "description": "Create"
+    },
+
+    "validCompanyName": "enter valid company name",
+    "@validCompanyName": {
+        "description": "Create"
+    },
+
+    "validPosition": "enter valid position",
+    "@validPosition": {
+        "description": "Create"
+    },
+
+    "chooseDate": "choose a date",
+    "@chooseDate": {
+        "description": "Create"
+    },
+
+    "validSchool": "enter a valid school name",
+    "@validSchool": {
+        "description": "valid school"
+    },
+
+    "validDegree": "enter a valid degree",
+    "@validDegree": {
+        "description": "valid degree"
+    },
+
+    "skills": "skills",
+    "@skills": {
+        "description": "skills"
+    },
+
+    "validName": "enter valid name",
+    "@validName": {
+        "description": "valid name"
+    },
+
+    "validLastname": "enter valid lastname",
+    "@validLastname": {
+        "description": "valid lastname"
+    },
+
+    "validnumberId": "enter a valid number",
+    "@validnumberId": {
+        "description": "valid phone number"
+    },
+
+    "validlocation": "enter valid location",
+    "@validlocation": {
+        "description": "valid location"
+    },
+    
+    "validphone": "enter valid phone number",
+    "@validphone": {
+        "description": "valid phone number"
+    },
+
+    "validcertification": "enter valid certification",
+    "@validcertification": {
+        "description": "valid certification"
+    },
+
+    "validorganization": "enter valid organization",
+    "@validorganization": {
+        "description": "valid organization"
+    },
+
+    "company": "Company",
+    "@company": {
+        "description": "Company"
+    },
+
+    "position_e": "Position",
+    "@position_e": {
+        "description": "Position"
+    },
+
+    "startDate_e": "Start Date",
+    "@startDate_e": {
+        "description": "Start Date"
+    },
+
+    "endDate_e": "End Date",
+    "@endDate_e": {
+        "description": "End Date"
+    },
+
+    "skills_e": "Skills",
+    "@skills_e": {
+        "description": "Skills"
+    },
+
+    "noExperience": "No experience registered",
+    "@noExperience": {
+        "description": "No experience registered"
+    },
+
+    "education": "Education",
+    "@education": {
+        "description": "No experience registered"
+    },
+
+    "university": "University",
+    "@university": {
+        "description": "No experience registered"
+    },
+
+    "grade": "Grede",
+    "@grade": {
+        "description": "No experience registered"
+    },
+
+    "noEducation": "No education registered",
+    "@noEducation": {
+        "description": "No experience registered"
+    },
+
+    "certificate": "Certificate",
+    "@certificate": {
+        "description": "No experience registered"
+    },
+
+    "organization_c": "Organization",
+    "@organization_c": {
+        "description": "No experience registered"
+    },
+
+    "expeditionDate": "Expedition Date",
+    "@expeditionDate": {
+        "description": "No experience registered"
+    },
+
+    "expirationDate": "Expiration Date",
+    "@expirationDate": {
+        "description": "No experience registered"
+    },
+
+    "noCertificates": "No certificates",
+    "@noCertificates": {
+        "description": "No experience registered"
     }
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
 
 
 
