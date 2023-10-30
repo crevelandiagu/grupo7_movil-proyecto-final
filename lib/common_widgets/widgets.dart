@@ -26,9 +26,9 @@ Widget bottomNavigation(Function(int index) onTap, BuildContext context, int ind
     destinations: [
       NavigationDestination(icon: Icon(Icons.home_outlined), label: "Dashboard"),
      // BottomNavigationBarItem(icon: Icon(Icons.work_outline), label: "Applications"),
-      NavigationDestination(icon: Icon(Icons.school_outlined), label: AppLocalizations.of(context).tests),
-      NavigationDestination(icon: Icon(Icons.co_present_outlined), label: AppLocalizations.of(context).interviews),
-      NavigationDestination(icon: Icon(Icons.person_outline), label: AppLocalizations.of(context).profile),
+      NavigationDestination(icon: Icon(Icons.school_outlined), label: AppLocalizations.of(context)!.tests),
+      NavigationDestination(icon: Icon(Icons.co_present_outlined), label: AppLocalizations.of(context)!.interviews),
+      NavigationDestination(icon: Icon(Icons.person_outline), label: AppLocalizations.of(context)!.profile),
       
     ]);
 
@@ -66,7 +66,7 @@ Widget cardDashboard(String title, BuildContext context) {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 58, 0, 229))),
               onPressed: (){},
-               child: Text(AppLocalizations.of(context).details),
+               child: Text(AppLocalizations.of(context)!.details),
                ),
           ],
         )
@@ -105,7 +105,7 @@ Widget cardDashboardProfile(String title, BuildContext context, VoidCallback? fu
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 58, 0, 229))),
               onPressed: functionB,
-               child: Text(AppLocalizations.of(context).details),
+               child: Text(AppLocalizations.of(context)!.details),
                ),
                SizedBox(width: 8,),
             ElevatedButton(
