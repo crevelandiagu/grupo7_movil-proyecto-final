@@ -19,7 +19,7 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter gen-l10n
-      - run: flutter build-runner build
+      - run: dart run build_runner build
       - run: flutter test
 
 
