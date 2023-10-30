@@ -40,7 +40,7 @@ class Signin extends StatelessWidget {
               child: Center(
                 key: Key('center1'),
                 child: Text(
-                  AppLocalizations.of(context).welcome,
+                  AppLocalizations.of(context)!.welcome,
                   style: GoogleFonts.workSans(
                     textStyle: const TextStyle(color: Colors.black, letterSpacing: 0.0),
                     fontSize: 24,
@@ -80,8 +80,8 @@ class Signin extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)
                   ),
-                  labelText: AppLocalizations.of(context).password,
-                  hintText: AppLocalizations.of(context).secure_password,
+                  labelText: AppLocalizations.of(context)!.password,
+                  hintText: AppLocalizations.of(context)!.secure_password,
                 ),
               ),
               ),
@@ -171,7 +171,7 @@ class Signin extends StatelessWidget {
 
                 },
                 child: Text(
-                  AppLocalizations.of(context).signin,
+                  AppLocalizations.of(context)!.signin,
                   style: GoogleFonts.workSans(
                     textStyle: const TextStyle(
                       color: Colors.white,
@@ -190,13 +190,13 @@ class Signin extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(AppLocalizations.of(context).dont_account),
+                  Text(AppLocalizations.of(context)!.dont_account),
                   TextButton(
                     onPressed: (){
                       Get.to(()=> Signup());
                     },
                      child: Text(
-                      AppLocalizations.of(context).signup,
+                      AppLocalizations.of(context)!.signup,
                       style: GoogleFonts.workSans(
                         textStyle: const TextStyle(
                           color: Colors.blueAccent,

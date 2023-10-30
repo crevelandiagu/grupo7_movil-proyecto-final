@@ -38,7 +38,7 @@ class Signup extends StatelessWidget {
               padding: const EdgeInsets.only(top: 80.0),
               child: Center(
                 child: Text(
-                  AppLocalizations.of(context).create_Account,
+                  AppLocalizations.of(context)!.create_Account,
                   style: GoogleFonts.workSans(
                     textStyle: const TextStyle(color: Colors.black, letterSpacing: 0.0),
                     fontSize: 24,
@@ -63,7 +63,7 @@ class Signup extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   labelText: "email",
-                  errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
+                  errorText: controller.email.value ? null : AppLocalizations.of(context)!.valid_email,
                   hintText: AppLocalizations.of(context).email,
                 ),
               ),
@@ -85,7 +85,7 @@ class Signup extends StatelessWidget {
                   ),
                   labelText: AppLocalizations.of(context).password,
                   hintText: AppLocalizations.of(context).secure_password,
-                  errorText: controller.password.value ? null : AppLocalizations.of(context).password_error_length
+                  errorText: controller.password.value ? null : AppLocalizations.of(context)!.password_error_length
                 ),
               ),
               ),
@@ -105,7 +105,7 @@ class Signup extends StatelessWidget {
                   ),
                   labelText: AppLocalizations.of(context).password,
                   hintText: AppLocalizations.of(context).repeat_password,
-                  errorText: controller.isPasswordEqual.value ? null : AppLocalizations.of(context).password_error_equal,
+                  errorText: controller.isPasswordEqual.value ? null : AppLocalizations.of(context)!.password_error_equal,
                 ),
               ),
               ),
@@ -134,7 +134,7 @@ class Signup extends StatelessWidget {
                             "",
                             "",
                             messageText: Text(
-                              AppLocalizations.of(context).message_signup_success,
+                              AppLocalizations.of(context)!.message_signup_success,
                               style:  GoogleFonts.workSans(
                                 textStyle: const TextStyle(
                                   color: Colors.white60,
@@ -220,13 +220,13 @@ class Signup extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(AppLocalizations.of(context).already_account),
+                  Text(AppLocalizations.of(context)!.already_account),
                   TextButton(
                     onPressed: (){
                       Get.toNamed('/');
                     },
                      child: Text(
-                      AppLocalizations.of(context).signin,
+                      AppLocalizations.of(context)!.signin,
                       style: GoogleFonts.workSans(
                         textStyle: const TextStyle(
                           color: Colors.blueAccent,

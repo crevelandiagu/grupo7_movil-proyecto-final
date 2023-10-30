@@ -48,11 +48,11 @@ class Dashboard extends StatelessWidget {
                     ),
                     
                   
-                    cardDashboard(AppLocalizations.of(context).applications, context),
+                    cardDashboard(AppLocalizations.of(context)!.applications, context),
                     SizedBox(height: 40,),
-                    cardDashboard(AppLocalizations.of(context).interviews, context),
+                    cardDashboard(AppLocalizations.of(context)!.interviews, context),
                     SizedBox(height: 40,),
-                    cardDashboard(AppLocalizations.of(context).tests, context),
+                    cardDashboard(AppLocalizations.of(context)!.tests, context),
                   ],
                 ),
 
