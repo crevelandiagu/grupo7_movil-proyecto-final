@@ -94,7 +94,7 @@ class Education extends StatelessWidget {
                             fontWeight: FontWeight.w500
                            )
                            ),
-                      Text(Jiffy(education[index]['start_date']).format("MMM do yy"),
+                      Text(Jiffy.parse(education[index]['start_date']).yMMMMd,
 
                       style: GoogleFonts.workSans(
                             fontSize: 16,
@@ -113,7 +113,7 @@ class Education extends StatelessWidget {
                            )
                            ),
 
-                      Text(Jiffy(education[index]['end_date']).format("MMM do yy"),
+                      Text(Jiffy.parse(education[index]['end_date']).yMMMMd,
                       style: GoogleFonts.workSans(
                             fontSize: 16,
                             fontWeight: FontWeight.w400

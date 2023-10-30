@@ -60,7 +60,7 @@ class PersonalInfo extends StatelessWidget {
                 controller: nameController,
                 key: const Key('textName'),
                 onChanged: (value) {
-                  controller.validateLastname(value);
+                  controller.validateName(value);
 
                 },
                 decoration: InputDecoration(

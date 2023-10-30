@@ -27,15 +27,15 @@ class WorkInfo extends StatelessWidget {
   CVService service;
 
 
-  final items = [
-    "Tipo Trabajo 1",
-    "Tipo Trabajo 2",
-    "Tipo Trabajo 3",
-    "Tipo Trabajo 4",
-    "Tipo Trabajo 5",
-    "Tipo Trbajo 6",
-    "Tipo Trabajo 7"
-  ];
+  // final items = [
+  //   "Tipo Trabajo 1",
+  //   "Tipo Trabajo 2",
+  //   "Tipo Trabajo 3",
+  //   "Tipo Trabajo 4",
+  //   "Tipo Trabajo 5",
+  //   "Tipo Trbajo 6",
+  //   "Tipo Trabajo 7"
+  // ];
 
   var skills = [].obs;
 
@@ -71,36 +71,36 @@ class WorkInfo extends StatelessWidget {
               ),
               ),
 
-             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: DropdownButtonFormField(
-                key: const Key("place"),
-                icon: const Icon(Icons.keyboard_arrow_down),                
-                value: controller.workTye.value,
-                items: items.map((String item){
-                      return DropdownMenuItem(
-                        value: item,
-                        child: Text(item)
-                        ); 
-                      }).toList(),
-                onChanged: (String? value){
-                  controller.workTye.value = value as String;
+            //  Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            //   child: DropdownButtonFormField(
+            //     key: const Key("place"),
+            //     icon: const Icon(Icons.keyboard_arrow_down),                
+            //     value: controller.workTye.value,
+            //     items: items.map((String item){
+            //           return DropdownMenuItem(
+            //             value: item,
+            //             child: Text(item)
+            //             ); 
+            //           }).toList(),
+            //     onChanged: (String? value){
+            //       controller.workTye.value = value as String;
 
-                },
-                decoration: InputDecoration(
-                  labelText: AppLocalizations.of(context).employmentType,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+            //     },
+            //     decoration: InputDecoration(
+            //       labelText: AppLocalizations.of(context).employmentType,
+            //       border: OutlineInputBorder(
+            //         borderRadius: BorderRadius.circular(10.0),
+            //       ),
                   
-                ),
-                ),
+            //     ),
+            //     ),
 
                 
-              ),
+            //   ),
 
              Padding(
-              padding: const EdgeInsets.fromLTRB(15, 40, 15, 0),
+              padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
               child: TextField(
                 controller: companyController,
                 key: const Key('company'),

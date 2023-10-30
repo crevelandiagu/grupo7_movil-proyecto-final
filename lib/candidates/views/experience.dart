@@ -72,7 +72,7 @@ class Experience extends StatelessWidget {
                             fontWeight: FontWeight.w500
                            )
                            ),
-                      Text(Jiffy(experience[index]['start_date']).format("MMM do yy"),
+                      Text(Jiffy.parse(experience[index]['start_date']).yMMMMd,
 
                       style: GoogleFonts.workSans(
                             fontSize: 16,
@@ -91,7 +91,7 @@ class Experience extends StatelessWidget {
                            )
                            ),
 
-                      Text(Jiffy(experience[index]['end_date']).format("MMM do yy"),
+                      Text(Jiffy.parse(experience[index]['end_date']).yMMMMd,
                       style: GoogleFonts.workSans(
                             fontSize: 16,
                             fontWeight: FontWeight.w400
@@ -120,24 +120,24 @@ class Experience extends StatelessWidget {
                         height: 5,
                       ),
 
-                      Text('Place ',
-                           style: GoogleFonts.workSans(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
-                           )
-                           ),
+                      // Text('Place ',
+                      //      style: GoogleFonts.workSans(
+                      //       fontSize: 20,
+                      //       fontWeight: FontWeight.w500
+                      //      )
+                      //      ),
 
-                      Text(experience[index]['place'],
-                      style: GoogleFonts.workSans(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400
-                           ),
-                           ),
+                      // Text(experience[index]['place'],
+                      // style: GoogleFonts.workSans(
+                      //       fontSize: 16,
+                      //       fontWeight: FontWeight.w400
+                      //      ),
+                      //      ),
 
                       
-                      const SizedBox(
-                        height: 5,
-                      ),
+                      // const SizedBox(
+                      //   height: 5,
+                      // ),
 
                       Text(experience[index]['skills'].isNotEmpty ? AppLocalizations.of(context).skills_e : "", 
                            style: GoogleFonts.workSans(

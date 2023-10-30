@@ -89,7 +89,7 @@ class Certification extends StatelessWidget {
                             fontWeight: FontWeight.w500
                            )
                            ),
-                      Text(Jiffy(certificates[index]['expedition_date']).format("MMM do yy"),
+                      Text(Jiffy.parse(certificates[index]['expedition_date']).yMMMMd,
 
                       style: GoogleFonts.workSans(
                             fontSize: 16,
@@ -107,7 +107,7 @@ class Certification extends StatelessWidget {
                            )
                            ),
 
-                      Text(Jiffy(certificates[index]['date_expiry']).format("MMM do yy"),
+                      Text(Jiffy.parse(certificates[index]['date_expiry']).yMMMMd,
                       style: GoogleFonts.workSans(
                             fontSize: 16,
                             fontWeight: FontWeight.w400
