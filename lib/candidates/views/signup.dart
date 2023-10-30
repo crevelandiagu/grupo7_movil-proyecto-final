@@ -64,7 +64,7 @@ class Signup extends StatelessWidget {
                   ),
                   labelText: "email",
                   errorText: controller.email.value ? null : AppLocalizations.of(context)!.valid_email,
-                  hintText: AppLocalizations.of(context).email,
+                  hintText: AppLocalizations.of(context)!.email,
                 ),
               ),
               ),
@@ -83,8 +83,8 @@ class Signup extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)
                   ),
-                  labelText: AppLocalizations.of(context).password,
-                  hintText: AppLocalizations.of(context).secure_password,
+                  labelText: AppLocalizations.of(context)!.password,
+                  hintText: AppLocalizations.of(context)!.secure_password,
                   errorText: controller.password.value ? null : AppLocalizations.of(context)!.password_error_length
                 ),
               ),
@@ -103,8 +103,8 @@ class Signup extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0)
                   ),
-                  labelText: AppLocalizations.of(context).password,
-                  hintText: AppLocalizations.of(context).repeat_password,
+                  labelText: AppLocalizations.of(context)!.password,
+                  hintText: AppLocalizations.of(context)!.repeat_password,
                   errorText: controller.isPasswordEqual.value ? null : AppLocalizations.of(context)!.password_error_equal,
                 ),
               ),
@@ -154,7 +154,7 @@ class Signup extends StatelessWidget {
                                 backgroundColor: MaterialStateProperty.all(Colors.green[600])
                               ),
                               child: Text(
-                                AppLocalizations.of(context).signin,
+                                AppLocalizations.of(context)!.signin,
                                 style: GoogleFonts.workSans(
                                   textStyle: const TextStyle(
                                   color: Colors.white60
