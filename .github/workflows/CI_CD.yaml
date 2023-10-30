@@ -12,29 +12,28 @@ jobs:
     outputs:
       salida: ${{ steps.imprimir.outputs.respuesta }}
 
-    steps:
-      - name: Checkout de repositorio
-        uses: actions/checkout@v2
+    steps:    
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-        run: | 
-            flutter pub get
-            flutter gen-l10n
-            dart run build_runner build
-            flutter test
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: flutter test
 
-      - name: Validar resultado con errores
+
+#      - name: Validar resultado con errores
         if: ${{ failure() }}
         env:
           MENSAJE_ERROR: Una o varias pruebas fallaron
-        run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
-      - name: Validar resultado sin errores
+      - run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
+#      - name: Validar resultado sin errores
         if: ${{ success() }}
         env:
           MENSAJE_EXITO: Todas las pruebas fueron exitosas
-        run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
-  
+      - run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
+
   create-apk:
     name: Create apk
     runs-on: ubuntu-latest

@@ -60,9 +60,9 @@ class WorkInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).position,
+                  labelText: AppLocalizations.of(context)!.position,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).positionLabel,
+                  hintText: AppLocalizations.of(context)!.positionLabel,
                 ),
               ),
               ),
@@ -84,7 +84,7 @@ class WorkInfo extends StatelessWidget {
 
                 },
                 decoration: InputDecoration(
-                  labelText: AppLocalizations.of(context).employmentType,
+                  labelText: AppLocalizations.of(context)!.employmentType,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -105,9 +105,9 @@ class WorkInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).companyName,
+                  labelText: AppLocalizations.of(context)!.companyName,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).companyLabel,
+                  hintText: AppLocalizations.of(context)!.companyLabel,
                 ),
               ),
               ),
@@ -281,7 +281,7 @@ class WorkInfo extends StatelessWidget {
 
 
                 },
-                child: Text(AppLocalizations.of(context).next, style: GoogleFonts.workSans(
+                child: Text(AppLocalizations.of(context)!.next, style: GoogleFonts.workSans(
                   textStyle: const TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500,

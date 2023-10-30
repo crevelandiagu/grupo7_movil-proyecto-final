@@ -60,9 +60,9 @@ class PersonalInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).name,
+                  labelText: AppLocalizations.of(context)!.name,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).nameLabel,
+                  hintText: AppLocalizations.of(context)!.nameLabel,
                 ),
               ),
               ),
@@ -79,9 +79,9 @@ class PersonalInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).lastname,
+                  labelText: AppLocalizations.of(context)!.lastname,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).lastnameLabel,
+                  hintText: AppLocalizations.of(context)!.lastnameLabel,
                 ),
               ),
               ),
@@ -104,9 +104,9 @@ class PersonalInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).numberId,
+                  labelText: AppLocalizations.of(context)!.numberId,
                   errorText:  validNumberId.value ? null : "superó el limite de 11 dígitos",
-                  hintText: AppLocalizations.of(context).numberIdLabel,
+                  hintText: AppLocalizations.of(context)!.numberIdLabel,
                 ),
               ),
               ),
@@ -123,9 +123,9 @@ class PersonalInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).location,
+                  labelText: AppLocalizations.of(context)!.location,
                  // errorText: validNumberId.value ? null : "superó el limite de 11 dígitos",
-                  hintText: AppLocalizations.of(context).locationLabel,
+                  hintText: AppLocalizations.of(context)!.locationLabel,
                 ),
               ),
               ),
@@ -147,9 +147,9 @@ class PersonalInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).phoneNumber,
+                  labelText: AppLocalizations.of(context)!.phoneNumber,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).phoneLabel,
+                  hintText: AppLocalizations.of(context)!.phoneLabel,
                 ),
               ),
               ),
@@ -209,7 +209,7 @@ class PersonalInfo extends StatelessWidget {
                   
                 },
                 child: Text(
-                  AppLocalizations.of(context).next,
+                  AppLocalizations.of(context)!.next,
                   style: GoogleFonts.workSans(
                   textStyle: const TextStyle(
                     fontSize: 23,

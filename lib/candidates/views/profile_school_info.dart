@@ -49,9 +49,9 @@ class SchoolInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).school,
+                  labelText: AppLocalizations.of(context)!.school,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).schoolLabel,
+                  hintText: AppLocalizations.of(context)!.schoolLabel,
                 ),
               ),
               ),
@@ -67,9 +67,9 @@ class SchoolInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).degree,
+                  labelText: AppLocalizations.of(context)!.degree,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).degreeLabel,
+                  hintText: AppLocalizations.of(context)!.degreeLabel,
                 ),
               ),
               ),
@@ -245,7 +245,7 @@ class SchoolInfo extends StatelessWidget {
 
                 },
                 child: Text(
-                  AppLocalizations.of(context).next, style: GoogleFonts.workSans(
+                  AppLocalizations.of(context)!.next, style: GoogleFonts.workSans(
                   textStyle: const TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500,

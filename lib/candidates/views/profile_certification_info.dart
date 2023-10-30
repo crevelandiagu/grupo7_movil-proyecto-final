@@ -45,9 +45,9 @@ class CertificationInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).certification,
+                  labelText: AppLocalizations.of(context)!.certification,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).certificationLabel,
+                  hintText: AppLocalizations.of(context)!.certificationLabel,
                 ),
               ),
               ),
@@ -63,9 +63,9 @@ class CertificationInfo extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  labelText: AppLocalizations.of(context).organization,
+                  labelText: AppLocalizations.of(context)!.organization,
                   //errorText: controller.email.value ? null : AppLocalizations.of(context).valid_email,
-                  hintText: AppLocalizations.of(context).organizationLabel,
+                  hintText: AppLocalizations.of(context)!.organizationLabel,
                 ),
               ),
               ),
@@ -174,7 +174,7 @@ class CertificationInfo extends StatelessWidget {
                     }
 
                 },
-                child: Text(AppLocalizations.of(context).createButton, style: GoogleFonts.workSans(
+                child: Text(AppLocalizations.of(context)!.createButton, style: GoogleFonts.workSans(
                   textStyle: const TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.w500,
