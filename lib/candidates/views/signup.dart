@@ -201,7 +201,7 @@ class Signup extends StatelessWidget {
                 }
                 },
                 child: Text(
-                  AppLocalizations.of(context).signup,
+                  AppLocalizations.of(context)!.signup,
                   style: GoogleFonts.workSans(
                     textStyle: const TextStyle(
                       color: Colors.white,
