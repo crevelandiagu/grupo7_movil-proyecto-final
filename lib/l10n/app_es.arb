@@ -71,10 +71,13 @@
     "noEducation": "No se ha registrado educación",
     "university": "Univesidad",
     "noCertificates": "No se encuentran certificados",
-    "certificates": "Certificados",
+    "certificate": "Certificado",
     "organization_c": "Organización",
     "expeditionDate": "Fecha de expedición",
-    "expirationDate": "Fecha de vencimiento"
+    "expirationDate": "Fecha de vencimiento",
+    "emptyFields": "Hay campos vacíos o datos no validos",
+    "certification_p": "Certificados",
+    "experience": "Experiencia"
     
 
 }

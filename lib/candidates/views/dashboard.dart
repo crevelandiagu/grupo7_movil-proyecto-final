@@ -15,32 +15,31 @@ class Dashboard extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              
               const SizedBox(
                 height: 40,
               ),
-                  Column(
-                  children: [
-                   const Text('Hola, Nombre',
-                    style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w500
-                    ),
-
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    
-                  
-                    cardDashboard(AppLocalizations.of(context).applications, context),
-                    SizedBox(height: 40,),
-                    cardDashboard(AppLocalizations.of(context).interviews, context),
-                    SizedBox(height: 40,),
-                    cardDashboard(AppLocalizations.of(context).tests, context),
-                  ],
-                ),
-
+              Column(
+                children: [
+                  const Text(
+                    'Hola',
+                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  cardDashboard(
+                      AppLocalizations.of(context)!.applications, context),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  cardDashboard(
+                      AppLocalizations.of(context)!.interviews, context),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  cardDashboard(AppLocalizations.of(context)!.tests, context),
+                ],
+              ),
             ],
           ),
         ),

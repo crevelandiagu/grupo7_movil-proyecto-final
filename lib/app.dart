@@ -38,14 +38,13 @@ class App extends StatelessWidget {
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,  
+        GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: const [
         Locale("en"),
         Locale("es"),
-        
       ],
-      home: Signin(),
+      home: Dashboard(),
     );
   }
 }

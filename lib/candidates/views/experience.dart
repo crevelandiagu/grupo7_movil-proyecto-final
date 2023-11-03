@@ -18,161 +18,141 @@ class Experience extends StatelessWidget {
 
   CVService service;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(),
-      bottomNavigationBar: bottomNavigation((index) => null, context, 0),
-      body: FutureBuilder<Map<String, dynamic>>(
-        future: service.getResponse(http.Client(), Constants.experienceUri),
-        builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot){
+        appBar: customAppBar(),
+        bottomNavigationBar: bottomNavigation((index) => null, context, 0),
+        body: FutureBuilder<Map<String, dynamic>>(
+            future: service.getResponse(http.Client(), Constants.experienceUri),
+            builder: (BuildContext context,
+                AsyncSnapshot<Map<String, dynamic>> snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
 
-          if (!snapshot.hasData){
-            return Center(child: CircularProgressIndicator(),);
-          }
+              var data = snapshot.data!;
+              List<dynamic> experience = data['experience'];
 
-          var data = snapshot.data!;
-          List<dynamic> experience = data['experience'];
+              return experience.isNotEmpty
+                  ? ListView.separated(
+                      separatorBuilder: (BuildContext context, int index) =>
+                          Divider(),
+                      padding: EdgeInsets.all(40),
+                      itemCount: experience.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 10),
+                          color: Colors.grey[200],
+                          child: Column(
+                            //crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(AppLocalizations.of(context)!.company,
+                                  style: GoogleFonts.workSans(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500)),
 
+                              Text(experience[index]['company_name'],
+                                  style: GoogleFonts.workSans(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400)),
 
-          return experience.isNotEmpty ? ListView.separated(
-          separatorBuilder: (BuildContext context, int index) => Divider() ,
-          padding: EdgeInsets.all(40),
-          itemCount: experience.length,
-          itemBuilder: (context, index){
-            return Container(
-               padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-              color: Colors.grey[200],
-              child: Column(
-                  //crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(AppLocalizations.of(context).company,
-                           style: GoogleFonts.workSans(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
-                           )
-                           ),
+                              const SizedBox(
+                                height: 5,
+                              ),
 
-                    Text(experience[index]['company_name'],
+                              Text(AppLocalizations.of(context)!.startDate_e,
+                                  style: GoogleFonts.workSans(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500)),
+                              Text(
+                                Jiffy.parse(experience[index]['start_date'])
+                                    .yMMMMd,
+                                style: GoogleFonts.workSans(
+                                    fontSize: 16, fontWeight: FontWeight.w400),
+                              ),
 
-                      style: GoogleFonts.workSans(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400
-                           )),
+                              const SizedBox(
+                                height: 5,
+                              ),
 
-                        const SizedBox(
-                        height: 5,
-                      ),
+                              Text(AppLocalizations.of(context)!.endDate_e,
+                                  style: GoogleFonts.workSans(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500)),
 
-                      Text(AppLocalizations.of(context).startDate_e,
-                           style: GoogleFonts.workSans(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
-                           )
-                           ),
-                      Text(Jiffy.parse(experience[index]['start_date']).yMMMMd,
+                              Text(
+                                Jiffy.parse(experience[index]['end_date'])
+                                    .yMMMMd,
+                                style: GoogleFonts.workSans(
+                                    fontSize: 16, fontWeight: FontWeight.w400),
+                              ),
 
-                      style: GoogleFonts.workSans(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400
-                           ),
-                           ),
+                              const SizedBox(
+                                height: 5,
+                              ),
 
-                      const  SizedBox(
-                        height: 5,
-                      ),
+                              Text(AppLocalizations.of(context)!.position_e,
+                                  style: GoogleFonts.workSans(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500)),
 
-                      Text(AppLocalizations.of(context).endDate_e,
-                           style: GoogleFonts.workSans(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
-                           )
-                           ),
+                              Text(
+                                experience[index]['position'],
+                                style: GoogleFonts.workSans(
+                                    fontSize: 16, fontWeight: FontWeight.w400),
+                              ),
 
-                      Text(Jiffy.parse(experience[index]['end_date']).yMMMMd,
-                      style: GoogleFonts.workSans(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400
-                           ),
-                           ),
+                              const SizedBox(
+                                height: 5,
+                              ),
 
-                      const SizedBox(
-                        height: 5,
-                      ),
+                              // Text('Place ',
+                              //      style: GoogleFonts.workSans(
+                              //       fontSize: 20,
+                              //       fontWeight: FontWeight.w500
+                              //      )
+                              //      ),
 
-                      Text(AppLocalizations.of(context).position_e,
-                           style: GoogleFonts.workSans(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
-                           )
-                           ),
+                              // Text(experience[index]['place'],
+                              // style: GoogleFonts.workSans(
+                              //       fontSize: 16,
+                              //       fontWeight: FontWeight.w400
+                              //      ),
+                              //      ),
 
-                      Text(experience[index]['position'],
-                      style: GoogleFonts.workSans(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400
-                           ),
-                           ),
+                              // const SizedBox(
+                              //   height: 5,
+                              // ),
 
-                        const SizedBox(
-                        height: 5,
-                      ),
+                              Text(
+                                  experience[index]['skills'].isNotEmpty
+                                      ? AppLocalizations.of(context)!.skills_e
+                                      : "",
+                                  style: GoogleFonts.workSans(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500)),
 
-                      // Text('Place ',
-                      //      style: GoogleFonts.workSans(
-                      //       fontSize: 20,
-                      //       fontWeight: FontWeight.w500
-                      //      )
-                      //      ),
-
-                      // Text(experience[index]['place'],
-                      // style: GoogleFonts.workSans(
-                      //       fontSize: 16,
-                      //       fontWeight: FontWeight.w400
-                      //      ),
-                      //      ),
-
-                      
-                      // const SizedBox(
-                      //   height: 5,
-                      // ),
-
-                      Text(experience[index]['skills'].isNotEmpty ? AppLocalizations.of(context).skills_e : "", 
-                           style: GoogleFonts.workSans(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
-                           )
-                           ),
-
-
-
-                      Column(
-                        children: [for (var text in experience[index]['skills'])
-                         Text(text, style: GoogleFonts.workSans(
-                          fontSize: 16
-                         ),
-                         ),
-                         ],
-                      ),
-                    
-                    
-                  ],
-
-                
-              ),      
-
-            );
-          },
-
-      ) :  Center(child: Text(AppLocalizations.of(context).noExperience));
-
-        }
-        )
-      );
-
+                              Column(
+                                children: [
+                                  for (var text in experience[index]['skills'])
+                                    Text(
+                                      text,
+                                      style: GoogleFonts.workSans(fontSize: 16),
+                                    ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    )
+                  : Center(
+                      child: Text(AppLocalizations.of(context)!.noExperience));
+            }));
   }
-
-
 }
