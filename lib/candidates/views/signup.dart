@@ -149,6 +149,8 @@ class Signup extends StatelessWidget {
                                         AppLocalizations.of(context)!.signin);
                               },
                               scaffold: scaffold);
+                          emailController.text = "";
+                          passwordController.text = "";
                         } catch (e) {
                           showSnackbar(e.toString(), scaffold: scaffold);
                         }
@@ -177,7 +179,7 @@ class Signup extends StatelessWidget {
                       Text(AppLocalizations.of(context)!.already_account),
                       TextButton(
                         onPressed: () {
-                          Get.toNamed('/');
+                          Get.offNamed('/');
                         },
                         child: Text(
                           AppLocalizations.of(context)!.signin,

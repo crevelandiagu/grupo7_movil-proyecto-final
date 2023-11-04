@@ -10,8 +10,8 @@
     "email": "Ingresa email",
     "password_error_length": "La contraseña debe tener 1 numero, 1 mayúscula, 1 character especial y una longitud de 8 charactéres",
     "password_error_equal": "Las contraseñas no son iguales",
-    "message_signup_success": "La cuenta fue creada. Por favor inicia sesión con las mismas credenciales",
-    "account_created": "Cuenta Creada",
+    "message_signup_success": "Cuenta creada",
+    "account_created": "Cuenta Creada. Por favor inicia sesión",
     "welcome": "Bienvenido",
     "dont_account": "¿Aun no tienes una cuenta?",
     "success": "Éxito",
@@ -66,7 +66,7 @@
     "skills_e": "Habilidades",
     "noExperience": "No se ha registrado experiencia",
     "position_e": "Posición",
-    "education": "Education",
+    "education": "Educación",
     "grade": "Titulo",
     "noEducation": "No se ha registrado educación",
     "university": "Univesidad",
@@ -77,7 +77,8 @@
     "expirationDate": "Fecha de vencimiento",
     "emptyFields": "Hay campos vacíos o datos no validos",
     "certification_p": "Certificados",
-    "experience": "Experiencia"
+    "experience": "Experiencia",
+    "add": "Agregar"
     
 
 }

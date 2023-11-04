@@ -148,7 +148,7 @@ class Signin extends StatelessWidget {
                     Text(AppLocalizations.of(context)!.dont_account),
                     TextButton(
                       onPressed: () {
-                        Get.to(() => Signup());
+                        Get.off(() => Signup());
                       },
                       child: Text(
                         AppLocalizations.of(context)!.signup,

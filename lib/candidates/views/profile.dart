@@ -26,7 +26,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: customAppBar(),
-        bottomNavigationBar: bottomNavigation((index) => null, context, 0),
+        bottomNavigationBar: bottomNavigation((index) => null, context, 3),
         body: FutureBuilder<Map<String, dynamic>>(
             future: service.getResponseBasicInfo(),
             builder: (BuildContext context,

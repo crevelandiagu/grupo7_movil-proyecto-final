@@ -33,10 +33,10 @@ void httpErrorHandle(
     case 400:
     case 404:
     case 412:
-      showSnackbar(jsonDecode(response.body)['mensaje'], scaffold: scaffold);
+      showSnackbar(jsonDecode(response.body)['message'], scaffold: scaffold);
       break;
     default:
-      showSnackbar(jsonDecode(response.body)['mensaje'], scaffold: scaffold);
+      showSnackbar(jsonDecode(response.body)['message'], scaffold: scaffold);
   }
 }
 
@@ -56,16 +56,7 @@ void showSnackbar(String message,
         ),
       ),
     ),
-    duration:
-        !success ? const Duration(milliseconds: 3000) : const Duration(days: 1),
+    duration: const Duration(milliseconds: 3000),
     backgroundColor: error ? Colors.red : Colors.green,
-    action: !success
-        ? SnackBarAction(
-            label: label,
-            onPressed: () {
-              scaffold.currentState?.removeCurrentSnackBar();
-              Get.off(() => Signin());
-            })
-        : null,
   ));
 }

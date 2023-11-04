@@ -7,9 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Widget bottomNavigation(
-    Function(int index) onTap, BuildContext context, int index) {
+    Function(int index) onTap, BuildContext context, int idx) {
   NavigationBar navigation = NavigationBar(
-      selectedIndex: index,
+      selectedIndex: idx,
       onDestinationSelected: (int index) {
         switch (index) {
           case 0:
@@ -124,7 +124,7 @@ Widget cardDashboardProfile(String title, BuildContext context,
               backgroundColor:
                   MaterialStateProperty.all(Color.fromARGB(255, 58, 0, 229))),
           onPressed: functionA,
-          child: Text("Agregar"),
+          child: Text(AppLocalizations.of(context)!.add),
         ),
         // Row(
         //   mainAxisAlignment: MainAxisAlignment.end,
