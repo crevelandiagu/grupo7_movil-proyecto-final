@@ -10,52 +10,36 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: (){},
-            icon: const Icon(Icons.language),
-            ),
-          IconButton(
-            onPressed: (){},
-             icon: const Icon(Icons.notifications),
-             ),
-          IconButton(
-            onPressed: (){},
-            icon: const Icon(Icons.account_circle),
-            ),
-        ],
-        ),
+      appBar: customAppBar(),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
-              
               const SizedBox(
                 height: 40,
               ),
-                  Column(
-                  children: [
-                   const Text('Hola, Nombre',
-                    style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w500
-                    ),
-
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    
-                  
-                    cardDashboard(AppLocalizations.of(context)!.applications, context),
-                    SizedBox(height: 40,),
-                    cardDashboard(AppLocalizations.of(context)!.interviews, context),
-                    SizedBox(height: 40,),
-                    cardDashboard(AppLocalizations.of(context)!.tests, context),
-                  ],
-                ),
-
+              Column(
+                children: [
+                  const Text(
+                    'Hola',
+                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  cardDashboard(
+                      AppLocalizations.of(context)!.applications, context),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  cardDashboard(
+                      AppLocalizations.of(context)!.interviews, context),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  cardDashboard(AppLocalizations.of(context)!.tests, context),
+                ],
+              ),
             ],
           ),
         ),
