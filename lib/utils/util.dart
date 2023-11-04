@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:abc_jobs/candidates/views/dashboard.dart';
+import 'package:abc_jobs/candidates/views/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-
 
 Map<String, String> buildHeaders({String? token}) {
   Map<String, String> headers = {
@@ -18,208 +19,44 @@ Map<String, String> buildHeaders({String? token}) {
   }
 
   return headers;
-
 }
 
-void httpErrorHandle({
-  required http.Response response,
-  required VoidCallback onSuccess,
-}) {
-
-  switch(response.statusCode) {
+void httpErrorHandle(
+    {required http.Response response,
+    required VoidCallback onSuccess,
+    required GlobalKey<ScaffoldMessengerState> scaffold}) {
+  switch (response.statusCode) {
     case 201:
-     onSuccess();
-     break;
-    case 412:
-     Get.snackbar(
-      "",
-      "",
-      titleText: Text(
-        "Error",
-        style: GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      messageText: Text(
-        jsonDecode(response.body)['message'],
-        style:  GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM);
-     break;
     case 200:
-     onSuccess();
-     break;
+      onSuccess();
+      break;
     case 400:
-      Get.snackbar(
-      "",
-      "",
-      titleText: Text(
-        "Error",
-        style: GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      messageText: Text(
-        jsonDecode(response.body)['message'],
-        style:  GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM);
-     break;
     case 404:
-     Get.snackbar(
-      "",
-      "",
-      titleText: Text(
-        "Error",
-        style: GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      messageText: Text(
-        jsonDecode(response.body)['mensaje'],
-        style:  GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM);
-     break;
+    case 412:
+      showSnackbar(jsonDecode(response.body)['message'], scaffold: scaffold);
+      break;
     default:
-      Get.snackbar(
-      "",
-      "",
-      titleText: Text(
-        "Error",
-        style: GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      messageText: Text(
-        response.body,
-        style:  GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM);
+      showSnackbar(jsonDecode(response.body)['message'], scaffold: scaffold);
   }
-
 }
 
-
-void httpErrorHandleSi({
-  required http.Response response,
-  required VoidCallback onSuccess,
-}) {
-
-  switch(response.statusCode) {
-    case 200:
-     onSuccess();
-     break;
-    case 400:
-      Get.snackbar(
-      "",
-      "",
-      titleText: Text(
-        "Error",
+void showSnackbar(String message,
+    {bool error = true,
+    String label = "",
+    bool success = false,
+    required GlobalKey<ScaffoldMessengerState> scaffold}) {
+  scaffold.currentState?.showSnackBar(SnackBar(
+    content: Center(
+      child: Text(
+        message,
         style: GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
+          fontSize: 20,
+          color: Colors.black,
+          fontWeight: FontWeight.w600,
         ),
-        ),
-      messageText: Text(
-        jsonDecode(response.body)['mensaje'],
-        style:  GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM);
-     break;
-    case 404:
-     Get.snackbar(
-      "",
-      "",
-      titleText: Text(
-        "Error",
-        style: GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      messageText: Text(
-        jsonDecode(response.body)['mensaje'],
-        style:  GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM);
-     break;
-    default:
-      Get.snackbar(
-      "",
-      "",
-      titleText: Text(
-        "Error",
-        style: GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      messageText: Text(
-        response.body,
-        style:  GoogleFonts.workSans(
-          textStyle: const TextStyle(
-            color: Colors.white60,
-          ),
-          fontSize: 16,
-        ),
-        ),
-      backgroundColor: Colors.red,
-      snackPosition: SnackPosition.BOTTOM);
-  }
-
+      ),
+    ),
+    duration: const Duration(milliseconds: 3000),
+    backgroundColor: error ? Colors.red : Colors.green,
+  ));
 }
