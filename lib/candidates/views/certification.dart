@@ -21,7 +21,7 @@ class Certification extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigation((index) => null, context, 0),
       body: FutureBuilder<Map<String, dynamic>>(
-          future: service.getResponse(http.Client(), Constants.certificatesUri),
+          future: service.getResponseCertification(),
           builder: (BuildContext context,
               AsyncSnapshot<Map<String, dynamic>> snapshot) {
             if (!snapshot.hasData) {

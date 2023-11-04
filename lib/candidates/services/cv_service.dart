@@ -203,4 +203,61 @@ class CVService {
       throw Exception(e);
     }
   }
+
+  Future<Map<String, dynamic>> getResponseExperience() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int id = prefs.getInt('id') as int;
+
+      http.Response res = await http.Client().get(
+          Uri.parse('${Constants.experienceUri}$id'),
+          headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+
+      return {};
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<Map<String, dynamic>> getResponseEducation() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int id = prefs.getInt('id') as int;
+
+      http.Response res = await http.Client().get(
+          Uri.parse('${Constants.educationUri}$id'),
+          headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+
+      return {};
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<Map<String, dynamic>> getResponseCertification() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int id = prefs.getInt('id') as int;
+
+      http.Response res = await http.Client().get(
+          Uri.parse('${Constants.certificatesUri}$id'),
+          headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+
+      return {};
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }
