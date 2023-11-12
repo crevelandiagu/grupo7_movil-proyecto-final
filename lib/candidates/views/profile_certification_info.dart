@@ -171,7 +171,7 @@ class CertificationInfo extends StatelessWidget {
                             candidateId: candidateId,
                             client: http.Client());
 
-                        if (res.statusCode == 201) {
+                        if (res.statusCode == 200) {
                           debugPrint(jsonDecode(res.body)['message']);
 
                           Get.off(() => Profile(

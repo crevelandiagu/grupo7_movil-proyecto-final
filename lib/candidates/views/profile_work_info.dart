@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -89,12 +90,11 @@ class WorkInfo extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      labelText: AppLocalizations.of(context)!.employmentType,
+                      labelText: AppLocalizations.of(context)!.location,
                       errorText: controller.workTye.value
                           ? null
-                          : AppLocalizations.of(context)!.validEmploymentType,
-                      hintText:
-                          AppLocalizations.of(context)!.employmentTypeLabel,
+                          : AppLocalizations.of(context)!.validlocation,
+                      hintText: AppLocalizations.of(context)!.locationLabel,
                     ),
                   ),
                 ),
@@ -143,7 +143,8 @@ class WorkInfo extends StatelessWidget {
                                 : AppLocalizations.of(context)!.chooseDate,
                           ),
                           onDateSelected: (DateTime value) {
-                            startDate = value.toString();
+                            startDate = DateFormat('yyyy-MM-dd')
+                                .format(DateTime.parse(value.toString()));
                             controller.startDate.value = true;
                           },
                         ),
@@ -169,7 +170,11 @@ class WorkInfo extends StatelessWidget {
                                 : AppLocalizations.of(context)!.chooseDate,
                           ),
                           onDateSelected: (DateTime value) {
-                            endDate = value.toString();
+                            // endDate = value.toString();
+                            // DateTime input = DateTime.parse(value.toString());
+                            endDate = DateFormat('yyyy-MM-dd')
+                                .format(DateTime.parse(value.toString()));
+                            debugPrint(endDate);
                             controller.endDate.value = true;
                           },
                         ),
@@ -255,10 +260,12 @@ class WorkInfo extends StatelessWidget {
                             candidateId: candidateId,
                             client: http.Client());
 
-                        if (res.statusCode == 201) {
+                        if (res.statusCode == 200) {
                           debugPrint(jsonDecode(res.body)['message']);
 
                           Get.off(() => Profile(service: CVService()));
+                        } else {
+                          debugPrint(jsonDecode(res.body)['message']);
                         }
                       } catch (e) {
                         debugPrint(e.toString());

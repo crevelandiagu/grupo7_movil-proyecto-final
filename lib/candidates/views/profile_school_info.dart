@@ -156,10 +156,10 @@ class SchoolInfo extends StatelessWidget {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      labelText: AppLocalizations.of(context)!.position,
+                      labelText: AppLocalizations.of(context)!.location,
                       errorText: controller.position.value
                           ? null
-                          : AppLocalizations.of(context)!.validPosition,
+                          : AppLocalizations.of(context)!.validlocation,
                       hintText: AppLocalizations.of(context)!.positionLabel,
                     ),
                   ),
@@ -258,7 +258,7 @@ class SchoolInfo extends StatelessWidget {
                             candidateId: candidateId,
                             client: http.Client());
 
-                        if (res.statusCode == 201) {
+                        if (res.statusCode == 200) {
                           debugPrint(
                               'mensage: ' + jsonDecode(res.body)['message']);
 

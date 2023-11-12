@@ -201,7 +201,7 @@ class PersonalInfo extends StatelessWidget {
                           candidateId: candidateId,
                           client: http.Client());
 
-                      if (response.statusCode == 201) {
+                      if (response.statusCode == 200) {
                         debugPrint(jsonDecode(response.body)['message']);
 
                         Get.off(() => Profile(
