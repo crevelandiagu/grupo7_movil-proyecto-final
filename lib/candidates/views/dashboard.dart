@@ -20,22 +20,23 @@ class Dashboard extends StatelessWidget {
               ),
               Column(
                 children: [
-                  const Text(
-                    'Hola',
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.w500),
+                  Text(
+                    AppLocalizations.of(context)!.hi,
+                    style: const TextStyle(
+                        fontSize: 23, fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(
-                    height: 40,
+                    height: 50,
                   ),
                   cardDashboard(
                       AppLocalizations.of(context)!.applications, context),
                   SizedBox(
-                    height: 40,
+                    height: 50,
                   ),
                   cardDashboard(
                       AppLocalizations.of(context)!.interviews, context),
                   SizedBox(
-                    height: 40,
+                    height: 50,
                   ),
                   cardDashboard(AppLocalizations.of(context)!.tests, context),
                 ],

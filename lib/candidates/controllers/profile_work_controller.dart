@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class ProfileWorkController extends GetxController {
-  var workTye = "Tipo Trabajo 1".obs;
+  var workTye = false.obs;
   var position = false.obs;
   var startDate = false.obs;
   var endDate = false.obs;
@@ -34,6 +34,16 @@ class ProfileWorkController extends GetxController {
     }
   }
 
+  void validateWorktype(String value) {
+    workTye.value = false;
+
+    if (value.isNotEmpty) {
+      workTye.value = true;
+    } else {
+      workTye.value = false;
+    }
+  }
+
   void validatCompany(String value) {
     company.value = false;
     if (value.isNotEmpty) {
@@ -44,10 +54,7 @@ class ProfileWorkController extends GetxController {
   }
 
   bool validateForm() {
-    if (startDate.value &&
-        endDate.value &&
-        position.value &&
-        workTye.value.isNotEmpty) {
+    if (startDate.value && endDate.value && position.value && workTye.value) {
       return true;
     }
 

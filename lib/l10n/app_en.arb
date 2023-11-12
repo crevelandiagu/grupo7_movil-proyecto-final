@@ -169,6 +169,16 @@
     "@employmentType": {
         "description": "employment type"
     },
+    
+    "validEmploymentType": "Enter valid employment type",
+    "@validEmploymentType": {
+        "description": "valid employment type"
+    },
+
+    "employmentTypeLabel": "Enter employment type",
+    "@employmentTypeLabel": {
+        "description": "employment type Label"
+    },
 
     "companyName": "company name",
     "@companyName": {
@@ -397,6 +407,10 @@
     "add": "Add",
     "@add": {
         "description": "add"
+    },
+    "hi": "Hello",
+    "@hi": {
+        "description": "hi"
     }
 
 

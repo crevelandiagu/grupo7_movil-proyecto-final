@@ -15,6 +15,7 @@ void main() {
       expect(controller?.degree.value, false);
       expect(controller?.startDate.value, false);
       expect(controller?.endDate.value, false);
+      expect(controller?.position.value, false);
     });
     test("test school valid", () {
       var school = "school";
@@ -36,11 +37,25 @@ void main() {
       controller?.validateDegree(degree);
       expect(controller?.degree.value, false);
     });
+
+    test("test position valid", () {
+      var position = "position";
+      controller?.validatePosition(position);
+      expect(controller?.position.value, true);
+    });
+
+    test("test position invalid", () {
+      var position = "";
+      controller?.validateDegree(position);
+      expect(controller?.position.value, false);
+    });
+
     test("test form fields", () {
       controller?.school.value = true;
       controller?.degree.value = true;
       controller?.startDate.value = true;
       controller?.endDate.value = true;
+      controller?.position.value = true;
 
       expect(controller?.validateFields(), true);
     });
