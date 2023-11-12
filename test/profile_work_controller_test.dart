@@ -40,6 +40,7 @@ void main() {
       controller?.position.value = true;
       controller?.startDate.value = true;
       controller?.endDate.value = true;
+      controller?.workTye.value = true;
 
       expect(controller?.validateForm(), true);
     });

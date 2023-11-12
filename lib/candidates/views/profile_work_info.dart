@@ -24,6 +24,7 @@ class WorkInfo extends StatelessWidget {
 
   TextEditingController positionContoller = TextEditingController();
   TextEditingController companyController = TextEditingController();
+  TextEditingController workTypeController = TextEditingController();
 
   CVService service;
 
@@ -73,6 +74,27 @@ class WorkInfo extends StatelessWidget {
                           ? null
                           : AppLocalizations.of(context)!.validPosition,
                       hintText: AppLocalizations.of(context)!.positionLabel,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 30),
+                  child: TextField(
+                    controller: workTypeController,
+                    key: const Key('textworkType'),
+                    onChanged: (value) {
+                      controller.validateWorktype(value);
+                    },
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: AppLocalizations.of(context)!.employmentType,
+                      errorText: controller.workTye.value
+                          ? null
+                          : AppLocalizations.of(context)!.validEmploymentType,
+                      hintText:
+                          AppLocalizations.of(context)!.employmentTypeLabel,
                     ),
                   ),
                 ),
@@ -228,7 +250,7 @@ class WorkInfo extends StatelessWidget {
                             companyName: companyController.text.toLowerCase(),
                             startDate: startDate,
                             endDate: endDate,
-                            place: controller.workTye.value,
+                            place: workTypeController.text.toLowerCase(),
                             skills: listskills,
                             candidateId: candidateId,
                             client: http.Client());

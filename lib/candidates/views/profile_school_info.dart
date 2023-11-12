@@ -21,6 +21,7 @@ class SchoolInfo extends StatelessWidget {
 
   TextEditingController institutionController = TextEditingController();
   TextEditingController gradeController = TextEditingController();
+  TextEditingController positionController = TextEditingController();
   var startDate = "";
   var endDate = "";
 
@@ -144,8 +145,28 @@ class SchoolInfo extends StatelessWidget {
                   ],
                 ),
                 Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 30, 15, 0),
+                  child: TextField(
+                    controller: positionController,
+                    key: const Key('textPosition'),
+                    onChanged: (value) {
+                      controller.validatePosition(value);
+                    },
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: AppLocalizations.of(context)!.position,
+                      errorText: controller.position.value
+                          ? null
+                          : AppLocalizations.of(context)!.validPosition,
+                      hintText: AppLocalizations.of(context)!.positionLabel,
+                    ),
+                  ),
+                ),
+                Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 40),
+                      horizontal: 15.0, vertical: 30),
                   key: const Key('padding'),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

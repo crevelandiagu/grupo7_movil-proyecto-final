@@ -44,7 +44,7 @@ class App extends StatelessWidget {
         Locale("en"),
         Locale("es"),
       ],
-      home: Signin(),
+      home: Dashboard(),
     );
   }
 }

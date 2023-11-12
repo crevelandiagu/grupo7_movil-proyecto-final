@@ -78,7 +78,10 @@
     "emptyFields": "Hay campos vacíos o datos no validos",
     "certification_p": "Certificados",
     "experience": "Experiencia",
-    "add": "Agregar"
+    "add": "Agregar",
+    "employmentTypeLabel": "Ingresa tipo de trabajo",
+    "validEmploymentType": "Ingresa un tipo valido de empleo",
+    "hi": "Hola"
     
 
 }
