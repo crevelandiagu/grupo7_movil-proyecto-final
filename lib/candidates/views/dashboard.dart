@@ -1,3 +1,4 @@
+import 'package:abc_jobs/candidates/views/list_interviews.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,17 +29,20 @@ class Dashboard extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  cardDashboard(
-                      AppLocalizations.of(context)!.applications, context),
+                  cardDashboard(AppLocalizations.of(context)!.applications,
+                      context, () {}),
                   SizedBox(
                     height: 50,
                   ),
                   cardDashboard(
-                      AppLocalizations.of(context)!.interviews, context),
+                      AppLocalizations.of(context)!.interviews, context, () {
+                    Get.to(() => ListInterviews());
+                  }),
                   SizedBox(
                     height: 50,
                   ),
-                  cardDashboard(AppLocalizations.of(context)!.tests, context),
+                  cardDashboard(
+                      AppLocalizations.of(context)!.tests, context, () {}),
                 ],
               ),
             ],

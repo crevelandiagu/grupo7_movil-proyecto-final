@@ -408,9 +408,25 @@
     "@add": {
         "description": "add"
     },
+    "result": "Result",
+    "@result": {
+        "description": "hi"
+    },
     "hi": "Hello",
     "@hi": {
         "description": "hi"
+    },
+    "interviewLink": "Interview link",
+    "@interviewLink": {
+        "description": "Interview link"
+    },
+    "date": "Date",
+    "@date": {
+        "description": "date"
+    },
+    "link": "Link",
+    "@link": {
+        "description": "date"
     }
 
 
