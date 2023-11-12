@@ -81,7 +81,16 @@
     "add": "Agregar",
     "employmentTypeLabel": "Ingresa tipo de trabajo",
     "validEmploymentType": "Ingresa un tipo valido de empleo",
-    "hi": "Hola"
+    "hi": "Hola",
+    "interviewLink": "Vinculo entrevista",
+    "result": "Resultado",
+    "date": "Fecha",
+    "link": "Vinculo",
+    "project": "Proyecto",
+    "time": "Hora",
+    "pass": "aprovado",
+    "reject": "desaprovado",
+    "inProcess": "en proceso"
     
 
 }

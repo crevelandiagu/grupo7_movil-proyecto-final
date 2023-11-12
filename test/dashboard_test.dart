@@ -5,8 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
-  testWidgets("My widget should have a button sign in",
-      (WidgetTester tester) async {
+  testWidgets("Dashboar view test", (WidgetTester tester) async {
     await tester.pumpWidget(
       GetMaterialApp(
         home: Dashboard(),
@@ -16,7 +15,7 @@ void main() {
       ),
     );
 
-    expect(find.text("Hola"), findsOneWidget);
+    expect(find.text("Hello"), findsOneWidget);
     expect(find.text("Applications"), findsOneWidget);
     expect(find.text("Interviews"), findsWidgets);
     expect(find.text("Tests"), findsWidgets);

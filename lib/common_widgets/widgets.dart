@@ -42,7 +42,8 @@ Widget bottomNavigation(
   return navigation;
 }
 
-Widget cardDashboard(String title, BuildContext context) {
+Widget cardDashboard(
+    String title, BuildContext context, VoidCallback? function) {
   return Container(
     width: 250,
     padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 8),
@@ -67,21 +68,9 @@ Widget cardDashboard(String title, BuildContext context) {
           style: ButtonStyle(
               backgroundColor:
                   MaterialStateProperty.all(Color.fromARGB(255, 58, 0, 229))),
-          onPressed: () {},
+          onPressed: function,
           child: Text(AppLocalizations.of(context)!.details),
         ),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: [
-        //     ElevatedButton(
-        //       style: ButtonStyle(
-        //           backgroundColor: MaterialStateProperty.all(
-        //               Color.fromARGB(255, 58, 0, 229))),
-        //       onPressed: () {},
-        //       child: Text(AppLocalizations.of(context)!.details),
-        //     ),
-        //   ],
-        // )
       ],
     ),
   );
@@ -126,28 +115,6 @@ Widget cardDashboardProfile(String title, BuildContext context,
           onPressed: functionA,
           child: Text(AppLocalizations.of(context)!.add),
         ),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: [
-        //     ElevatedButton(
-        //       style: ButtonStyle(
-        //           backgroundColor: MaterialStateProperty.all(
-        //               Color.fromARGB(255, 58, 0, 229))),
-        //       onPressed: functionB,
-        //       child: Text(AppLocalizations.of(context)!.details),
-        //     ),
-        //     SizedBox(
-        //       width: 8,
-        //     ),
-        //     ElevatedButton(
-        //       style: ButtonStyle(
-        //           backgroundColor: MaterialStateProperty.all(
-        //               Color.fromARGB(255, 58, 0, 229))),
-        //       onPressed: functionA,
-        //       child: Text("Agregar"),
-        //     ),
-        //   ],
-        // )
       ],
     ),
   );
