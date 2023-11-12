@@ -85,7 +85,12 @@
     "interviewLink": "Vinculo entrevista",
     "result": "Resultado",
     "date": "Fecha",
-    "link": "Vinculo"
+    "link": "Vinculo",
+    "project": "Proyecto",
+    "time": "Hora",
+    "pass": "aprovado",
+    "reject": "desaprovado",
+    "inProcess": "en proceso"
     
 
 }

@@ -427,7 +427,29 @@
     "link": "Link",
     "@link": {
         "description": "date"
+    },
+    "project": "Project",
+    "@project": {
+        "description": "project"
+    },
+    "time": "Time",
+    "@time": {
+        "description": "time"
+    },
+
+    "reject": "reject",
+    "@reject": {
+        "description": "reject"
+    },
+    "pass": "pass",
+    "@pass": {
+        "description": "reject"
+    },
+    "inProcess": "in process",
+    "@inProcess": {
+        "description": "reject"
     }
+
 
 
 

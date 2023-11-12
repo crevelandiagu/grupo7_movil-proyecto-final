@@ -24,13 +24,7 @@ void main() {
     expect(find.text("Result"), findsWidgets);
     expect(find.text("Link"), findsWidgets);
     expect(find.text("Date"), findsWidgets);
-
-    // expect(find.text("Education"), findsOneWidget);
-    // expect(find.text("Certification"), findsOneWidget);
-    // expect(find.text("DH"), findsOneWidget);
-    // expect(find.text("Daniel Huertas"), findsOneWidget);
-    // expect(find.text("dan@gmail.com"), findsOneWidget);
-    // expect(find.text("colombia"), findsOneWidget);
-    // expect(find.text("1234567"), findsOneWidget);
+    expect(find.text("Project"), findsWidgets);
+    expect(find.text("Time"), findsWidgets);
   });
 }
