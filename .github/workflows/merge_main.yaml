@@ -1,0 +1,125 @@
+name: Deploy Master
+run-name: ${{ github.actor }} is Deploy Master 🚀⚗🔮🤖
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'pubspec.yaml'
+jobs:
+  Crear-Release:
+    name: Crear-release
+    if:  ${{ contains(github.event.head_commit.message, 'RELEASE') }}
+    runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.respuesta }}
+    steps:
+      - name: Checkout de repositorio
+        uses: actions/checkout@v2
+      - name: Crear rama
+        id: crear-rama
+        if: ${{ contains(github.event.head_commit.message, 'RELEASE') }}
+        env:
+          MENSAJE_RELEASE: Se creo la rama release
+        run: |
+          git checkout -b release
+          git push -f -u origin release
+          echo "::set-output name=respuesta::${MENSAJE_RELEASE}"
+
+  merege-release-desarrollo:
+    name: Merge-desarrolo
+    needs: Crear-Release
+    runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.respuesta }}
+    steps:
+    - name: Mezcla release -> develop
+      if: echo ${{needs.Merge-desarrolo.outputs.salida}}
+      uses: tukasz/direct-merge-action@master
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        source-branch: develop
+        target-branch: release
+      env:
+        MENSAJE_MERGE: Se unieron las ramas
+
+  test-app-mobile:
+    name: Correr-test
+    runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.respuesta }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: flutter test
+
+      - name: Build Android APK
+        run: flutter build apk --release
+
+      - name: Upload Android release artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: android_release
+          path: "build/app/outputs/apk/release"
+
+#      - name: Validar resultado con errores
+        if: ${{ failure() }}
+        env:
+          MENSAJE_ERROR: Una o varias pruebas fallaron
+      - run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
+#      - name: Validar resultado sin errores
+        if: ${{ success() }}
+        env:
+          MENSAJE_EXITO: Todas las pruebas fueron exitosas
+      - run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
+
+  merege-release-main:
+    name: Merge-main
+    needs: test-app-mobile
+    runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.respuesta }}
+    steps:
+    - name: Mezcla ${{ github.ref }} -> develop
+      if: echo ${{needs.correr-test-funcionalidad.outputs.salida}}
+      uses: tukasz/direct-merge-action@master
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        source-branch: release
+        target-branch: main
+      env:
+        MENSAJE_MERGE: Merge successful
+
+  tags:
+    needs: [test-app-mobile, merege-release-main, ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: name branch
+        id: name_branch
+        run: echo "NAME_BRANCH=${GITHUB_REF##*/}" >> "$GITHUB_OUTPUT"
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          append_to_pre_release_tag:
+          custom_tag: 3.17.4-${{ steps.name_branch.outputs.NAME_BRANCH }}
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifacts: "android_release/*.apk"
+          tag: v3.17.4
+          name: v3.17.4
+          body: Inicio sprint 3
