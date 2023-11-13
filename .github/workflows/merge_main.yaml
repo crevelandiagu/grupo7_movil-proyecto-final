@@ -44,6 +44,7 @@ jobs:
 
   test-app-mobile:
     name: Correr-test
+    needs: merege-release-desarrollo
     runs-on: ubuntu-latest
     outputs:
       salida: ${{ steps.imprimir.outputs.respuesta }}
@@ -96,7 +97,7 @@ jobs:
         MENSAJE_MERGE: Merge successful
 
   tags:
-    needs: [test-app-mobile, merege-release-main, ]
+    needs: [test-app-mobile, merege-release-main ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
