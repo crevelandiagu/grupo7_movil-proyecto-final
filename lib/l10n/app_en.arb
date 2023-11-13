@@ -1,7 +1,482 @@
 {
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-        "description": "The conventional newborn programer greeting"
+    "create_Account": "Create Account",
+    "@create_Account": {
+        "description": "Title of signup's activity"
+    },
+
+    "valid_email": "Enter a valid email",
+    "@valid_email": {
+        "description": "hint message to enter a valid email"
+    },
+
+    "email": "Enter email",
+    "@email": {
+        "description": "hint message to enter a email"
+    },
+
+    "secure_password": "Enter secure password",
+    "@secure_password": {
+        "description": "hint message to enter a secure password"
+    },
+
+    "signup": "Sign Up",
+    "@signup": {
+        "description": "Create candidate's account"
+    },
+
+    "signin": "Sign In",
+    "@signin": {
+        "description": "Log in candidate's account"
+    },
+
+    "password": "password",
+    "@password": {
+        "description": "candidate's account password"
+    },
+
+    "repeat_password": "repeat password",
+    "@repeat_password": {
+        "description": "repeat candidate's account password"
+    },
+
+    "already_account": "Already have an account?",
+    "@already_account": {
+        "description": "message to create an account"
+    },
+
+    "dont_account": "Don''t have an account yet?",
+    "@dont_account": {
+        "description": "message to create account"
+    },
+
+    "password_error_length": "Password should contain at least one upper case, one special character, one number and must be at least 8 characters in length",
+    "@password_error_length": {
+        "description": "Error in length of password "
+    },
+
+    "password_error_equal": "Passwords are not equal",
+    "@password_error_equal": {
+        "description": "Error in passwords. Not equal "
+    },
+
+    "message_signup_success": "Account created Sign in with the same credentials",
+    "@message_signup_success": {
+        "description": "Message shown when a candidate is created"
+    },
+
+    "account_created": "Account Created ",
+    "@account_created": {
+        "description": "snackbar's title when a candidate is created"
+    },
+
+    "welcome": "Welcome",
+    "@welcome": {
+        "description": "welcome message"
+    },
+
+    "success": "Success",
+    "@success": {
+        "description": "success"
+    },
+
+    "applications": "Applications",
+    "@applications": {
+        "description": "applications"
+    },
+
+    "tests": "Tests",
+    "@tests": {
+        "description": "tests"
+    },
+
+    "interviews": "Interviews",
+    "@interviews": {
+        "description": "interviews"
+    },
+
+    "details": "View Details",
+    "@details": {
+        "description": "details"
+    },
+
+    "profile": "Profile",
+    "@profile": {
+        "description": "profile"
+    },
+
+    "name": "name",
+    "@name": {
+        "description": "name"
+    },
+
+    "lastname": "lastname",
+    "@lastname": {
+        "description": "lastname"
+    },
+
+    "phoneNumber": "phone",
+    "@phoneNumber": {
+        "description": "phone"
+    },
+
+    "numberId": "number Id",
+    "@numberId": {
+        "description": "numberID"
+    },
+
+    "nameLabel": "Enter your name",
+    "@nameLabel": {
+        "description": "name label"
+    },
+
+    "lastnameLabel": "Enter your lastname",
+    "@lastnameLabel": {
+        "description": "lastname label"
+    },
+
+    "numberIdLabel": "Enter your Id",
+    "@numberIdLabel": {
+        "description": "numberId Label"
+    },
+
+    "location": "location",
+    "@location": {
+        "description": "location"
+    },
+
+    "locationLabel": "Enter your location",
+    "@locationLabel": {
+        "description": "location"
+    },
+
+    "phoneLabel": "Enter your phone",
+    "@phoneLabel": {
+        "description": "phone"
+    },
+    
+    "position": "position",
+    "@position": {
+        "description": "position"
+    },
+
+    
+    "positionLabel": "Enter your position",
+    "@positionLabel": {
+        "description": "positionLabel"
+    },
+
+    "employmentType": "employment type",
+    "@employmentType": {
+        "description": "employment type"
+    },
+    
+    "validEmploymentType": "Enter valid employment type",
+    "@validEmploymentType": {
+        "description": "valid employment type"
+    },
+
+    "employmentTypeLabel": "Enter employment type",
+    "@employmentTypeLabel": {
+        "description": "employment type Label"
+    },
+
+    "companyName": "company name",
+    "@companyName": {
+        "description": "company name"
+    },
+
+    "companyLabel": "Enter company name",
+    "@companyLabel": {
+        "description": "company label"
+    },
+
+    "school": "school",
+    "@school": {
+        "description": "school"
+    },
+
+    "schoolLabel": "Enter school name",
+    "@schoolLabel": {
+        "description": "school Label"
+    },
+
+    "degree": "degree",
+    "@degree": {
+        "description": "degree"
+    },
+
+    "degreeLabel": "Enter degree",
+    "@degreeLabel": {
+        "description": "degreeLabel"
+    },
+
+    "next": "Next",
+    "@next": {
+        "description": "next"
+    },
+
+    "certification": "certification name",
+    "@certification": {
+        "description": "certification"
+    },
+
+    "certificationLabel": "Enter certification name",
+    "@certificationLabel": {
+        "description": "certification"
+    },
+
+    "organization": "Issuing organization",
+    "@organization": {
+        "description": "organization"
+    },
+
+    "organizationLabel": "Enter Issuing organization",
+    "@organizationLabel": {
+        "description": "organization label"
+    },
+
+    "createButton": "Create",
+    "@createButton": {
+        "description": "Create"
+    },
+
+    "startDate": "start date",
+    "@startDate": {
+        "description": "Create"
+    },
+
+    "endDate": "end date",
+    "@endDate": {
+        "description": "Create"
+    },
+
+    "validCompanyName": "enter valid company name",
+    "@validCompanyName": {
+        "description": "Create"
+    },
+
+    "validPosition": "enter valid position",
+    "@validPosition": {
+        "description": "Create"
+    },
+
+    "chooseDate": "choose a date",
+    "@chooseDate": {
+        "description": "Create"
+    },
+
+    "validSchool": "enter a valid school name",
+    "@validSchool": {
+        "description": "valid school"
+    },
+
+    "validDegree": "enter a valid degree",
+    "@validDegree": {
+        "description": "valid degree"
+    },
+
+    "skills": "skills",
+    "@skills": {
+        "description": "skills"
+    },
+
+    "validName": "enter valid name",
+    "@validName": {
+        "description": "valid name"
+    },
+
+    "validLastname": "enter valid lastname",
+    "@validLastname": {
+        "description": "valid lastname"
+    },
+
+    "validnumberId": "enter a valid number",
+    "@validnumberId": {
+        "description": "valid phone number"
+    },
+
+    "validlocation": "enter valid location",
+    "@validlocation": {
+        "description": "valid location"
+    },
+    
+    "validphone": "enter valid phone number",
+    "@validphone": {
+        "description": "valid phone number"
+    },
+
+    "validcertification": "enter valid certification",
+    "@validcertification": {
+        "description": "valid certification"
+    },
+
+    "validorganization": "enter valid organization",
+    "@validorganization": {
+        "description": "valid organization"
+    },
+
+    "company": "Company",
+    "@company": {
+        "description": "Company"
+    },
+
+    "position_e": "Position",
+    "@position_e": {
+        "description": "Position"
+    },
+
+    "startDate_e": "Start Date",
+    "@startDate_e": {
+        "description": "Start Date"
+    },
+
+    "endDate_e": "End Date",
+    "@endDate_e": {
+        "description": "End Date"
+    },
+
+    "skills_e": "Skills",
+    "@skills_e": {
+        "description": "Skills"
+    },
+
+    "noExperience": "No experience registered",
+    "@noExperience": {
+        "description": "No experience registered"
+    },
+
+    "education": "Education",
+    "@education": {
+        "description": "No experience registered"
+    },
+
+    "university": "University",
+    "@university": {
+        "description": "No experience registered"
+    },
+
+    "grade": "Grade",
+    "@grade": {
+        "description": "No experience registered"
+    },
+
+    "noEducation": "No education registered",
+    "@noEducation": {
+        "description": "No experience registered"
+    },
+
+    "certificate": "Certificate",
+    "@certificate": {
+        "description": "No experience registered"
+    },
+
+    "organization_c": "Organization",
+    "@organization_c": {
+        "description": "No experience registered"
+    },
+
+    "expeditionDate": "Expedition Date",
+    "@expeditionDate": {
+        "description": "No experience registered"
+    },
+
+    "expirationDate": "Expiration Date",
+    "@expirationDate": {
+        "description": "No experience registered"
+    },
+
+    "noCertificates": "No certificates",
+    "@noCertificates": {
+        "description": "No experience registered"
+    },
+
+    "emptyFields": "There are empty fields or invalid data",
+    "@emptyFields": {
+        "description": "No experience registered"
+    },
+
+    "experience": "Experience",
+    "@experience": {
+        "description": "experience"
+    },
+
+    "certification_p": "Certification",
+    "@certification_p": {
+        "description": "experience"
+    },
+    "add": "Add",
+    "@add": {
+        "description": "add"
+    },
+    "result": "Result",
+    "@result": {
+        "description": "hi"
+    },
+    "hi": "Hello",
+    "@hi": {
+        "description": "hi"
+    },
+    "interviewLink": "Interview link",
+    "@interviewLink": {
+        "description": "Interview link"
+    },
+    "date": "Date",
+    "@date": {
+        "description": "date"
+    },
+    "link": "Link",
+    "@link": {
+        "description": "date"
+    },
+    "project": "Project",
+    "@project": {
+        "description": "project"
+    },
+    "time": "Time",
+    "@time": {
+        "description": "time"
+    },
+
+    "reject": "reject",
+    "@reject": {
+        "description": "reject"
+    },
+    "pass": "pass",
+    "@pass": {
+        "description": "reject"
+    },
+    "inProcess": "in process",
+    "@inProcess": {
+        "description": "reject"
     }
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
 }
 

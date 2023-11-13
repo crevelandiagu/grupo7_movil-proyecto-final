@@ -54,20 +54,3 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         source-branch: release
         target-branch: main
-
-    - name: Build APK
-      run: flutter build apk --split-per-abi --release
-
-    - name: Build APP BUNDLE
-      run: flutter build appbundle
-
-    - name: Create Release
-      uses: ncipollo/release-action@v1.10.0
-      with:
-        artifacts: "build/app/outputs/apk/release/*.apk, build/app/outputs/bundle/release/*.aab"
-
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        name: release-apk
-        path: build/app/outputs/apk/
