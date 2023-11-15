@@ -36,3 +36,7 @@ En este repositorio se encuentra el codigo de la aplicación movil ABC Jobs.
 
 1. Flutter 3.9.13
 2. Git
+
+## coverage 
+
+https://app.codecov.io/gh/crevelandiagu/grupo7_movil-proyecto-final/tree/fix%2FFIX-conf
