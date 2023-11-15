@@ -1,6 +1,8 @@
 name: TEST tets
 run-name: ${{ github.actor }} is Deploy coverage 🚀⚗🔮🤖
-on: push
+on:
+  push:
+    branches: [ PROY**, FIX** ]
 
 jobs:
   build:

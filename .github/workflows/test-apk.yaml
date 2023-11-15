@@ -1,29 +1,73 @@
-name: TEST tets
-run-name: ${{ github.actor }} is Deploy coverage 🚀⚗🔮🤖
+name: TEST apk
+run-name: ${{ github.actor }} is Deploy apk 🚀⚗🔮🤖
 on:
+  pull_request:
+
   push:
 
+
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  build:
+    name: Build & Release
+    runs-on: macos-latest
+
     steps:
-    - uses: actions/checkout@v1
-    # we need java to build android apks
-    - uses: actions/setup-java@v1
-      with:
-        java-version: '12.x'
-    # this flutter action does the heavy lifting for us
-    - uses: subosito/flutter-action@v1
-      with:
-        channel: 'stable'
-    # get packages as you used to in your computer
-    - run: flutter pub get
-    # Now build apk
-    - run: flutter build apk --split-per-abi
-    # now relase the just created build
-    - name: Create a Release APK
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "build/app/outputs/apk/release/*.apk"
+        #1 Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+        #2 setup java
+      - name: Set Up Java
+        uses: actions/setup-java@v3.12.0
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+
+        #3 setup Flutter
+      - name: Set Up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.0'
+          channel: 'stable'
+
+        #4 install dependencies
+      - name: Install Dependencies
+        run: flutter pub get
+
+        #5 run test
+      - name: Test flutter app
+        run: flutter test
+
+        #6 build apk
+      - name: Build APK
+        run: flutter build apk --release
+
+        #7 build aab
+      - name: Build appBundle
+        run: flutter build appbundle
+
+        #8 build ipa
+      - name: Build IPA
+        run:
+          flutter build ipa --no-codesign
+      - name: Compress Archives and IPAs
+        run: |
+          cd build
+          tar -czf ios_build.tar.gz ios
+
+        #9 get those build to be available to download
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Releases
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab
+            build/ios_build.tar.gz
+
+        #10 create release with those builds
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab,build/ios_build.tar.gz"
+          tag: v1.0.${{ github.run_number }}
