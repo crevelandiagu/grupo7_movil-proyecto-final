@@ -7,70 +7,66 @@ on:
 jobs:
   test-app-mobile:
     name: Correr-test
-    if:  ${{ contains(github.event.head_commit.message, 'done') }}
+    if: ${{ contains(github.event.head_commit.message, 'done') }}
     runs-on: ubuntu-latest
     outputs:
       salida: ${{ steps.imprimir.outputs.respuesta }}
 
     steps:
-      - name: Checkout de repositorio
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-        run: | 
-            flutter pub get
-            flutter gen-l10n
-            dart run build_runner build
-            flutter test
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: flutter test
 
-      - name: Validar resultado con errores
+        #      - name: Validar resultado con errores
         if: ${{ failure() }}
         env:
           MENSAJE_ERROR: Una o varias pruebas fallaron
-        run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
-      - name: Validar resultado sin errores
+      - run: echo "::set-output name=respuesta::${MENSAJE_ERROR}"
+        #      - name: Validar resultado sin errores
         if: ${{ success() }}
         env:
           MENSAJE_EXITO: Todas las pruebas fueron exitosas
-        run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
-  
+      - run: echo "::set-output name=respuesta::${MENSAJE_EXITO}"
+
   create-apk:
     name: Create apk
     runs-on: ubuntu-latest
 
     # Add "id-token" with the intended permissions.
     permissions:
-      contents: 'read'
-      id-token: 'write'   
-  
+      contents: "read"
+      id-token: "write"
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Set current date as env variable
-      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-    
-    - uses: actions/checkout@v3
-    - uses: subosito/flutter-action@v2
-      with:
-        channel: "stable"
-    - run: flutter pub get
-    - run: flutter gen-l10n
-    - run: flutter build apk
- 
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v1'
-      with:
-        project_id: ${{ secrets.PROJECT_ID }}
-        credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set current date as env variable
+        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
 
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      - run: flutter build apk
 
-    - name: 'Set up Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@v0'
+      - id: "auth"
+        uses: "google-github-actions/auth@v1"
+        with:
+          project_id: ${{ secrets.PROJECT_ID }}
+          credentials_json: ${{ secrets.SERVICE_ACCOUNT_KEY }}
 
-    - name: 'Use gcloud CLI'
-      run: gsutil cp ./build/app/outputs/apk/release/app-release.apk gs://abc-jobs-apk/$NOW
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v0"
 
+      - name: "Use gcloud CLI"
+        run: gsutil cp ./build/app/outputs/apk/release/app-release.apk gs://abc-jobs-apk/$NOW
 
   merge-branch-develop:
     name: Merge-dev
