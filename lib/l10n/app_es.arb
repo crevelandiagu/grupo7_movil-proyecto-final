@@ -90,7 +90,8 @@
     "time": "Hora",
     "pass": "aprovado",
     "reject": "desaprovado",
-    "inProcess": "en proceso"
+    "inProcess": "en proceso",
+    "ok": "Aceptar"
     
 
 }
