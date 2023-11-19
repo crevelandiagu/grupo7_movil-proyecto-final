@@ -41,7 +41,8 @@ class ListInterviews extends StatelessWidget {
                   DataColumn(label: Text(AppLocalizations.of(context)!.date)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.time)),
                   // DataColumn(label: Text(AppLocalizations.of(context)!.link)),
-                  DataColumn(label: Text(AppLocalizations.of(context)!.result)),
+                  DataColumn(
+                      label: Text(AppLocalizations.of(context)!.details)),
                 ],
                 source: interviews,
                 rowsPerPage: 8,
