@@ -448,6 +448,10 @@
     "inProcess": "in process",
     "@inProcess": {
         "description": "reject"
+    },
+    "ok": "Ok",
+    "@ok": {
+        "description": "ok"
     }
 
 
