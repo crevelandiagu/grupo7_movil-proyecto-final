@@ -90,7 +90,12 @@
     "time": "Hora",
     "pass": "aprovado",
     "reject": "desaprovado",
-    "inProcess": "en proceso"
+    "inProcess": "en proceso",
+    "ok": "Aceptar",
+    "performance": "Desempeño",
+    "signinAsCompany": "Iniciar sesion compañia",
+    "signinAsCandidate": "Iniciar sesion candidato",
+    "performanceEvaluationSuccess": "Evaluación de desempeño creada"
     
 
 }

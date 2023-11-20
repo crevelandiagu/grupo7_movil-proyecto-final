@@ -1,0 +1,45 @@
+name: TEST apk
+run-name: ${{ github.actor }} is Deploy apk 🚀⚗🔮🤖
+on:
+  pull_request:
+  push:
+    branches: [test]
+
+jobs:
+  build:
+    name: Correr-test
+    runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.respuesta }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      - run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Test flutter app
+        run: flutter test
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Build appBundle
+        run: flutter build appbundle
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Releases
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab"
+          tag: v1.10.${{ github.run_number }}

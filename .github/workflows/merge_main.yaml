@@ -26,7 +26,7 @@ jobs:
           echo "::set-output name=respuesta::${MENSAJE_RELEASE}"
 
   merege-release-desarrollo:
-    name: Merge-desarrolo
+    name: Merge-develop-release
     needs: Crear-Release
     runs-on: ubuntu-latest
     outputs:
@@ -57,18 +57,25 @@ jobs:
       - run: flutter pub get
       - run: flutter gen-l10n
       - run: dart run build_runner build --delete-conflicting-outputs
-      - run: flutter test
 
-      - name: Build Android APK
+#      - name: Test flutter app
+#        run: flutter test
+
+      - name: Build APK
         run: flutter build apk --release
 
-      - name: Upload Android release artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: android_release
-          path: "build/app/outputs/apk/release"
+      - name: Build appBundle
+        run: flutter build appbundle
 
-#      - name: Validar resultado con errores
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Releases
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab
+
+        #      - name: Validar resultado con errores
         if: ${{ failure() }}
         env:
           MENSAJE_ERROR: Una o varias pruebas fallaron
@@ -111,16 +118,34 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           append_to_pre_release_tag:
-          custom_tag: 3.17.4-${{ steps.name_branch.outputs.NAME_BRANCH }}
-
-      - name: Download all artifacts
-        uses: actions/download-artifact@v3
+          custom_tag: 3.21.4-${{ steps.name_branch.outputs.NAME_BRANCH }}
 
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          artifacts: "android_release/*.apk"
-          tag: v3.17.4
-          name: v3.17.4
-          body: Inicio sprint 3
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab"
+          tag: v3.21.4
+          name: v3.21.4
+          body: Mitad sprint 3
+
+  build-coverage-codecov:
+    name: Correr-test-codecov
+    needs: [test-app-mobile, merege-release-main ]
+    runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.imprimir.outputs.respuesta }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter gen-l10n
+      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: flutter test
+      - run: flutter test --coverage .
+      - uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

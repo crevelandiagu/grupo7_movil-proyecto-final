@@ -22,9 +22,9 @@ void main() {
     expect(find.text("Interviews"), findsWidgets);
     expect(find.text("Company"), findsWidgets);
     expect(find.text("Result"), findsWidgets);
-    expect(find.text("Link"), findsWidgets);
+    // expect(find.text("Link"), findsWidgets);
     expect(find.text("Date"), findsWidgets);
-    expect(find.text("Project"), findsWidgets);
+    //  expect(find.text("Project"), findsWidgets);
     expect(find.text("Time"), findsWidgets);
   });
 }

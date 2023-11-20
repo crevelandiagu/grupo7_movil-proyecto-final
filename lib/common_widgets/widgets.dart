@@ -1,10 +1,12 @@
 import 'package:abc_jobs/candidates/services/cv_service.dart';
 import 'package:abc_jobs/candidates/views/dashboard.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
+import 'package:abc_jobs/company/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Widget bottomNavigation(
     Function(int index) onTap, BuildContext context, int idx) {
@@ -76,6 +78,48 @@ Widget cardDashboard(
   );
 }
 
+Widget cardDashboardCompany(String title, BuildContext context,
+    VoidCallback? function, VoidCallback? functionB) {
+  return Container(
+    width: 250,
+    padding: const EdgeInsets.symmetric(horizontal: 45, vertical: 8),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        border: Border.all(
+          width: 3.0,
+          color: const Color.fromARGB(255, 58, 0, 229),
+        )),
+    child: Column(
+      children: [
+        Text(
+          title,
+          style: GoogleFonts.workSans(
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        ElevatedButton(
+          key: const Key("createButton"),
+          style: ElevatedButton.styleFrom(
+              fixedSize: const Size(120, 20),
+              backgroundColor: Color.fromARGB(255, 58, 0, 229)),
+          onPressed: function,
+          child: Text(AppLocalizations.of(context)!.createButton),
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              fixedSize: const Size(120, 20),
+              backgroundColor: Color.fromARGB(255, 58, 0, 229)),
+          onPressed: functionB,
+          child: Text(AppLocalizations.of(context)!.details),
+        ),
+      ],
+    ),
+  );
+}
+
 Widget cardDashboardProfile(String title, BuildContext context,
     VoidCallback? functionA, VoidCallback? functionB) {
   return Container(
@@ -131,10 +175,29 @@ PreferredSizeWidget customAppBar() {
         onPressed: () {},
         icon: const Icon(Icons.notifications),
       ),
-      IconButton(
-        onPressed: () {},
+
+      PopupMenuButton(
         icon: const Icon(Icons.account_circle),
+        itemBuilder: (context) {
+          return [
+            PopupMenuItem<int>(
+              value: 0,
+              child: const Text("Logout"),
+            ),
+          ];
+        },
+        onSelected: (value) async {
+          if (value == 0) {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            await prefs.clear();
+            Get.off(() => SplashScreen());
+          }
+        },
       ),
+      // IconButton(
+      //   onPressed: () {},
+      //   icon: const Icon(Icons.account_circle),
+      // ),
     ],
   );
 }
