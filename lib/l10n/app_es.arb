@@ -91,7 +91,11 @@
     "pass": "aprovado",
     "reject": "desaprovado",
     "inProcess": "en proceso",
-    "ok": "Aceptar"
+    "ok": "Aceptar",
+    "performance": "Desempeño",
+    "signinAsCompany": "Iniciar sesion compañia",
+    "signinAsCandidate": "Iniciar sesion candidato",
+    "performanceEvaluationSuccess": "Evaluación de desempeño creada"
     
 
 }

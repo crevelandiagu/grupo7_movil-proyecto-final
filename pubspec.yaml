@@ -41,6 +41,7 @@ dependencies:
   test_cov_console: ^0.2.2
   intl_phone_field: ^3.1.0
   jiffy: ^6.2.1
+  select_form_field: ^2.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -99,4 +100,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-
