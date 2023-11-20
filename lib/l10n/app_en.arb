@@ -452,6 +452,23 @@
     "ok": "Ok",
     "@ok": {
         "description": "ok"
+    },
+    "performance": "Performance",
+    "@performance": {
+        "description": "ok"
+    },
+
+    "signinAsCompany": "Sign in as company",
+    "@signinAsCompany": {
+        "description": "ok"
+    },
+    "signinAsCandidate": "Sign in as candidate",
+    "@signinAsCandidate": {
+        "description": "ok"
+    },
+    "performanceEvaluationSuccess": "Performace test created",
+    "@performanceEvaluationSuccess": {
+        "description": "ok"
     }
 
 
