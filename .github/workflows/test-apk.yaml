@@ -2,9 +2,7 @@ name: TEST apk
 run-name: ${{ github.actor }} is Deploy apk 🚀⚗🔮🤖
 on:
   pull_request:
-
   push:
-
 
 jobs:
   build:
@@ -22,20 +20,15 @@ jobs:
       - run: flutter gen-l10n
       - run: dart run build_runner build --delete-conflicting-outputs
 
-        #5 run test
       - name: Test flutter app
         run: flutter test
 
-        #6 build apk
       - name: Build APK
         run: flutter build apk --release
 
-        #7 build aab
       - name: Build appBundle
         run: flutter build appbundle
 
-
-        #9 get those build to be available to download
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -44,7 +37,6 @@ jobs:
             build/app/outputs/flutter-apk/app-release.apk
             build/app/outputs/bundle/release/app-release.aab
 
-        #10 create release with those builds
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
