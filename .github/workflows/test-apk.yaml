@@ -3,6 +3,7 @@ run-name: ${{ github.actor }} is Deploy apk 🚀⚗🔮🤖
 on:
   pull_request:
   push:
+    branches: [test]
 
 jobs:
   build:
