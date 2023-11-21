@@ -487,6 +487,15 @@
     "enterText": "please enter some text",
     "@enterText": {
         "description": "evaluator"
+    },
+
+    "comments": "Comments",
+    "@comments": {
+        "description": "comments"
+    },
+    "performanceResults": "Evaluation performance results",
+    "@performanceResults": {
+        "description": "evaluator"
     }
 
 

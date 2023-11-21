@@ -3,9 +3,11 @@ import 'dart:ffi';
 
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:abc_jobs/company/services/performance_service.dart';
+import 'package:abc_jobs/company/views/performace_results.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 class CompanyDashBoard extends StatefulWidget {
@@ -86,7 +88,10 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
                     cardDashboardCompany(
                         AppLocalizations.of(context)!.performance, context, () {
                       crearEvaluacion(context);
-                    }, () {}),
+                    }, () {
+                      Get.to(() =>
+                          PerformanceResult(service: PerformanceService()));
+                    }),
                     const SizedBox(
                       height: 50,
                     ),
