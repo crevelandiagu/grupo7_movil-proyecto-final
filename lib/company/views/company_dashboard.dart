@@ -1,13 +1,17 @@
+import 'dart:developer';
 import 'dart:ffi';
 
 import 'package:abc_jobs/common_widgets/widgets.dart';
+import 'package:abc_jobs/company/services/performance_service.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 class CompanyDashBoard extends StatefulWidget {
-  const CompanyDashBoard({super.key});
+  const CompanyDashBoard({super.key, this.service});
+
+  final PerformanceService? service;
 
   @override
   State<CompanyDashBoard> createState() => _CompanyDashBoardState();
@@ -23,19 +27,19 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
   String _candidateValue = "";
   String _employeeValue = "";
 
-  final _projects = [
+  List<Map<String, dynamic>> projects = [
     {'label': 'Project 1', 'value': 1},
     {'label': 'Project 2', 'value': 2},
     {'label': 'Project 3', 'value': 3},
   ];
 
-  final _employees = [
+  List<Map<String, dynamic>> employees = [
     {'label': 'Evaluator 1', 'value': 1},
     {'label': 'Evaluator 2', 'value': 2},
     {'label': 'Evaluator 3', 'value': 3},
   ];
 
-  final _candidates = [
+  List<Map<String, dynamic>> candidates = [
     {'label': 'Candidate 1', 'value': 1},
     {'label': 'Candidate 2', 'value': 2},
     {'label': 'Candidate 3', 'value': 3},
@@ -48,7 +52,13 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
     _getValues();
   }
 
-  Future<void> _getValues() async {}
+  Future<void> _getValues() async {
+    // var projectsToProcess = await widget.service?.getAllProjects();
+    // projects = processProjects(projectsToProcess);
+
+    // var employeesToProcess = await widget.service?.getAllEmployees();
+    // employees = processEmployees(employeesToProcess);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,11 +131,11 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
                         padding: EdgeInsets.all(8),
                         child: SelectFormField(
                           type: SelectFormFieldType.dialog,
-                          items: _projects,
-                          labelText: "project",
+                          items: projects,
+                          labelText: AppLocalizations.of(context)!.project,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "please enter some text";
+                              return AppLocalizations.of(context)!.enterText;
                             }
                             return null;
                           },
@@ -138,11 +148,11 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
                         padding: EdgeInsets.all(8),
                         child: SelectFormField(
                           type: SelectFormFieldType.dialog,
-                          items: _candidates,
-                          labelText: "select a candidate",
+                          items: candidates,
+                          labelText: AppLocalizations.of(context)!.candidate,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "please enter some text";
+                              return AppLocalizations.of(context)!.enterText;
                             }
                             return null;
                           },
@@ -155,11 +165,11 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
                         padding: EdgeInsets.all(8),
                         child: SelectFormField(
                           type: SelectFormFieldType.dialog,
-                          items: _employees,
-                          labelText: "select a evaluator",
+                          items: employees,
+                          labelText: AppLocalizations.of(context)!.evaluator,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "please enter some text";
+                              return AppLocalizations.of(context)!.enterText;
                             }
                             return null;
                           },
@@ -173,7 +183,11 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
-                              //llamar api
+                              // widget.service?.crearEvaluacionDesempeno(
+                              //     candidateId: int.parse(_candidateValue),
+                              //     projectId: int.parse(_projectValue),
+                              //     employeeId: int.parse(_employeeValue),
+                              //     score: 100);
                               Navigator.of(context).pop();
                               showSnackbar(
                                   AppLocalizations.of(context)!

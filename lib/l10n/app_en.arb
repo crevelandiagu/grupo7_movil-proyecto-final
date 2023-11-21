@@ -469,7 +469,27 @@
     "performanceEvaluationSuccess": "Performace test created",
     "@performanceEvaluationSuccess": {
         "description": "ok"
+    },
+
+    "score": "Score",
+    "@score": {
+        "description": "score"
+    },
+    "candidate": "Candidate",
+    "@candidate": {
+        "description": "candidate"
+    },
+    "evaluator": "Evaluator",
+    "@evaluator": {
+        "description": "evaluator"
+    },
+
+    "enterText": "please enter some text",
+    "@enterText": {
+        "description": "evaluator"
     }
+
+
 
 
 

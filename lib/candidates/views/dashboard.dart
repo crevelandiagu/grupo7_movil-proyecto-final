@@ -1,3 +1,4 @@
+import 'package:abc_jobs/candidates/services/interview_service.dart';
 import 'package:abc_jobs/candidates/views/list_interviews.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,9 @@ class Dashboard extends StatelessWidget {
                   ),
                   cardDashboard(
                       AppLocalizations.of(context)!.interviews, context, () {
-                    Get.to(() => ListInterviews());
+                    Get.to(() => ListInterviews(
+                          service: InterviewService(),
+                        ));
                   }),
                   SizedBox(
                     height: 50,

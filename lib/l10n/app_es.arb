@@ -95,7 +95,11 @@
     "performance": "Desempeño",
     "signinAsCompany": "Iniciar sesion compañia",
     "signinAsCandidate": "Iniciar sesion candidato",
-    "performanceEvaluationSuccess": "Evaluación de desempeño creada"
+    "performanceEvaluationSuccess": "Evaluación de desempeño creada",
+    "score": "Puntaje",
+    "candidate": "Candidato",
+    "evaluator": "Evaluador",
+    "enterText": "por favor ingresa algo de texto"
     
 
 }
