@@ -1,5 +1,9 @@
+import 'package:abc_jobs/candidates/services/candidate_performance_service.dart';
 import 'package:abc_jobs/candidates/services/cv_service.dart';
+import 'package:abc_jobs/candidates/services/interview_service.dart';
+import 'package:abc_jobs/candidates/views/candidate_list_performance.dart';
 import 'package:abc_jobs/candidates/views/dashboard.dart';
+import 'package:abc_jobs/candidates/views/list_interviews.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
 import 'package:abc_jobs/company/views/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +21,13 @@ Widget bottomNavigation(
           case 0:
             Get.to(() => Dashboard());
             break;
+          case 1:
+            Get.to(() => PerformanceListCandidate(
+                service: CandidatePerformanceService()));
+            break;
+          case 2:
+            Get.to(() => ListInterviews(service: InterviewService()));
+            break;
           case 3:
             Get.to(() => Profile(
                   service: CVService(),
@@ -32,7 +43,7 @@ Widget bottomNavigation(
         // BottomNavigationBarItem(icon: Icon(Icons.work_outline), label: "Applications"),
         NavigationDestination(
             icon: Icon(Icons.school_outlined),
-            label: AppLocalizations.of(context)!.tests),
+            label: AppLocalizations.of(context)!.performance),
         NavigationDestination(
             icon: Icon(Icons.co_present_outlined),
             label: AppLocalizations.of(context)!.interviews),
