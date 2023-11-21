@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class PerformanceData extends DataTableSource {
-  PerformanceData({required this.data, this.context});
+class PerformanceCandidateData extends DataTableSource {
+  PerformanceCandidateData({required this.data, this.context});
 
   final data;
   BuildContext? context;
@@ -20,15 +20,11 @@ class PerformanceData extends DataTableSource {
       cells: [
         DataCell(Text(data[index]['project'].toString())),
         DataCell(
-          Text(data[index]['candidate'].toString()),
+          Text(data[index]['score'].toString()),
         ),
-        DataCell(
-          Text(data[index]['evaluator'].toString()),
-        ),
-        DataCell(Text(data[index]['score'].toString())),
         DataCell(
           Text(data[index]['comments'].toString()),
-        )
+        ),
       ],
     );
   }
