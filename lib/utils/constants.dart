@@ -26,5 +26,5 @@ class Constants {
       "http://10.0.2.2:3002/company-employees/employee/";
 
   //obtener projectos compañia "http://10.0.2.2:3007/projects/<id_company>"
-  static String companyProjectsUri = "http://10.0.2.2:3007/projects";
+  static String projectsUri = "http://10.0.2.2:3007/projects";
 }
