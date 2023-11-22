@@ -35,7 +35,7 @@ class InterviewsData extends DataTableSource {
             showDialog<void>(
                 context: context!,
                 builder: (BuildContext context) {
-                  final status = data[index]['status'].toString();
+                  final status = data[index]['status'];
                   return AlertDialog(
                       content: Stack(
                     clipBehavior: Clip.none,
@@ -51,32 +51,64 @@ class InterviewsData extends DataTableSource {
                           ),
                         ),
                       ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Text(data[index]['status']),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Text(
-                              data[index]['project_name'],
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Center(
+                                child: Text(
+                                  status,
+                                  style: TextStyle(
+                                      background: Paint()
+                                        ..strokeWidth = 20
+                                        ..color = colorStatus(status)
+                                        ..strokeJoin = StrokeJoin.round
+                                        ..strokeCap = StrokeCap.round
+                                        ..style = PaintingStyle.stroke,
+                                      color: Colors.black),
+                                ),
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Text(
-                                AppLocalizations.of(context)!.interviewLink),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: ElevatedButton(
-                              onPressed: () => Navigator.of(context).pop(),
-                              child: Text(AppLocalizations.of(context)!.ok),
+                            Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Text(
+                                data[index]['project_name'],
+                                style: TextStyle(
+                                    background: Paint()
+                                      ..strokeWidth = 20
+                                      ..color = Colors.grey
+                                      ..strokeJoin = StrokeJoin.round
+                                      ..strokeCap = StrokeCap.round
+                                      ..style = PaintingStyle.stroke,
+                                    color: Colors.black),
+                              ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Text(
+                                AppLocalizations.of(context)!.interviewLink,
+                                style: TextStyle(
+                                    background: Paint()
+                                      ..strokeWidth = 20
+                                      ..color = Colors.grey
+                                      ..strokeJoin = StrokeJoin.round
+                                      ..strokeCap = StrokeCap.round
+                                      ..style = PaintingStyle.stroke,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: ElevatedButton(
+                                onPressed: () => Navigator.of(context).pop(),
+                                child: Text(AppLocalizations.of(context)!.ok),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ));
