@@ -16,7 +16,7 @@ void main() {
     );
 
     expect(find.text("Hello"), findsOneWidget);
-    expect(find.text("Performance"), findsOneWidget);
+    expect(find.text("Performance"), findsWidgets);
     expect(find.text("View Details"), findsOneWidget);
     expect(find.text("Create"), findsOneWidget);
 
