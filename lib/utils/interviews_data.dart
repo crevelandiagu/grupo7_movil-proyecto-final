@@ -35,6 +35,7 @@ class InterviewsData extends DataTableSource {
             showDialog<void>(
                 context: context!,
                 builder: (BuildContext context) {
+                  final statusIntl = intl(data[index]['status'], context);
                   final status = data[index]['status'];
                   return AlertDialog(
                       content: Stack(
@@ -60,7 +61,7 @@ class InterviewsData extends DataTableSource {
                               padding: const EdgeInsets.all(15),
                               child: Center(
                                 child: Text(
-                                  status,
+                                  statusIntl,
                                   style: TextStyle(
                                       background: Paint()
                                         ..strokeWidth = 20
@@ -127,6 +128,17 @@ class InterviewsData extends DataTableSource {
         return const Color.fromARGB(255, 76, 175, 80);
       default:
         return const Color.fromARGB(255, 130, 177, 255);
+    }
+  }
+
+  String intl(String status, BuildContext context) {
+    switch (status) {
+      case "reject":
+        return AppLocalizations.of(context)!.reject;
+      case "pass":
+        return AppLocalizations.of(context)!.pass;
+      default:
+        return AppLocalizations.of(context)!.inProcess;
     }
   }
 }

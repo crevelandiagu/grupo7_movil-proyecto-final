@@ -31,15 +31,6 @@ class App extends StatelessWidget {
       title: "ABC Jobs",
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      /* initialRoute: '/',
-      getPages: [
-        GetPage(name: '/', page: ()=>Signin()),
-        GetPage(name:'/signup', page: () => Signup()),
-        GetPage(name: '/dashboard', page: ()=>Dashboard()),
-        GetPage(name: '/experience', page: ()=>Experience()),
-       // GetPage(name: '/profile', page: ()=>Profile()),
-      ], */
-
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

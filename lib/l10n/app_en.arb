@@ -443,11 +443,11 @@
     },
     "pass": "pass",
     "@pass": {
-        "description": "reject"
+        "description": "pass"
     },
     "inProcess": "in process",
     "@inProcess": {
-        "description": "reject"
+        "description": "in process"
     },
     "ok": "Ok",
     "@ok": {
