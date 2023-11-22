@@ -1,5 +1,6 @@
 import 'package:abc_jobs/candidates/controllers/profile_work_controller.dart';
 import 'package:abc_jobs/candidates/services/cv_service.dart';
+import 'package:abc_jobs/candidates/services/interview_service.dart';
 import 'package:abc_jobs/candidates/views/dashboard.dart';
 import 'package:abc_jobs/candidates/views/experience.dart';
 import 'package:abc_jobs/candidates/views/list_interviews.dart';
@@ -30,15 +31,6 @@ class App extends StatelessWidget {
       title: "ABC Jobs",
       theme: lightTheme,
       themeMode: ThemeMode.light,
-      /* initialRoute: '/',
-      getPages: [
-        GetPage(name: '/', page: ()=>Signin()),
-        GetPage(name:'/signup', page: () => Signup()),
-        GetPage(name: '/dashboard', page: ()=>Dashboard()),
-        GetPage(name: '/experience', page: ()=>Experience()),
-       // GetPage(name: '/profile', page: ()=>Profile()),
-      ], */
-
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -48,7 +40,7 @@ class App extends StatelessWidget {
         Locale("en"),
         Locale("es"),
       ],
-      home: Dashboard(),
+      home: SplashScreen(),
     );
   }
 }

@@ -15,6 +15,7 @@ class Signup extends StatelessWidget {
 
   final controller = Get.put(ValidatorController());
   final passwordController = TextEditingController();
+  final passwordRController = TextEditingController();
   final emailController = TextEditingController();
   final service = AuthService();
 
@@ -100,6 +101,7 @@ class Signup extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 15, vertical: 40.0),
                   child: TextField(
+                    controller: passwordRController,
                     key: const Key('textPasswordr'),
                     onChanged: (value) {
                       controller.validateEqualPassword(
@@ -151,6 +153,7 @@ class Signup extends StatelessWidget {
                               scaffold: scaffold);
                           emailController.text = "";
                           passwordController.text = "";
+                          passwordRController.text = "";
                         } catch (e) {
                           showSnackbar(e.toString(), scaffold: scaffold);
                         }

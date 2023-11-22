@@ -20,13 +20,13 @@ class InterviewsData extends DataTableSource {
   DataRow getRow(int index) {
     return DataRow(
       cells: [
-        DataCell(Text(data[index]['company_name'].toString())),
+        DataCell(Text(data[index]['company_name'])),
         //    DataCell(Text(data[index]['project_name'].toString())),
         DataCell(
-          Text(Jiffy.parse(data[index]['date_interview'].toString()).yMMMMd),
+          Text(Jiffy.parse(data[index]['date_interview']).yMMMMd),
         ),
         DataCell(
-          Text(Jiffy.parse(data[index]['date_interview'].toString()).jm),
+          Text(Jiffy.parse(data[index]['date_interview']).jm),
         ),
         //  DataCell(Text(AppLocalizations.of(context!)!.interviewLink)),
         DataCell(
@@ -35,116 +35,84 @@ class InterviewsData extends DataTableSource {
             showDialog<void>(
                 context: context!,
                 builder: (BuildContext context) {
-                  final status = data[index]['status'].toString();
+                  final statusIntl = intl(data[index]['status'], context);
+                  final status = data[index]['status'];
                   return AlertDialog(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      content: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Positioned(
+                        right: -40,
+                        top: -40,
+                        child: InkResponse(
+                          onTap: () => Navigator.of(context).pop(),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.red,
+                            child: Icon(Icons.close),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            Flexible(
-                              child: Text(AppLocalizations.of(context)!.result,
-                                  style: GoogleFonts.workSans(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500)),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Flexible(
-                              child: Container(
-                                padding: const EdgeInsets.all(15),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: colorStatus(status)),
-                                child: Text(status,
-                                    style: GoogleFonts.workSans(
-                                        color: status == 'in process'
-                                            ? Colors.black87
-                                            : Colors.white70,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: Text(AppLocalizations.of(context)!.project,
-                                  style: GoogleFonts.workSans(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500)),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Flexible(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.grey,
-                                ),
-                                padding: const EdgeInsets.all(15),
-                                child: Text(data[index]['project_name'],
-                                    style: GoogleFonts.workSans(
-                                        color: Colors.black87,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500)),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: Text(AppLocalizations.of(context)!.link,
-                                  style: GoogleFonts.workSans(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500)),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Flexible(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.grey,
-                                ),
-                                padding: const EdgeInsets.all(15),
+                            Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Center(
                                 child: Text(
-                                    AppLocalizations.of(context)!.interviewLink,
-                                    style: GoogleFonts.workSans(
-                                        color: Colors.blueAccent,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500)),
+                                  statusIntl,
+                                  style: TextStyle(
+                                      background: Paint()
+                                        ..strokeWidth = 20
+                                        ..color = colorStatus(status)
+                                        ..strokeJoin = StrokeJoin.round
+                                        ..strokeCap = StrokeCap.round
+                                        ..style = PaintingStyle.stroke,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Text(
+                                data[index]['project_name'],
+                                style: TextStyle(
+                                    background: Paint()
+                                      ..strokeWidth = 20
+                                      ..color = Colors.grey
+                                      ..strokeJoin = StrokeJoin.round
+                                      ..strokeCap = StrokeCap.round
+                                      ..style = PaintingStyle.stroke,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(15),
+                              child: Text(
+                                AppLocalizations.of(context)!.interviewLink,
+                                style: TextStyle(
+                                    background: Paint()
+                                      ..strokeWidth = 20
+                                      ..color = Colors.grey
+                                      ..strokeJoin = StrokeJoin.round
+                                      ..strokeCap = StrokeCap.round
+                                      ..style = PaintingStyle.stroke,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: ElevatedButton(
+                                onPressed: () => Navigator.of(context).pop(),
+                                child: Text(AppLocalizations.of(context)!.ok),
                               ),
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                    actions: <Widget>[
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(AppLocalizations.of(context)!.ok))
+                      ),
                     ],
-                  );
+                  ));
                 });
           },
         ),
@@ -160,6 +128,17 @@ class InterviewsData extends DataTableSource {
         return const Color.fromARGB(255, 76, 175, 80);
       default:
         return const Color.fromARGB(255, 130, 177, 255);
+    }
+  }
+
+  String intl(String status, BuildContext context) {
+    switch (status) {
+      case "reject":
+        return AppLocalizations.of(context)!.reject;
+      case "pass":
+        return AppLocalizations.of(context)!.pass;
+      default:
+        return AppLocalizations.of(context)!.inProcess;
     }
   }
 }

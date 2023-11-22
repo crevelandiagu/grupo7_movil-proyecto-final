@@ -101,7 +101,8 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
             ),
           ),
         ),
-        bottomNavigationBar: bottomNavigation((index) => null, context, 0),
+        bottomNavigationBar:
+            bottomNavigationCompany((index) => null, context, 0),
       ),
     );
   }

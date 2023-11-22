@@ -5,6 +5,9 @@ import 'package:abc_jobs/candidates/views/candidate_list_performance.dart';
 import 'package:abc_jobs/candidates/views/dashboard.dart';
 import 'package:abc_jobs/candidates/views/list_interviews.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
+import 'package:abc_jobs/company/services/performance_service.dart';
+import 'package:abc_jobs/company/views/company_dashboard.dart';
+import 'package:abc_jobs/company/views/performance_evaluation.dart';
 import 'package:abc_jobs/company/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,6 +53,45 @@ Widget bottomNavigation(
         NavigationDestination(
             icon: Icon(Icons.person_outline),
             label: AppLocalizations.of(context)!.profile),
+      ]);
+
+  return navigation;
+}
+
+Widget bottomNavigationCompany(
+    Function(int index) onTap, BuildContext context, int idx) {
+  NavigationBar navigation = NavigationBar(
+      selectedIndex: idx,
+      onDestinationSelected: (int index) {
+        switch (index) {
+          case 0:
+            Get.to(() => CompanyDashBoard());
+            break;
+          case 1:
+            Get.to(() => PerformanceEvaluation(service: PerformanceService()));
+            break;
+          case 2:
+            //  Get.to(() => ListInterviews(service: InterviewService()));
+            break;
+          case 3:
+            break;
+          default:
+            break;
+        }
+      },
+      destinations: [
+        NavigationDestination(
+            icon: Icon(Icons.home_outlined), label: "Dashboard"),
+        // BottomNavigationBarItem(icon: Icon(Icons.work_outline), label: "Applications"),
+        NavigationDestination(
+            icon: Icon(Icons.school_outlined),
+            label: AppLocalizations.of(context)!.performance),
+        NavigationDestination(
+            icon: Icon(Icons.co_present_outlined),
+            label: AppLocalizations.of(context)!.interviews),
+        NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            label: AppLocalizations.of(context)!.tests),
       ]);
 
   return navigation;
