@@ -18,12 +18,12 @@ class PerformanceCandidateData extends DataTableSource {
   DataRow getRow(int index) {
     return DataRow(
       cells: [
-        DataCell(Text(data[index]['project'].toString())),
+        DataCell(Text(data[index]['project'])),
         DataCell(
-          Text(data[index]['score'].toString()),
+          Text(data[index]['score'] ?? ""),
         ),
         DataCell(
-          Text(data[index]['comments'].toString()),
+          Text(data[index]['comments'] ?? ""),
         ),
       ],
     );

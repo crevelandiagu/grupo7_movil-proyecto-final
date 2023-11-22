@@ -496,6 +496,34 @@
     "performanceResults": "Evaluation performance results",
     "@performanceResults": {
         "description": "evaluator"
+    },
+    "evaluate": "Evaluate",
+    "@evaluate": {
+        "description": "evaluate"
+    },
+    "save": "Save",
+    "@save": {
+        "description": "save"
+    },
+    "enterNumber": "Please enter a number",
+    "@enterNumber": {
+        "description": "enter number"
+    },
+    "enterNumber0100": "Please enter number between 0 and 100",
+    "@enterNumber0100": {
+        "description": "enter number"
+    },
+    "invalidaNumberFormat": "Invalid number format",
+    "@invalidaNumberFormat": {
+        "description": "invalid number format"
+    },
+    "actions": "Action",
+    "@actions": {
+        "description": "actions"
+    },
+    "evaluation": "Evaluation",
+    "@evaluation": {
+        "description": "actions"
     }
 
 

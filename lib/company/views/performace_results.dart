@@ -14,7 +14,7 @@ class PerformanceResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(),
-      bottomNavigationBar: bottomNavigation((index) => null, context, 2),
+      bottomNavigationBar: bottomNavigationCompany((index) => null, context, 2),
       body: FutureBuilder<List<dynamic>>(
         future: service.getAllEvaluationsCompany(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
