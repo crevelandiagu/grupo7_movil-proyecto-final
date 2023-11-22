@@ -91,7 +91,7 @@ Widget bottomNavigationCompany(
             label: AppLocalizations.of(context)!.interviews),
         NavigationDestination(
             icon: Icon(Icons.person_outline),
-            label: AppLocalizations.of(context)!.profile),
+            label: AppLocalizations.of(context)!.tests),
       ]);
 
   return navigation;

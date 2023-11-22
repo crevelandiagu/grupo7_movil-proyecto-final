@@ -40,7 +40,7 @@ class App extends StatelessWidget {
         Locale("en"),
         Locale("es"),
       ],
-      home: ListInterviews(service: InterviewService()),
+      home: CompanyDashBoard(),
     );
   }
 }
