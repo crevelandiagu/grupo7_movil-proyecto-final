@@ -108,7 +108,9 @@
     "enterNumber0100": "Por favor ingresa un numero entre 0 y 100",
     "invalidaNumberFormat": "Formato de numero invalido",
     "actions": "Acción",
-    "evaluation": "Evaluación"
+    "evaluation": "Evaluación",
+    "test": "Prueba",
+    "testResults": "Resultados de las pruebas"
     
 
 }

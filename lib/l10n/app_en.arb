@@ -523,7 +523,15 @@
     },
     "evaluation": "Evaluation",
     "@evaluation": {
-        "description": "actions"
+        "description": "evaluation"
+    },
+    "test": "Test",
+    "@test": {
+        "description": "test"
+    },
+    "testResults": "Test results",
+    "@testResults": {
+        "description": "test results"
     }
 
 

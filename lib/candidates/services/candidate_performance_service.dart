@@ -24,4 +24,23 @@ class CandidatePerformanceService {
       throw Exception(e);
     }
   }
+
+  Future<List<dynamic>> getAllTestResults() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int candidateId = prefs.getInt('id') as int;
+
+      http.Response res = await http.get(
+          Uri.parse('${Constants.candidateEvaluations}$candidateId/evaluation'),
+          headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+
+      return [];
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }
