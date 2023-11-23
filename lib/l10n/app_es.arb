@@ -110,7 +110,8 @@
     "actions": "Acción",
     "evaluation": "Evaluación",
     "test": "Prueba",
-    "testResults": "Resultados de las pruebas"
+    "testResults": "Resultados de las pruebas",
+    "logout": "cerrar sesión"
     
 
 }

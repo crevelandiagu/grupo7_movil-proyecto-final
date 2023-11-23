@@ -67,6 +67,20 @@ class PerformanceService {
     }
   }
 
+  Future<List<dynamic>> getAllTestResults() async {
+    try {
+      http.Response res = await http.get(Uri.parse(Constants.projectsUri),
+          headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+      return [];
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
   Future<List<dynamic>> getAllEmployees() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();

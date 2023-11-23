@@ -69,6 +69,15 @@ class MockPerformanceService extends _i1.Mock
       ) as _i3.Future<List<dynamic>>);
 
   @override
+  _i3.Future<List<dynamic>> getAllTestResults() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllTestResults,
+          [],
+        ),
+        returnValue: _i3.Future<List<dynamic>>.value(<dynamic>[]),
+      ) as _i3.Future<List<dynamic>>);
+
+  @override
   _i3.Future<List<dynamic>> getAllEmployees() => (super.noSuchMethod(
         Invocation.method(
           #getAllEmployees,

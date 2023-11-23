@@ -230,12 +230,15 @@ PreferredSizeWidget customAppBar() {
       ),
 
       PopupMenuButton(
+        offset: const Offset(-8, 40),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         icon: const Icon(Icons.account_circle),
         itemBuilder: (context) {
           return [
             PopupMenuItem<int>(
+              padding: EdgeInsets.zero,
               value: 0,
-              child: const Text("Logout"),
+              child: Text(AppLocalizations.of(context)!.logout),
             ),
           ];
         },

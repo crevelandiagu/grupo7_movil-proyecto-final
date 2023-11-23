@@ -532,6 +532,10 @@
     "testResults": "Test results",
     "@testResults": {
         "description": "test results"
+    },
+    "logout": "logout",
+    "@logout": {
+        "description": "logout"
     }
 
 
