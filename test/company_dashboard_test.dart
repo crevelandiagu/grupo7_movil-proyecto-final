@@ -26,5 +26,15 @@ void main() {
     await tester.pump();
 
     expect(find.byType(AlertDialog), findsOneWidget);
+
+    expect(find.text('Project'), findsOneWidget);
+    expect(find.text('Candidate'), findsOneWidget);
+    expect(find.text('Evaluator'), findsOneWidget);
+
+    await tester.tap(find.byKey(const Key('dialogsubmit')));
+
+    await tester.pump();
+
+    expect(find.text('Create'), findsWidgets);
   });
 }

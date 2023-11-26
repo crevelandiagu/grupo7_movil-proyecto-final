@@ -16,7 +16,7 @@ class ListInterviews extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigation((index) => null, context, 2),
       body: FutureBuilder<List<dynamic>>(
-        future: mockData(), //service.getInterviewsCanditate(),
+        future: service.getInterviewsCanditate(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -61,115 +61,115 @@ class ListInterviews extends StatelessWidget {
   }
 }
 
-Future<List<dynamic>> mockData() async {
-  //await Future.delayed(Duration(milliseconds: 2000));
-  var list = [
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 1,
-      "company_name": "company 1",
-      "project_name": "project 1",
-      "status": "pass"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 2,
-      "company_name": "company 2",
-      "project_name": "project 2",
-      "status": "reject"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 3,
-      "company_name": "company 3",
-      "project_name": "project 3",
-      "status": "pass"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 4,
-      "company_name": "company 4",
-      "project_name": "project 4",
-      "status": "in procress"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 5,
-      "company_name": "company 5",
-      "project_name": "project 5",
-      "status": "pass"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 6,
-      "company_name": "company 6",
-      "project_name": "project 6",
-      "status": "reject"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 7,
-      "company_name": "company 7",
-      "project_name": "project 7",
-      "status": "pass"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 8,
-      "company_name": "company 8",
-      "project_name": "project 8",
-      "status": "reject"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 9,
-      "company_name": "company 9",
-      "project_name": "project 9",
-      "status": "pass"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 10,
-      "company_name": "company 10",
-      "project_name": "project 10",
-      "status": "in procress"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 11,
-      "company_name": "company 11",
-      "project_name": "project 11",
-      "status": "pass"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 12,
-      "company_name": "company 12",
-      "project_name": "project 12",
-      "status": "reject"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 13,
-      "company_name": "company 13",
-      "project_name": "project 13",
-      "status": "in procress"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 14,
-      "company_name": "company 14",
-      "project_name": "project 14",
-      "status": "pass"
-    },
-    {
-      "date_interview": "1988/09/19",
-      "company_id": 15,
-      "company_name": "company 15",
-      "project_name": "project 15",
-      "status": "reject"
-    },
-  ];
+// Future<List<dynamic>> mockData() async {
+//   //await Future.delayed(Duration(milliseconds: 2000));
+//   var list = [
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 1,
+//       "company_name": "company 1",
+//       "project_name": "project 1",
+//       "status": "pass"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 2,
+//       "company_name": "company 2",
+//       "project_name": "project 2",
+//       "status": "reject"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 3,
+//       "company_name": "company 3",
+//       "project_name": "project 3",
+//       "status": "pass"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 4,
+//       "company_name": "company 4",
+//       "project_name": "project 4",
+//       "status": "in procress"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 5,
+//       "company_name": "company 5",
+//       "project_name": "project 5",
+//       "status": "pass"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 6,
+//       "company_name": "company 6",
+//       "project_name": "project 6",
+//       "status": "reject"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 7,
+//       "company_name": "company 7",
+//       "project_name": "project 7",
+//       "status": "pass"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 8,
+//       "company_name": "company 8",
+//       "project_name": "project 8",
+//       "status": "reject"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 9,
+//       "company_name": "company 9",
+//       "project_name": "project 9",
+//       "status": "pass"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 10,
+//       "company_name": "company 10",
+//       "project_name": "project 10",
+//       "status": "in procress"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 11,
+//       "company_name": "company 11",
+//       "project_name": "project 11",
+//       "status": "pass"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 12,
+//       "company_name": "company 12",
+//       "project_name": "project 12",
+//       "status": "reject"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 13,
+//       "company_name": "company 13",
+//       "project_name": "project 13",
+//       "status": "in procress"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 14,
+//       "company_name": "company 14",
+//       "project_name": "project 14",
+//       "status": "pass"
+//     },
+//     {
+//       "date_interview": "1988/09/19",
+//       "company_id": 15,
+//       "company_name": "company 15",
+//       "project_name": "project 15",
+//       "status": "reject"
+//     },
+//   ];
 
-  return list;
-}
+//   return list;
+// }

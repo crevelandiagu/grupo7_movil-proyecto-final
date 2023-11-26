@@ -14,7 +14,7 @@ class PerformanceListCandidate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(),
-      bottomNavigationBar: bottomNavigation((index) => null, context, 2),
+      bottomNavigationBar: bottomNavigation((index) => null, context, 1),
       body: FutureBuilder<List<dynamic>>(
         future: service.getAllEvaluations(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
@@ -58,3 +58,60 @@ class PerformanceListCandidate extends StatelessWidget {
     );
   }
 }
+
+// Future<List<dynamic>> mockData() async {
+//   //await Future.delayed(Duration(milliseconds: 2000));
+//   var list = [
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//   ];
+
+//   return list;
+// }

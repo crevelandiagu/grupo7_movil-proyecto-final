@@ -187,6 +187,7 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
                       Padding(
                         padding: EdgeInsets.all(8),
                         child: ElevatedButton(
+                          key: const Key('dialogsubmit'),
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
                               // widget.service?.crearEvaluacionDesempeno(

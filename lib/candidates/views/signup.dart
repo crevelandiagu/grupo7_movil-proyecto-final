@@ -28,7 +28,7 @@ class Signup extends StatelessWidget {
       key: scaffold,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Sigup"),
+          title: Text(AppLocalizations.of(context)!.signup),
           centerTitle: true,
         ),
         body: SingleChildScrollView(

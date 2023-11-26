@@ -77,7 +77,7 @@ void main() {
 
     await tester.pumpWidget(
       GetMaterialApp(
-        home: TestResultsCompany(
+        home: TestResultsCompanyView(
           service: service,
         ),
         localizationsDelegates: [

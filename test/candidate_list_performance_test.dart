@@ -91,7 +91,7 @@ void main() {
 
     expect(find.byType(PaginatedDataTable), findsOneWidget);
 
-    expect(find.text("Evaluation performance results"), findsWidgets);
+    expect(find.text("Performance results"), findsWidgets);
     expect(find.text("Project"), findsWidgets);
     expect(find.text("Score"), findsWidgets);
     expect(find.text("Comments"), findsWidgets);
