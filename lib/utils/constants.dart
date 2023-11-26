@@ -9,8 +9,11 @@ class Constants {
       "http://10.0.2.2:3000/candidate/profile/education/";
   static String certificatesUri =
       "http://10.0.2.2:3000/candidate/profile/certificates/";
+
+  //entrevistas candidato
   static String listInterviewsUri =
       "http://10.0.2.2:3010/interviews/candidate/";
+
   static String companySignInUri = "http://10.0.2.2:3001/company/login";
 
   //crear evalución

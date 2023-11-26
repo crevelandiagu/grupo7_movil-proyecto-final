@@ -28,6 +28,7 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
   String _projectValue = "";
   String _candidateValue = "";
   String _employeeValue = "";
+  String _scoreValue = "";
 
   List<Map<String, dynamic>> projects = [
     {'label': 'Project 1', 'value': 1},
@@ -67,6 +68,7 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
     return ScaffoldMessenger(
       key: scaffold,
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: customAppBar(),
         body: SingleChildScrollView(
           child: Center(
@@ -181,6 +183,34 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
                           },
                           onChanged: (value) => setState(() {
                             _employeeValue = value ?? "";
+                          }),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            labelText: AppLocalizations.of(context)!.score,
+                          ),
+                          validator: (value) {
+                            if (value != null && value.isEmpty) {
+                              return AppLocalizations.of(context)!.enterNumber;
+                            }
+                            try {
+                              double number = double.parse(value!);
+                              if (number >= 0 && number <= 100) {
+                                return null;
+                              } else {
+                                return AppLocalizations.of(context)!
+                                    .enterNumber0100;
+                              }
+                            } catch (e) {
+                              return AppLocalizations.of(context)!
+                                  .invalidaNumberFormat;
+                            }
+                          },
+                          onChanged: (value) => setState(() {
+                            _scoreValue = value ?? "";
                           }),
                         ),
                       ),

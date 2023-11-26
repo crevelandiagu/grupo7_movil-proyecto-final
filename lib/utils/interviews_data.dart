@@ -21,7 +21,8 @@ class InterviewsData extends DataTableSource {
     return DataRow(
       cells: [
         DataCell(Text(data[index]['company_name'])),
-        //    DataCell(Text(data[index]['project_name'].toString())),
+        DataCell(Text(data[index]['score'] ?? "")),
+
         DataCell(
           Text(Jiffy.parse(data[index]['date_interview']).yMMMMd),
         ),

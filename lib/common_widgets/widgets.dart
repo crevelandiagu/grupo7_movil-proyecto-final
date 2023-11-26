@@ -71,7 +71,7 @@ Widget bottomNavigationCompany(
             Get.to(() => CompanyDashBoard());
             break;
           case 1:
-            Get.to(() => PerformanceEvaluation(service: PerformanceService()));
+            // Get.to(() => PerformanceEvaluation(service: PerformanceService()));
             break;
           case 2:
             Get.to(() => TestResultsCompanyView(service: PerformanceService()));
@@ -87,9 +87,9 @@ Widget bottomNavigationCompany(
         NavigationDestination(
             icon: Icon(Icons.home_outlined), label: "Dashboard"),
         // BottomNavigationBarItem(icon: Icon(Icons.work_outline), label: "Applications"),
-        NavigationDestination(
-            icon: Icon(Icons.school_outlined),
-            label: AppLocalizations.of(context)!.performanceEvaluation),
+        // NavigationDestination(
+        //     icon: Icon(Icons.school_outlined),
+        //     label: AppLocalizations.of(context)!.performanceEvaluation),
         NavigationDestination(
             icon: Icon(Icons.person_outline),
             label: AppLocalizations.of(context)!.tests),
