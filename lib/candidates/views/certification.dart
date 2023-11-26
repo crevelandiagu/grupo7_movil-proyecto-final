@@ -98,3 +98,17 @@ class Certification extends StatelessWidget {
     );
   }
 }
+
+// Future<Map<String, dynamic>> certificationInfo() async {
+//   // await Future.delayed(Duration(milliseconds: 5000));
+//   return {
+//     "certificates": [
+//       {
+//         "name_certificate": "certificate1",
+//         "company": "company1",
+//         "expedition_date": "2007/07/23",
+//         "date_expiry": "2009/08/05",
+//       },
+//     ],
+//   };
+// }

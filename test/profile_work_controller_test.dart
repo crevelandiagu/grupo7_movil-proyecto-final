@@ -35,6 +35,18 @@ void main() {
       controller?.validatCompany(company);
       expect(controller?.company.value, false);
     });
+
+    test("test worktype", () {
+      var worktype = "programer";
+      controller?.validateWorktype(worktype);
+      expect(controller?.workTye.value, true);
+    });
+    test("test worktype invalid", () {
+      var worktype = "";
+      controller?.validateWorktype(worktype);
+      expect(controller?.workTye.value, false);
+    });
+
     test("test form fields", () {
       controller?.company.value = true;
       controller?.position.value = true;

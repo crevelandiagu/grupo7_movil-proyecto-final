@@ -89,7 +89,7 @@ void main() {
 
     await tester.pump();
 
-    expect(find.text("Evaluation performance results"), findsWidgets);
+    expect(find.text("Performance results"), findsWidgets);
     expect(find.text("Project"), findsWidgets);
     expect(find.text("Candidate"), findsWidgets);
     expect(find.text("Score"), findsWidgets);

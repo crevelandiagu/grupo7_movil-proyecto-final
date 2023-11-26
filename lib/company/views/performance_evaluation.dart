@@ -15,7 +15,7 @@ class PerformanceEvaluation extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: customAppBar(),
-      bottomNavigationBar: bottomNavigationCompany((index) => null, context, 2),
+      bottomNavigationBar: bottomNavigationCompany((index) => null, context, 1),
       body: FutureBuilder<List<dynamic>>(
         future: service?.getAllEvaluationsCompany(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {

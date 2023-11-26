@@ -193,3 +193,14 @@ class Profile extends StatelessWidget {
             }));
   }
 }
+
+// Future<Map<String, dynamic>> personalInfo() async {
+//   // await Future.delayed(Duration(milliseconds: 5000));
+//   return {
+//     "initial_latter": "DH",
+//     "full_name": "Daniel Huertas",
+//     "email": "dan@gmail.com",
+//     "nacionality": "colombia",
+//     "phone_number": "1234567"
+//   };
+// }

@@ -90,5 +90,8 @@ void main() {
     expect(find.text("Project"), findsOneWidget);
     expect(find.text("Action"), findsOneWidget);
     expect(find.text("Comments"), findsOneWidget);
+
+    expect(find.byType(PaginatedDataTable), findsOneWidget);
+    expect(find.byType(ElevatedButton), findsWidgets);
   });
 }

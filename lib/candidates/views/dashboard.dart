@@ -1,5 +1,8 @@
+import 'package:abc_jobs/candidates/services/candidate_performance_service.dart';
 import 'package:abc_jobs/candidates/services/interview_service.dart';
+import 'package:abc_jobs/candidates/views/candidate_list_performance.dart';
 import 'package:abc_jobs/candidates/views/list_interviews.dart';
+import 'package:abc_jobs/candidates/views/test_results.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,8 +33,11 @@ class Dashboard extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  cardDashboard(AppLocalizations.of(context)!.applications,
-                      context, () {}),
+                  cardDashboard(
+                      AppLocalizations.of(context)!.performance, context, () {
+                    Get.to(() => PerformanceListCandidate(
+                        service: CandidatePerformanceService()));
+                  }),
                   SizedBox(
                     height: 50,
                   ),
@@ -44,8 +50,11 @@ class Dashboard extends StatelessWidget {
                   SizedBox(
                     height: 50,
                   ),
-                  cardDashboard(
-                      AppLocalizations.of(context)!.tests, context, () {}),
+                  cardDashboard(AppLocalizations.of(context)!.tests, context,
+                      () {
+                    Get.to(() =>
+                        TestResults(service: CandidatePerformanceService()));
+                  }),
                 ],
               ),
             ],

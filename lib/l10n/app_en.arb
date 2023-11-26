@@ -493,7 +493,7 @@
     "@comments": {
         "description": "comments"
     },
-    "performanceResults": "Evaluation performance results",
+    "performanceResults": "Performance results",
     "@performanceResults": {
         "description": "evaluator"
     },
@@ -536,7 +536,12 @@
     "logout": "logout",
     "@logout": {
         "description": "logout"
+    },
+    "performanceEvaluation": "Performance evaluation",
+    "@performanceEvaluation": {
+        "description": "logout"
     }
+
 
 
 

@@ -37,7 +37,7 @@ class PersonalInfo extends StatelessWidget {
       key: scaffold,
       child: Scaffold(
         appBar: customAppBar(),
-        bottomNavigationBar: bottomNavigation((index) => null, context, 0),
+        bottomNavigationBar: bottomNavigation((index) => null, context, 3),
         body: SingleChildScrollView(
           key: Key('scroll'),
           child: Obx(

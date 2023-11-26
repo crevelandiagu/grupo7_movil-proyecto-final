@@ -31,7 +31,9 @@ class SigninC extends StatelessWidget {
       key: scaffold,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Signin"),
+          title: Text(AppLocalizations.of(context)!.signin +
+              " " +
+              AppLocalizations.of(context)!.company),
           centerTitle: true,
         ),
         body: SingleChildScrollView(

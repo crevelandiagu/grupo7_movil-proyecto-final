@@ -29,7 +29,9 @@ class Signin extends StatelessWidget {
       key: scaffold,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Signin"),
+          title: Text(AppLocalizations.of(context)!.signin +
+              " " +
+              AppLocalizations.of(context)!.candidate),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
