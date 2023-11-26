@@ -25,12 +25,12 @@ class TestResultCompany extends DataTableSource {
   DataRow getRow(int index) {
     return DataRow(
       cells: [
-        DataCell(Text(data[index]['project'])),
+        DataCell(Text(data[index]['project_name'])),
         DataCell(
-          Text(data[index]['candidate']),
+          Text(data[index]['candidate_name']),
         ),
         DataCell(
-          Text(data[index]['test']),
+          Text(data[index]['progress_status']),
         ),
         DataCell(Text(data[index]['score'] ?? "")),
         DataCell(
@@ -137,6 +137,11 @@ class TestResultCompany extends DataTableSource {
                                               if (_formkey.currentState!
                                                   .validate()) {
                                                 //llamada api
+                                                service.evaluarTest(
+                                                    score: int.parse(
+                                                        scoreController.text),
+                                                    assementId: int.parse(
+                                                        data[index]['id']));
                                               }
                                             },
                                             child: Text(

@@ -39,7 +39,7 @@ class Constants {
 
   //resultado de pruebas tecnicas empresas
   static String companyGetResultTestsUri =
-      "http://10.0.2.2:3010/assement/candidate/";
+      "http://10.0.2.2:3010/assement/company/";
 
   // empresa evalua un test
   static String companyEvaluateCandidateUri =

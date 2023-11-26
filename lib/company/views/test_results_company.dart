@@ -18,7 +18,7 @@ class TestResultsCompanyView extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigationCompany((index) => null, context, 1),
       body: FutureBuilder<List<dynamic>>(
-        future: mockData(), //service.getAllTestResults(),
+        future: service.getAllTestResults(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());

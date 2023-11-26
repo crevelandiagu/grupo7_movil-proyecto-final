@@ -18,53 +18,53 @@ void main() {
     //await Future.delayed(Duration(milliseconds: 2000));
     var list = [
       {
-        "project": "project 1",
+        "project_name": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
+        "feedback": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
+        "project_name": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
+        "feedback": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
+        "project_name": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
+        "feedback": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
+        "project_name": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
+        "feedback": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
+        "project_name": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
+        "feedback": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
+        "project_name": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
+        "feedback": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
+        "project_name": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
+        "feedback": "lorem ipsum ordo seclorum"
       },
     ];
 

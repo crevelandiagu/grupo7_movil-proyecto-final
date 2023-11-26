@@ -102,4 +102,24 @@ class PerformanceService {
   //     throw Exception(e);
   //   }
   // }
+
+  Future<Map<dynamic, dynamic>> evaluarTest(
+      {required int score, required int assementId}) async {
+    try {
+      http.Response res = await http.post(
+          Uri.parse(
+              '${Constants.companyEvaluateCandidateUri}$assementId/candidate'),
+          body: jsonEncode({
+            "score": score,
+          }),
+          headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+      return {};
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }
