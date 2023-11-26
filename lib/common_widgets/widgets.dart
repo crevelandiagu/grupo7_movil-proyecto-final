@@ -6,10 +6,12 @@ import 'package:abc_jobs/candidates/views/dashboard.dart';
 import 'package:abc_jobs/candidates/views/list_interviews.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
 import 'package:abc_jobs/company/services/performance_service.dart';
+import 'package:abc_jobs/company/views/assign_candidate_project.dart';
 import 'package:abc_jobs/company/views/company_dashboard.dart';
 import 'package:abc_jobs/company/views/performance_evaluation.dart';
 import 'package:abc_jobs/company/views/splash_screen.dart';
 import 'package:abc_jobs/company/views/test_results_company.dart';
+import 'package:abc_jobs/utils/candidate_project_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -74,6 +76,9 @@ Widget bottomNavigationCompany(
           case 2:
             Get.to(() => TestResultsCompanyView(service: PerformanceService()));
             break;
+          case 3:
+            Get.to(() => AssignCandidateProject(service: PerformanceService()));
+            break;
           default:
             break;
         }
@@ -88,6 +93,9 @@ Widget bottomNavigationCompany(
         NavigationDestination(
             icon: Icon(Icons.person_outline),
             label: AppLocalizations.of(context)!.tests),
+        NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            label: AppLocalizations.of(context)!.project),
       ]);
 
   return navigation;

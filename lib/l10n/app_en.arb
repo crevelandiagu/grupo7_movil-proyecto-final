@@ -544,6 +544,19 @@
     "basicInformation": "Basic Information",
     "@basicInformation": {
         "description": "logout"
+    },
+    
+    "assign": "Assign",
+    "@assign": {
+        "description": "Assign"
+    },
+    "assignProject": "Assign project",
+    "@assignProject": {
+        "description": "Assign"
+    },
+    "assignSuccess": "Successfully assigned candidate",
+    "@assignSuccess": {
+        "description": "Assign"
     }
 
 

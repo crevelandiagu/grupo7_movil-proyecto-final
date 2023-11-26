@@ -113,7 +113,10 @@
     "testResults": "Resultados pruebas técnicas",
     "logout": "cerrar sesión",
     "performanceEvaluation": "Evaluar desempeño",
-    "basicInformation": "Información basica"
+    "basicInformation": "Información basica",
+    "assign": "Asignar",
+    "assignProject": "Asignar proyecto",
+    "assignSuccess": "Candidato asignado con exíto"
 
     
 

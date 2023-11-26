@@ -81,21 +81,21 @@ class PerformanceService {
     }
   }
 
-  Future<List<dynamic>> getAllEmployees() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      int companyId = prefs.getInt('companyId') as int;
+  // Future<List<dynamic>> getAllEmployees() async {
+  //   try {
+  //     SharedPreferences prefs = await SharedPreferences.getInstance();
+  //     int companyId = prefs.getInt('companyId') as int;
 
-      http.Response res = await http.get(
-          Uri.parse('${Constants.companyEmployeesUri}$companyId'),
-          headers: buildHeaders());
+  //     http.Response res = await http.get(
+  //         Uri.parse('${Constants.companyEmployeesUri}$companyId'),
+  //         headers: buildHeaders());
 
-      if (res.statusCode == 200) {
-        return jsonDecode(res.body);
-      }
-      return [];
-    } catch (e) {
-      throw Exception(e);
-    }
-  }
+  //     if (res.statusCode == 200) {
+  //       return jsonDecode(res.body);
+  //     }
+  //     return [];
+  //   } catch (e) {
+  //     throw Exception(e);
+  //   }
+  // }
 }
