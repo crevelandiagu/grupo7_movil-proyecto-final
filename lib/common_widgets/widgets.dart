@@ -76,12 +76,11 @@ Widget bottomNavigationCompany(
             Get.to(() => TestResultsCompanyView(service: PerformanceService()));
             break;
           case 2:
-            Get.to(() => AssignCandidateProject(service: PerformanceService()));
+            // Get.to(() => AssignCandidateProject(service: PerformanceService()));
+            Get.to(() => SearchCandidate(service: PerformanceService()));
 
             break;
           case 3:
-            Get.to(() => SearchCandidate(service: PerformanceService()));
-
             break;
           default:
             break;
@@ -95,10 +94,10 @@ Widget bottomNavigationCompany(
             label: AppLocalizations.of(context)!.tests),
         NavigationDestination(
             icon: Icon(Icons.person_outline),
-            label: AppLocalizations.of(context)!.project),
-        NavigationDestination(
-            icon: Icon(Icons.person_outline),
             label: AppLocalizations.of(context)!.search),
+        // NavigationDestination(
+        //     icon: Icon(Icons.person_outline),
+        //     label: AppLocalizations.of(context)!.search),
       ]);
 
   return navigation;

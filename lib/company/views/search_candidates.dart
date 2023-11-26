@@ -35,7 +35,7 @@ class SearchCandidate extends StatelessWidget {
       child: Scaffold(
         appBar: customAppBar(),
         bottomNavigationBar:
-            bottomNavigationCompany((index) => null, context, 3),
+            bottomNavigationCompany((index) => null, context, 2),
         body: SingleChildScrollView(
           key: const Key('scroll'),
           child: Obx(

@@ -16,7 +16,7 @@ class TestResultsCompanyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(),
-      bottomNavigationBar: bottomNavigationCompany((index) => null, context, 2),
+      bottomNavigationBar: bottomNavigationCompany((index) => null, context, 1),
       body: FutureBuilder<List<dynamic>>(
         future: mockData(), //service.getAllTestResults(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
