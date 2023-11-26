@@ -40,7 +40,7 @@ class App extends StatelessWidget {
         Locale("en"),
         Locale("es"),
       ],
-      home: Dashboard(),
+      home: CertificationInfo(service: CVService()),
     );
   }
 }

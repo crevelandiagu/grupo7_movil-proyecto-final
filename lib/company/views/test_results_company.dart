@@ -62,59 +62,59 @@ class TestResultsCompanyView extends StatelessWidget {
   }
 }
 
-Future<List<dynamic>> mockData() async {
-  //await Future.delayed(Duration(milliseconds: 2000));
-  var list = [
-    {
-      "project": "project 1",
-      "candidate": "company 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "candidate": "company 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "candidate": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "candidate": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "candidate": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "candidate": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "candidate": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-  ];
+// Future<List<dynamic>> mockData() async {
+//   //await Future.delayed(Duration(milliseconds: 2000));
+//   var list = [
+//     {
+//       "project": "project 1",
+//       "candidate": "company 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "company 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//   ];
 
-  return list;
-}
+//   return list;
+// }

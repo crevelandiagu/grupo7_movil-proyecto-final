@@ -540,6 +540,10 @@
     "performanceEvaluation": "Performance evaluation",
     "@performanceEvaluation": {
         "description": "logout"
+    },
+    "basicInformation": "Basic Information",
+    "@basicInformation": {
+        "description": "logout"
     }
 
 

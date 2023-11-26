@@ -59,6 +59,12 @@ class WorkInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Text(AppLocalizations.of(context)!.experience,
+                      style: GoogleFonts.workSans(
+                          fontSize: 23, fontWeight: FontWeight.w500)),
+                ),
+                Padding(
                   padding: const EdgeInsets.fromLTRB(15, 40, 15, 30),
                   child: TextField(
                     controller: positionContoller,

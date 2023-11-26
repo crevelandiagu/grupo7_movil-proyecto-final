@@ -112,7 +112,8 @@
     "test": "Prueba",
     "testResults": "Resultados pruebas técnicas",
     "logout": "cerrar sesión",
-    "performanceEvaluation": "Evaluar desempeño"
+    "performanceEvaluation": "Evaluar desempeño",
+    "basicInformation": "Información basica"
 
     
 
