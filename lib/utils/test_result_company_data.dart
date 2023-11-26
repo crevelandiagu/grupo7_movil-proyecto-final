@@ -1,11 +1,13 @@
+import 'package:abc_jobs/company/services/performance_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TestResultCompany extends DataTableSource {
-  TestResultCompany({required this.data, this.context});
+  TestResultCompany({required this.data, this.context, required this.service});
 
   final data;
   BuildContext? context;
+  PerformanceService service;
 
   final _formkey = GlobalKey<FormState>();
 

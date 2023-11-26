@@ -32,4 +32,16 @@ class Constants {
   static String projectsUri = "http://10.0.2.2:3007/projects";
 
   static String candidateEvaluations = "http://10.0.2.2:3007/candidate/";
+
+  //resultado de pruebas tecnicas candidatos
+  static String candidateGetResultTestsUri =
+      "http://10.0.2.2:3010/assement/candidate/";
+
+  //resultado de pruebas tecnicas empresas
+  static String companyGetResultTestsUri =
+      "http://10.0.2.2:3010/assement/candidate/";
+
+  // empresa evalua un test
+  static String companyEvaluateCandidateUri =
+      "http://10.0.2.2:3010/assement/take-exam/";
 }

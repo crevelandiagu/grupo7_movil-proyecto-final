@@ -69,7 +69,11 @@ class PerformanceService {
 
   Future<List<dynamic>> getAllTestResults() async {
     try {
-      http.Response res = await http.get(Uri.parse(Constants.projectsUri),
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int companyId = prefs.getInt('companyId') as int;
+
+      http.Response res = await http.get(
+          Uri.parse('${Constants.companyGetResultTestsUri}$companyId'),
           headers: buildHeaders());
 
       if (res.statusCode == 200) {

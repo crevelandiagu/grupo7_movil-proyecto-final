@@ -557,6 +557,16 @@
     "assignSuccess": "Successfully assigned candidate",
     "@assignSuccess": {
         "description": "Assign"
+    },
+
+    "searchCandidate": "Search Candidate",
+    "@searchCandidate": {
+        "description": "search"
+    },
+
+    "search": "Search",
+    "@search": {
+        "description": "search"
     }
 
 

@@ -26,7 +26,8 @@ class TestResultsCompanyView extends StatelessWidget {
 
           var data = snapshot.data!;
 
-          var testResults = TestResultCompany(data: data, context: context);
+          var testResults =
+              TestResultCompany(data: data, context: context, service: service);
 
           return Column(
             children: [

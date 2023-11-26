@@ -116,7 +116,9 @@
     "basicInformation": "Información basica",
     "assign": "Asignar",
     "assignProject": "Asignar proyecto",
-    "assignSuccess": "Candidato asignado con exíto"
+    "assignSuccess": "Candidato asignado con exíto",
+    "searchCandidate": "Buscar candidato",
+    "search": "Buscar"
 
     
 
