@@ -221,7 +221,9 @@ class SchoolInfo extends StatelessWidget {
 
                               child: ElevatedButton(
                                 //    key: const Key('elevated'),
-                                onPressed: () {},
+                                onPressed: () {
+                                  controller.skills.removeAt(index);
+                                },
                                 child: Text(
                                   controller.skills[index],
                                   //key: const Key('skiText'),

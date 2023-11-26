@@ -21,12 +21,6 @@ class SearchCandidate extends StatelessWidget {
 
   ProfileSchoolController controller = Get.put(ProfileSchoolController());
 
-  TextEditingController institutionController = TextEditingController();
-  TextEditingController gradeController = TextEditingController();
-  TextEditingController positionController = TextEditingController();
-  var startDate = "";
-  var endDate = "";
-
   PerformanceService service;
 
   TextEditingController skillController = TextEditingController();
@@ -108,7 +102,9 @@ class SearchCandidate extends StatelessWidget {
 
                               child: ElevatedButton(
                                 //    key: const Key('elevated'),
-                                onPressed: () {},
+                                onPressed: () {
+                                  controller.skills.removeAt(index);
+                                },
                                 child: Text(
                                   controller.skills[index],
                                   //key: const Key('skiText'),

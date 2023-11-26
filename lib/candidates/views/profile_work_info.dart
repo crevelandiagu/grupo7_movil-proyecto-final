@@ -227,7 +227,9 @@ class WorkInfo extends StatelessWidget {
                             return Padding(
                               padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  controller.skills.removeAt(index);
+                                },
                                 child: Text(controller.skills[index]),
                               ),
                             );
