@@ -47,7 +47,7 @@ class App extends StatelessWidget {
         Locale("en"),
         Locale("es"),
       ],
-      home: CompanyDashBoard(),
+      home: SplashScreen(),
     );
   }
 }
