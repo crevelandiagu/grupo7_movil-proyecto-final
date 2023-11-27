@@ -15,10 +15,11 @@ class TestResultsCompanyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: customAppBar(),
-      bottomNavigationBar: bottomNavigationCompany((index) => null, context, 2),
+      bottomNavigationBar: bottomNavigationCompany((index) => null, context, 1),
       body: FutureBuilder<List<dynamic>>(
-        future: service.getAllTestResults(),
+        future: mockData(), //.getAllTestResults(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -26,7 +27,8 @@ class TestResultsCompanyView extends StatelessWidget {
 
           var data = snapshot.data!;
 
-          var testResults = TestResultCompany(data: data, context: context);
+          var testResults =
+              TestResultCompany(data: data, context: context, service: service);
 
           return Column(
             children: [
@@ -47,6 +49,8 @@ class TestResultsCompanyView extends StatelessWidget {
                   DataColumn(label: Text(AppLocalizations.of(context)!.score)),
                   DataColumn(
                       label: Text(AppLocalizations.of(context)!.comments)),
+                  DataColumn(
+                      label: Text(AppLocalizations.of(context)!.actions)),
                 ],
                 source: testResults,
                 rowsPerPage: 8,
@@ -66,52 +70,52 @@ Future<List<dynamic>> mockData() async {
   //await Future.delayed(Duration(milliseconds: 2000));
   var list = [
     {
-      "project": "project 1",
-      "candidate": "company 1",
-      "score": "30",
-      "test": "evaluator 1",
+      "project_name": "project 1",
+      "candidate_name": "company 1",
+      "score": null,
+      "progress_status": "evaluator 1",
       "comments": "lorem ipsum ordo seclorum"
     },
     {
-      "project": "project 1",
-      "candidate": "company 1",
+      "project_name": "project 1",
+      "candidate_name": "company 1",
       "score": "30",
-      "test": "evaluator 1",
+      "progress_status": "evaluator 1",
       "comments": "lorem ipsum ordo seclorum"
     },
     {
-      "project": "project 1",
-      "candidate": "candidate 1",
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
       "score": "30",
-      "test": "evaluator 1",
+      "progress_status": "evaluator 1",
       "comments": "lorem ipsum ordo seclorum"
     },
     {
-      "project": "project 1",
-      "candidate": "candidate 1",
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
       "score": "30",
-      "test": "evaluator 1",
+      "progress_status": "evaluator 1",
       "comments": "lorem ipsum ordo seclorum"
     },
     {
-      "project": "project 1",
-      "candidate": "candidate 1",
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
       "score": "30",
-      "test": "evaluator 1",
+      "progress_status": "evaluator 1",
       "comments": "lorem ipsum ordo seclorum"
     },
     {
-      "project": "project 1",
-      "candidate": "candidate 1",
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
       "score": "30",
-      "test": "evaluator 1",
+      "progress_status": "evaluator 1",
       "comments": "lorem ipsum ordo seclorum"
     },
     {
-      "project": "project 1",
-      "candidate": "candidate 1",
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
       "score": "30",
-      "test": "evaluator 1",
+      "progress_status": "evaluator 1",
       "comments": "lorem ipsum ordo seclorum"
     },
   ];

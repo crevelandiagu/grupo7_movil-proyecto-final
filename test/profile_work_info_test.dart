@@ -60,6 +60,7 @@ void main() {
     expect(find.text("enter valid position"), findsOneWidget);
     expect(find.text("enter valid company name"), findsOneWidget);
     expect(find.text("choose a date"), findsWidgets);
+    expect(find.text("Experience"), findsWidgets);
 
     expect(positionF, findsOneWidget);
     expect(companyF, findsOneWidget);

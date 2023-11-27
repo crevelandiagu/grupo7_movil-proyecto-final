@@ -18,52 +18,52 @@ void main() {
     //await Future.delayed(Duration(milliseconds: 2000));
     var list = [
       {
-        "project": "project 1",
-        "candidate": "company 1",
+        "project_name": "project 1",
+        "candidate_name": "company 1",
         "score": "30",
-        "test": "evaluator 1",
+        "progress_status": "evaluator 1",
         "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
-        "candidate": "company 1",
+        "project_name": "project 1",
+        "candidate_name": "company 1",
         "score": "30",
-        "test": "evaluator 1",
+        "progress_status": "evaluator 1",
         "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
-        "candidate": "candidate 1",
+        "project_name": "project 1",
+        "candidate_name": "candidate 1",
         "score": "30",
-        "test": "evaluator 1",
+        "progress_status": "evaluator 1",
         "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
-        "candidate": "candidate 1",
+        "project_name": "project 1",
+        "candidate_name": "candidate 1",
         "score": "30",
-        "test": "evaluator 1",
+        "progress_status": "evaluator 1",
         "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
-        "candidate": "candidate 1",
+        "project_name": "project 1",
+        "candidate_name": "candidate 1",
         "score": "30",
-        "test": "evaluator 1",
+        "progress_status": "evaluator 1",
         "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
-        "candidate": "candidate 1",
+        "project_name": "project 1",
+        "candidate_name": "candidate 1",
         "score": "30",
-        "test": "evaluator 1",
+        "progress_status": "evaluator 1",
         "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project": "project 1",
-        "candidate": "candidate 1",
+        "project_name": "project 1",
+        "candidate_name": "candidate 1",
         "score": "30",
-        "test": "evaluator 1",
+        "progress_status": "evaluator 1",
         "comments": "lorem ipsum ordo seclorum"
       },
     ];

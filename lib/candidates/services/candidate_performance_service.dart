@@ -31,7 +31,7 @@ class CandidatePerformanceService {
       int candidateId = prefs.getInt('id') as int;
 
       http.Response res = await http.get(
-          Uri.parse('${Constants.candidateEvaluations}$candidateId/evaluation'),
+          Uri.parse('${Constants.candidateGetResultTestsUri}$candidateId'),
           headers: buildHeaders());
 
       if (res.statusCode == 200) {

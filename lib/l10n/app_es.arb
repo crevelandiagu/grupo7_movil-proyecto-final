@@ -112,7 +112,14 @@
     "test": "Prueba",
     "testResults": "Resultados pruebas técnicas",
     "logout": "cerrar sesión",
-    "performanceEvaluation": "Evaluar desempeño"
+    "performanceEvaluation": "Evaluar desempeño",
+    "basicInformation": "Información basica",
+    "assign": "Asignar",
+    "assignProject": "Asignar proyecto",
+    "assignSuccess": "Candidato asignado con exíto",
+    "searchCandidate": "Buscar candidato",
+    "search": "Buscar",
+    "testEvaluationSuccess": "La evaluación se realizó con exito"
 
     
 

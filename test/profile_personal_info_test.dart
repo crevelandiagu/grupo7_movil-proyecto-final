@@ -62,6 +62,7 @@ void main() {
     expect(find.text("location"), findsOneWidget);
     expect(find.text("enter valid location"), findsOneWidget);
     expect(find.text("Enter your location"), findsOneWidget);
+    expect(find.text("Basic Information"), findsOneWidget);
 
     expect(name, findsOneWidget);
     expect(lastname, findsOneWidget);

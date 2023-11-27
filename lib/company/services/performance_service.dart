@@ -69,7 +69,11 @@ class PerformanceService {
 
   Future<List<dynamic>> getAllTestResults() async {
     try {
-      http.Response res = await http.get(Uri.parse(Constants.projectsUri),
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int companyId = prefs.getInt('companyId') as int;
+
+      http.Response res = await http.get(
+          Uri.parse('${Constants.companyGetResultTestsUri}$companyId'),
           headers: buildHeaders());
 
       if (res.statusCode == 200) {
@@ -81,14 +85,53 @@ class PerformanceService {
     }
   }
 
-  Future<List<dynamic>> getAllEmployees() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      int companyId = prefs.getInt('companyId') as int;
+  // Future<List<dynamic>> getAllEmployees() async {
+  //   try {
+  //     SharedPreferences prefs = await SharedPreferences.getInstance();
+  //     int companyId = prefs.getInt('companyId') as int;
 
-      http.Response res = await http.get(
-          Uri.parse('${Constants.companyEmployeesUri}$companyId'),
+  //     http.Response res = await http.get(
+  //         Uri.parse('${Constants.companyEmployeesUri}$companyId'),
+  //         headers: buildHeaders());
+
+  //     if (res.statusCode == 200) {
+  //       return jsonDecode(res.body);
+  //     }
+  //     return [];
+  //   } catch (e) {
+  //     throw Exception(e);
+  //   }
+  // }
+
+  Future<Map<dynamic, dynamic>> evaluarTest(
+      {required int score, required int assementId}) async {
+    try {
+      http.Response res = await http.post(
+          Uri.parse(
+              '${Constants.companyEvaluateCandidateUri}$assementId/candidate'),
+          body: jsonEncode({
+            "score": score,
+          }),
           headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+      return {};
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<List<dynamic>> buscarCandidatoParaProyecto(
+      {required String skills}) async {
+    try {
+      http.Response res =
+          await http.post(Uri.parse(Constants.buscarCandidatoParaProyectoUri),
+              body: jsonEncode({
+                "skill": skills,
+              }),
+              headers: buildHeaders());
 
       if (res.statusCode == 200) {
         return jsonDecode(res.body);

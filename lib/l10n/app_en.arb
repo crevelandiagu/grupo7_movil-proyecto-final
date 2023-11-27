@@ -540,7 +540,40 @@
     "performanceEvaluation": "Performance evaluation",
     "@performanceEvaluation": {
         "description": "logout"
+    },
+    "basicInformation": "Basic Information",
+    "@basicInformation": {
+        "description": "logout"
+    },
+    
+    "assign": "Assign",
+    "@assign": {
+        "description": "Assign"
+    },
+    "assignProject": "Assign project",
+    "@assignProject": {
+        "description": "Assign"
+    },
+    "assignSuccess": "Successfully assigned candidate",
+    "@assignSuccess": {
+        "description": "Assign"
+    },
+
+    "searchCandidate": "Search Candidate",
+    "@searchCandidate": {
+        "description": "search"
+    },
+
+    "search": "Search",
+    "@search": {
+        "description": "search"
+    },
+
+    "testEvaluationSuccess": "Evaluation done",
+    "@testEvaluationSuccess": {
+        "description": "search"
     }
+
 
 
 

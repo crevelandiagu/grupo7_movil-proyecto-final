@@ -36,5 +36,7 @@ void main() {
     await tester.pump();
 
     expect(find.text('Create'), findsWidgets);
+
+    expect(find.text("please enter some text"), findsWidgets);
   });
 }

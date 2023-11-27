@@ -1,84 +1,85 @@
-import 'package:abc_jobs/candidates/services/candidate_performance_service.dart';
-import 'package:abc_jobs/candidates/views/candidate_list_performance.dart';
+import 'package:abc_jobs/company/services/performance_service.dart';
+import 'package:abc_jobs/company/views/assign_candidate_project.dart';
+import 'package:abc_jobs/company/views/performace_results.dart';
 import 'package:abc_jobs/utils/test_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mockito/mockito.dart';
 
-import 'candidate_list_performance_test.mocks.dart';
+import 'performance_results_test.mocks.dart';
 
-@GenerateMocks([CandidatePerformanceService])
+@GenerateMocks([PerformanceService])
 void main() {
-  MockCandidatePerformanceService service = MockCandidatePerformanceService();
+  MockPerformanceService service = MockPerformanceService();
 
   Future<List<dynamic>> mockData() async {
     //await Future.delayed(Duration(milliseconds: 2000));
     var list = [
       {
-        "project_name": "project 1",
+        "project": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
+        "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project_name": "project 1",
+        "project": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
+        "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project_name": "project 1",
+        "project": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
+        "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project_name": "project 1",
+        "project": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
+        "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project_name": "project 1",
+        "project": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
+        "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project_name": "project 1",
+        "project": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
+        "comments": "lorem ipsum ordo seclorum"
       },
       {
-        "project_name": "project 1",
+        "project": "project 1",
         "candidate": "candidate 1",
         "score": "30",
         "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
+        "comments": "lorem ipsum ordo seclorum"
       },
     ];
 
     return list;
   }
 
-  testWidgets("test list performance candidate", (WidgetTester tester) async {
+  testWidgets("test assing candidate project", (WidgetTester tester) async {
     FlutterError.onError = ignoreOverflowErrors;
 
-    when(service.getAllEvaluations()).thenAnswer((_) => mockData());
+    //when(service.getAllEvaluationsCompany()).thenAnswer((_) => mockData());
 
     await tester.pumpWidget(
       GetMaterialApp(
-        home: PerformanceListCandidate(
+        home: AssignCandidateProject(
           service: service,
         ),
         localizationsDelegates: [
@@ -89,11 +90,8 @@ void main() {
 
     await tester.pump();
 
-    expect(find.byType(PaginatedDataTable), findsOneWidget);
-
-    expect(find.text("Performance results"), findsWidgets);
-    expect(find.text("Project"), findsWidgets);
-    expect(find.text("Score"), findsWidgets);
-    expect(find.text("Comments"), findsWidgets);
+    expect(find.text("Assign project"), findsWidgets);
+    expect(find.text("Candidate"), findsWidgets);
+    expect(find.text("Assign"), findsWidgets);
   });
 }
