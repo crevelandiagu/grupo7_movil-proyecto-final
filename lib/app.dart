@@ -17,7 +17,6 @@ import 'package:abc_jobs/candidates/views/test_results.dart';
 import 'package:abc_jobs/common_widgets/widgets.dart';
 import 'package:abc_jobs/company/services/performance_service.dart';
 import 'package:abc_jobs/company/views/company_dashboard.dart';
-import 'package:abc_jobs/company/views/performace_results.dart';
 import 'package:abc_jobs/company/views/search_candidates.dart';
 import 'package:abc_jobs/company/views/signin_company.dart';
 import 'package:abc_jobs/company/views/splash_screen.dart';
@@ -48,7 +47,7 @@ class App extends StatelessWidget {
         Locale("en"),
         Locale("es"),
       ],
-      home: SplashScreen(),
+      home: CompanyDashBoard(),
     );
   }
 }
