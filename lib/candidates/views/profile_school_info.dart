@@ -46,6 +46,12 @@ class SchoolInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Text(AppLocalizations.of(context)!.education,
+                      style: GoogleFonts.workSans(
+                          fontSize: 23, fontWeight: FontWeight.w500)),
+                ),
+                Padding(
                   padding: const EdgeInsets.fromLTRB(15, 40, 15, 30),
                   child: TextField(
                     controller: institutionController,
@@ -215,7 +221,9 @@ class SchoolInfo extends StatelessWidget {
 
                               child: ElevatedButton(
                                 //    key: const Key('elevated'),
-                                onPressed: () {},
+                                onPressed: () {
+                                  controller.skills.removeAt(index);
+                                },
                                 child: Text(
                                   controller.skills[index],
                                   //key: const Key('skiText'),

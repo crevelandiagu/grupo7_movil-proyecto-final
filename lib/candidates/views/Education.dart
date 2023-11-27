@@ -131,3 +131,18 @@ class Education extends StatelessWidget {
     );
   }
 }
+
+// Future<Map<String, dynamic>> EducationInfo() async {
+//   // await Future.delayed(Duration(milliseconds: 5000));
+//   return {
+//     "education": [
+//       {
+//         "university": "university1",
+//         "subject": "subject1",
+//         "start_date": "2007/07/23",
+//         "end_date": "2009/08/05",
+//         "skills": []
+//       },
+//     ],
+//   };
+// }

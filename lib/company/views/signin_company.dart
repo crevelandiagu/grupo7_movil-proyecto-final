@@ -5,6 +5,7 @@ import 'package:abc_jobs/candidates/services/auth_service.dart';
 import 'package:abc_jobs/candidates/views/dashboard.dart';
 import 'package:abc_jobs/candidates/views/signup.dart';
 import 'package:abc_jobs/company/services/company_service.dart';
+import 'package:abc_jobs/company/services/performance_service.dart';
 import 'package:abc_jobs/company/views/company_dashboard.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,9 @@ class SigninC extends StatelessWidget {
       key: scaffold,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Signin"),
+          title: Text(AppLocalizations.of(context)!.signin +
+              " " +
+              AppLocalizations.of(context)!.company),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -118,7 +121,9 @@ class SigninC extends StatelessWidget {
                               prefs.setInt("companyId", companyId);
                               debugPrint("id: $companyId");
 
-                              Get.off(() => CompanyDashBoard());
+                              Get.off(() => CompanyDashBoard(
+                                    service: PerformanceService(),
+                                  ));
                             },
                             scaffold: scaffold);
                       } catch (e) {

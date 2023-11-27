@@ -50,4 +50,8 @@ class ProfileSchoolController extends GetxController {
       degree.value = false;
     }
   }
+
+  String formatSearch(RxList<dynamic> list) {
+    return list.join("-");
+  }
 }

@@ -65,6 +65,7 @@ void main() {
     expect(find.text("degree"), findsOneWidget);
     expect(find.text("Enter degree"), findsOneWidget);
     expect(find.text("enter a valid degree"), findsOneWidget);
+    expect(find.text("Education"), findsOneWidget);
 
     expect(find.text("skills"), findsOneWidget);
     expect(find.text("choose a date"), findsWidgets);

@@ -9,8 +9,11 @@ class Constants {
       "http://10.0.2.2:3000/candidate/profile/education/";
   static String certificatesUri =
       "http://10.0.2.2:3000/candidate/profile/certificates/";
+
+  //entrevistas candidato
   static String listInterviewsUri =
       "http://10.0.2.2:3010/interviews/candidate/";
+
   static String companySignInUri = "http://10.0.2.2:3001/company/login";
 
   //crear evalución
@@ -26,5 +29,23 @@ class Constants {
       "http://10.0.2.2:3002/company-employees/employee/";
 
   //obtener projectos compañia "http://10.0.2.2:3007/projects/<id_company>"
-  static String companyProjectsUri = "http://10.0.2.2:3007/projects";
+  static String projectsUri = "http://10.0.2.2:3007/projects";
+
+  static String candidateEvaluations = "http://10.0.2.2:3007/candidate/";
+
+  //resultado de pruebas tecnicas candidatos
+  static String candidateGetResultTestsUri =
+      "http://10.0.2.2:3010/assement/candidate/";
+
+  //resultado de pruebas tecnicas empresas
+  static String companyGetResultTestsUri =
+      "http://10.0.2.2:3010/assement/company/";
+
+  // empresa evalua un test
+  static String companyEvaluateCandidateUri =
+      "http://10.0.2.2:3010/assement/take-exam/";
+
+  //buscar candidato para agregar a proyecto
+  static String buscarCandidatoParaProyectoUri =
+      "http://10.0.2.2:3008/search-tool/search";
 }

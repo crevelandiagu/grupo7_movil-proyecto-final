@@ -1,7 +1,18 @@
+import 'package:abc_jobs/candidates/services/candidate_performance_service.dart';
 import 'package:abc_jobs/candidates/services/cv_service.dart';
+import 'package:abc_jobs/candidates/services/interview_service.dart';
+import 'package:abc_jobs/candidates/views/candidate_list_performance.dart';
 import 'package:abc_jobs/candidates/views/dashboard.dart';
+import 'package:abc_jobs/candidates/views/list_interviews.dart';
 import 'package:abc_jobs/candidates/views/profile.dart';
+import 'package:abc_jobs/company/services/performance_service.dart';
+import 'package:abc_jobs/company/views/assign_candidate_project.dart';
+import 'package:abc_jobs/company/views/company_dashboard.dart';
+import 'package:abc_jobs/company/views/performance_evaluation.dart';
+import 'package:abc_jobs/company/views/search_candidates.dart';
 import 'package:abc_jobs/company/views/splash_screen.dart';
+import 'package:abc_jobs/company/views/test_results_company.dart';
+import 'package:abc_jobs/utils/candidate_project_data.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +27,13 @@ Widget bottomNavigation(
         switch (index) {
           case 0:
             Get.to(() => Dashboard());
+            break;
+          case 1:
+            Get.to(() => PerformanceListCandidate(
+                service: CandidatePerformanceService()));
+            break;
+          case 2:
+            Get.to(() => ListInterviews(service: InterviewService()));
             break;
           case 3:
             Get.to(() => Profile(
@@ -32,13 +50,54 @@ Widget bottomNavigation(
         // BottomNavigationBarItem(icon: Icon(Icons.work_outline), label: "Applications"),
         NavigationDestination(
             icon: Icon(Icons.school_outlined),
-            label: AppLocalizations.of(context)!.tests),
+            label: AppLocalizations.of(context)!.performance),
         NavigationDestination(
             icon: Icon(Icons.co_present_outlined),
             label: AppLocalizations.of(context)!.interviews),
         NavigationDestination(
             icon: Icon(Icons.person_outline),
             label: AppLocalizations.of(context)!.profile),
+      ]);
+
+  return navigation;
+}
+
+Widget bottomNavigationCompany(
+    Function(int index) onTap, BuildContext context, int idx) {
+  NavigationBar navigation = NavigationBar(
+      selectedIndex: idx,
+      onDestinationSelected: (int index) {
+        switch (index) {
+          case 0:
+            Get.to(() => CompanyDashBoard());
+            break;
+          case 1:
+            // Get.to(() => PerformanceEvaluation(service: PerformanceService()));
+            Get.to(() => TestResultsCompanyView(service: PerformanceService()));
+            break;
+          case 2:
+            // Get.to(() => AssignCandidateProject(service: PerformanceService()));
+            Get.to(() => SearchCandidate());
+
+            break;
+          case 3:
+            break;
+          default:
+            break;
+        }
+      },
+      destinations: [
+        NavigationDestination(
+            icon: Icon(Icons.home_outlined), label: "Dashboard"),
+        NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            label: AppLocalizations.of(context)!.tests),
+        NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            label: AppLocalizations.of(context)!.search),
+        // NavigationDestination(
+        //     icon: Icon(Icons.person_outline),
+        //     label: AppLocalizations.of(context)!.search),
       ]);
 
   return navigation;
@@ -177,12 +236,15 @@ PreferredSizeWidget customAppBar() {
       ),
 
       PopupMenuButton(
+        offset: const Offset(-8, 40),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         icon: const Icon(Icons.account_circle),
         itemBuilder: (context) {
           return [
             PopupMenuItem<int>(
+              padding: EdgeInsets.zero,
               value: 0,
-              child: const Text("Logout"),
+              child: Text(AppLocalizations.of(context)!.logout),
             ),
           ];
         },

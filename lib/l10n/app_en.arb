@@ -443,11 +443,11 @@
     },
     "pass": "pass",
     "@pass": {
-        "description": "reject"
+        "description": "pass"
     },
     "inProcess": "in process",
     "@inProcess": {
-        "description": "reject"
+        "description": "in process"
     },
     "ok": "Ok",
     "@ok": {
@@ -469,7 +469,114 @@
     "performanceEvaluationSuccess": "Performace test created",
     "@performanceEvaluationSuccess": {
         "description": "ok"
+    },
+
+    "score": "Score",
+    "@score": {
+        "description": "score"
+    },
+    "candidate": "Candidate",
+    "@candidate": {
+        "description": "candidate"
+    },
+    "evaluator": "Evaluator",
+    "@evaluator": {
+        "description": "evaluator"
+    },
+
+    "enterText": "please enter some text",
+    "@enterText": {
+        "description": "evaluator"
+    },
+
+    "comments": "Comments",
+    "@comments": {
+        "description": "comments"
+    },
+    "performanceResults": "Performance results",
+    "@performanceResults": {
+        "description": "evaluator"
+    },
+    "evaluate": "Evaluate",
+    "@evaluate": {
+        "description": "evaluate"
+    },
+    "save": "Save",
+    "@save": {
+        "description": "save"
+    },
+    "enterNumber": "Please enter a number",
+    "@enterNumber": {
+        "description": "enter number"
+    },
+    "enterNumber0100": "Please enter number between 0 and 100",
+    "@enterNumber0100": {
+        "description": "enter number"
+    },
+    "invalidaNumberFormat": "Invalid number format",
+    "@invalidaNumberFormat": {
+        "description": "invalid number format"
+    },
+    "actions": "Action",
+    "@actions": {
+        "description": "actions"
+    },
+    "evaluation": "Evaluation",
+    "@evaluation": {
+        "description": "evaluation"
+    },
+    "test": "Test",
+    "@test": {
+        "description": "test"
+    },
+    "testResults": "Test results",
+    "@testResults": {
+        "description": "test results"
+    },
+    "logout": "logout",
+    "@logout": {
+        "description": "logout"
+    },
+    "performanceEvaluation": "Performance evaluation",
+    "@performanceEvaluation": {
+        "description": "logout"
+    },
+    "basicInformation": "Basic Information",
+    "@basicInformation": {
+        "description": "logout"
+    },
+    
+    "assign": "Assign",
+    "@assign": {
+        "description": "Assign"
+    },
+    "assignProject": "Assign project",
+    "@assignProject": {
+        "description": "Assign"
+    },
+    "assignSuccess": "Successfully assigned candidate",
+    "@assignSuccess": {
+        "description": "Assign"
+    },
+
+    "searchCandidate": "Search Candidate",
+    "@searchCandidate": {
+        "description": "search"
+    },
+
+    "search": "Search",
+    "@search": {
+        "description": "search"
+    },
+
+    "testEvaluationSuccess": "Evaluation done",
+    "@testEvaluationSuccess": {
+        "description": "search"
     }
+
+
+
+
 
 
 

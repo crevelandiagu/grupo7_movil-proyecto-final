@@ -57,7 +57,7 @@ void main() {
     expect(password, findsWidgets);
     expect(securepassword, findsOneWidget);
     expect(email, findsOneWidget);
-    expect(signuptext, findsOneWidget);
+    expect(signuptext, findsWidgets);
     expect(account, findsOneWidget);
     expect(signintext, findsOneWidget);
     expect(passwordr, findsOneWidget);

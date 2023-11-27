@@ -37,18 +37,24 @@ class PersonalInfo extends StatelessWidget {
       key: scaffold,
       child: Scaffold(
         appBar: customAppBar(),
-        bottomNavigationBar: bottomNavigation((index) => null, context, 0),
+        bottomNavigationBar: bottomNavigation((index) => null, context, 3),
         body: SingleChildScrollView(
           key: Key('scroll'),
           child: Obx(
             () => Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Text(AppLocalizations.of(context)!.basicInformation,
+                      style: GoogleFonts.workSans(
+                          fontSize: 23, fontWeight: FontWeight.w500)),
+                ),
                 Container(
                   key: Key('1container'),
-                  padding: EdgeInsets.only(top: 10),
-                  width: 150,
-                  height: 150,
+                  padding: EdgeInsets.only(top: 20),
+                  width: 110,
+                  height: 110,
                   child: const CircleAvatar(
                     key: Key('image'),
                     backgroundColor: Colors.grey,

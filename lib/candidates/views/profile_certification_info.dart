@@ -44,6 +44,12 @@ class CertificationInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Text(AppLocalizations.of(context)!.certificate,
+                      style: GoogleFonts.workSans(
+                          fontSize: 23, fontWeight: FontWeight.w500)),
+                ),
+                Padding(
                   padding: const EdgeInsets.fromLTRB(15, 40, 15, 40),
                   child: TextField(
                     controller: certController,

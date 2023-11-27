@@ -125,16 +125,16 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           append_to_pre_release_tag:
-          custom_tag: 3.21.5-${{ steps.name_branch.outputs.NAME_BRANCH }}
+          custom_tag: 4.29.9-${{ steps.name_branch.outputs.NAME_BRANCH }}
 
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
           artifacts: "build/app/outputs/flutter-apk/app-release.apk,build/app/outputs/bundle/release/app-release.aab"
-          tag: v3.21.5
-          name: v3.21.5
-          body: Mitad sprint 3
+          tag: v4.29.9
+          name: v4.29.9
+          body: Cierre sprint 3
 
   build-coverage-codecov:
     name: Correr-test-codecov
