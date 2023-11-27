@@ -18,7 +18,7 @@ class TestResultsCompanyView extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigationCompany((index) => null, context, 1),
       body: FutureBuilder<List<dynamic>>(
-        future: service.getAllTestResults(),
+        future: mockData(), //.getAllTestResults(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -65,59 +65,59 @@ class TestResultsCompanyView extends StatelessWidget {
   }
 }
 
-// Future<List<dynamic>> mockData() async {
-//   //await Future.delayed(Duration(milliseconds: 2000));
-//   var list = [
-//     {
-//       "project": "project 1",
-//       "candidate": "company 1",
-//       "score": null,
-//       "test": "evaluator 1",
-//       "comments": "lorem ipsum ordo seclorum"
-//     },
-//     {
-//       "project": "project 1",
-//       "candidate": "company 1",
-//       "score": "30",
-//       "test": "evaluator 1",
-//       "comments": "lorem ipsum ordo seclorum"
-//     },
-//     {
-//       "project": "project 1",
-//       "candidate": "candidate 1",
-//       "score": null,
-//       "test": "evaluator 1",
-//       "comments": "lorem ipsum ordo seclorum"
-//     },
-//     {
-//       "project": "project 1",
-//       "candidate": "candidate 1",
-//       "score": "30",
-//       "test": "evaluator 1",
-//       "comments": "lorem ipsum ordo seclorum"
-//     },
-//     {
-//       "project": "project 1",
-//       "candidate": "candidate 1",
-//       "score": "30",
-//       "test": "evaluator 1",
-//       "comments": "lorem ipsum ordo seclorum"
-//     },
-//     {
-//       "project": "project 1",
-//       "candidate": "candidate 1",
-//       "score": "30",
-//       "test": "evaluator 1",
-//       "comments": "lorem ipsum ordo seclorum"
-//     },
-//     {
-//       "project": "project 1",
-//       "candidate": "candidate 1",
-//       "score": "30",
-//       "test": "evaluator 1",
-//       "comments": "lorem ipsum ordo seclorum"
-//     },
-//   ];
+Future<List<dynamic>> mockData() async {
+  //await Future.delayed(Duration(milliseconds: 2000));
+  var list = [
+    {
+      "project_name": "project 1",
+      "candidate_name": "company 1",
+      "score": null,
+      "progress_status": "evaluator 1",
+      "comments": "lorem ipsum ordo seclorum"
+    },
+    {
+      "project_name": "project 1",
+      "candidate_name": "company 1",
+      "score": "30",
+      "progress_status": "evaluator 1",
+      "comments": "lorem ipsum ordo seclorum"
+    },
+    {
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
+      "score": "30",
+      "progress_status": "evaluator 1",
+      "comments": "lorem ipsum ordo seclorum"
+    },
+    {
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
+      "score": "30",
+      "progress_status": "evaluator 1",
+      "comments": "lorem ipsum ordo seclorum"
+    },
+    {
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
+      "score": "30",
+      "progress_status": "evaluator 1",
+      "comments": "lorem ipsum ordo seclorum"
+    },
+    {
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
+      "score": "30",
+      "progress_status": "evaluator 1",
+      "comments": "lorem ipsum ordo seclorum"
+    },
+    {
+      "project_name": "project 1",
+      "candidate_name": "candidate 1",
+      "score": "30",
+      "progress_status": "evaluator 1",
+      "comments": "lorem ipsum ordo seclorum"
+    },
+  ];
 
-//   return list;
-// }
+  return list;
+}
