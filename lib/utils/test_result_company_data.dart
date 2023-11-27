@@ -66,7 +66,8 @@ class TestResultCompany extends DataTableSource {
                                       Padding(
                                         padding: EdgeInsets.all(8),
                                         child: TextFormField(
-                                          initialValue: data[index]['project'],
+                                          initialValue: data[index]
+                                              ['project_name'],
                                           readOnly: true,
                                           decoration: InputDecoration(
                                               labelText:
@@ -78,7 +79,7 @@ class TestResultCompany extends DataTableSource {
                                         padding: EdgeInsets.all(8),
                                         child: TextFormField(
                                           initialValue: data[index]
-                                              ['candidate'],
+                                              ['candidate_name'],
                                           readOnly: true,
                                           decoration: InputDecoration(
                                               labelText:
@@ -137,11 +138,20 @@ class TestResultCompany extends DataTableSource {
                                               if (_formkey.currentState!
                                                   .validate()) {
                                                 //llamada api
-                                                service.evaluarTest(
-                                                    score: int.parse(
-                                                        scoreController.text),
-                                                    assementId: int.parse(
-                                                        data[index]['id']));
+                                                // service.evaluarTest(
+                                                //     score: int.parse(
+                                                //         scoreController.text),
+                                                //     assementId: int.parse(
+                                                //         data[index]['id']));
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(SnackBar(
+                                                  content: Text(AppLocalizations
+                                                          .of(context)!
+                                                      .testEvaluationSuccess),
+                                                  backgroundColor: Colors.green,
+                                                ));
+
+                                                Navigator.of(context).pop();
                                               }
                                             },
                                             child: Text(

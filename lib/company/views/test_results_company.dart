@@ -15,6 +15,7 @@ class TestResultsCompanyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigationCompany((index) => null, context, 1),
       body: FutureBuilder<List<dynamic>>(

@@ -118,7 +118,8 @@
     "assignProject": "Asignar proyecto",
     "assignSuccess": "Candidato asignado con exíto",
     "searchCandidate": "Buscar candidato",
-    "search": "Buscar"
+    "search": "Buscar",
+    "testEvaluationSuccess": "La evaluación se realizó con exito"
 
     
 
