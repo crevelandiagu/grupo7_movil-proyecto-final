@@ -77,7 +77,7 @@ Widget bottomNavigationCompany(
             break;
           case 2:
             // Get.to(() => AssignCandidateProject(service: PerformanceService()));
-            Get.to(() => SearchCandidate(service: PerformanceService()));
+            Get.to(() => SearchCandidate());
 
             break;
           case 3:

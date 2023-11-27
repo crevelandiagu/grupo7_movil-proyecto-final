@@ -5,6 +5,7 @@ import 'package:abc_jobs/utils/candidate_project_data.dart';
 import 'package:abc_jobs/utils/performance_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AssignCandidateProject extends StatelessWidget {
@@ -18,7 +19,7 @@ class AssignCandidateProject extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigationCompany((index) => null, context, 2),
       body: FutureBuilder<List<dynamic>>(
-        future: mockData(), //service.getAllEvaluationsCompany(),
+        future: getDataMock(), //
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -61,9 +62,16 @@ class AssignCandidateProject extends StatelessWidget {
       ),
     );
   }
+
+  // Future<List<dynamic>> getData() {
+  //   var arguments = Get.arguments;
+  //   var string = arguments.search;
+
+  //   return this.service.getAllSearchedCandidates(string);
+  // }
 }
 
-Future<List<dynamic>> getData() async {
+Future<List<dynamic>> getDataMock() async {
   var list = [
     {
       "project": "project 1",

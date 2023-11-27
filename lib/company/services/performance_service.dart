@@ -122,4 +122,23 @@ class PerformanceService {
       throw Exception(e);
     }
   }
+
+  Future<List<dynamic>> buscarCandidatoParaProyecto(
+      {required String skills}) async {
+    try {
+      http.Response res =
+          await http.post(Uri.parse(Constants.buscarCandidatoParaProyectoUri),
+              body: jsonEncode({
+                "skill": skills,
+              }),
+              headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+      return [];
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }

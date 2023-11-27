@@ -17,11 +17,9 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchCandidate extends StatelessWidget {
-  SearchCandidate({super.key, required this.service});
+  SearchCandidate({super.key});
 
   ProfileSchoolController controller = Get.put(ProfileSchoolController());
-
-  PerformanceService service;
 
   TextEditingController skillController = TextEditingController();
 
@@ -101,7 +99,7 @@ class SearchCandidate extends StatelessWidget {
                               padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
 
                               child: ElevatedButton(
-                                //    key: const Key('elevated'),
+                                key: const Key('elevated'),
                                 onPressed: () {
                                   controller.skills.removeAt(index);
                                 },
@@ -126,8 +124,12 @@ class SearchCandidate extends StatelessWidget {
                     backgroundColor: Color.fromARGB(255, 58, 0, 229),
                   ),
                   onPressed: () async {
-                    Get.to(() =>
-                        AssignCandidateProject(service: PerformanceService()));
+                    Get.to(
+                        () => AssignCandidateProject(
+                            service: PerformanceService()),
+                        arguments: {
+                          "search": controller.formatSearch(controller.skills)
+                        });
                   },
                   child: Text(
                     AppLocalizations.of(context)!.search,

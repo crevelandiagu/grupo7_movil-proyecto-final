@@ -44,4 +44,8 @@ class Constants {
   // empresa evalua un test
   static String companyEvaluateCandidateUri =
       "http://10.0.2.2:3010/assement/take-exam/";
+
+  //buscar candidato para agregar a proyecto
+  static String buscarCandidatoParaProyectoUri =
+      "http://10.0.2.2:3008/search-tool/search";
 }

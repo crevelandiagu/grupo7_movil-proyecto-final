@@ -7,7 +7,9 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:http/http.dart' as http;
 
+import 'auth_service_test.mocks.dart';
 import 'list_interviews_test.mocks.dart';
 
 @GenerateMocks([InterviewService])
