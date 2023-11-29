@@ -117,13 +117,13 @@ class Signin extends StatelessWidget {
                               SharedPreferences prefs =
                                   await SharedPreferences.getInstance();
                               prefs.setInt("id", candidateId);
-                              debugPrint("id: $candidateId");
 
                               Get.off(() => Dashboard());
                             },
                             scaffold: scaffold);
                       } catch (e) {
-                        showSnackbar("Error", scaffold: scaffold);
+                        showSnackbar("An error ocurred. Please try again",
+                            scaffold: scaffold);
                       }
                     } else {
                       showSnackbar(AppLocalizations.of(context)!.emptyFields,
