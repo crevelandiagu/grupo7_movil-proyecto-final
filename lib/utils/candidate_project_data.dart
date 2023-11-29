@@ -1,4 +1,5 @@
 import 'package:abc_jobs/company/services/performance_service.dart';
+import 'package:abc_jobs/company/views/candidate_cv_project.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -34,6 +35,11 @@ class AssignCanidateProjectData extends DataTableSource {
       cells: [
         // DataCell(Text(data[index]['project'])),
         DataCell(
+          onTap: () => Get.to(
+              () => CandidateCVProject(
+                    service: PerformanceService(),
+                  ),
+              arguments: {"id": data[index]['candidateId']}),
           Text(data[index]['name'] + " " + data[index]['lastName']),
         ),
         DataCell(SizedBox(

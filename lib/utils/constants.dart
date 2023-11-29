@@ -51,4 +51,7 @@ class Constants {
 
   static String candidateStartProcess =
       "http://10.0.2.2:3008/search-tool/search/cv/chosen-one";
+
+  static String getCandidateCvProject =
+      "http://10.0.2.2:3008/search-tool/search/cv/";
 }
