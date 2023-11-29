@@ -2,6 +2,7 @@ import 'package:abc_jobs/company/services/performance_service.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 class AssignCanidateProjectData extends DataTableSource {
@@ -10,8 +11,9 @@ class AssignCanidateProjectData extends DataTableSource {
   final data;
   BuildContext? context;
 
+  var assigned = false.obs;
+
   String projectValue = "";
-  //List<Map<String, dynamic>>? projects;
 
   final _formkey = GlobalKey<FormState>();
 
@@ -34,6 +36,14 @@ class AssignCanidateProjectData extends DataTableSource {
         DataCell(
           Text(data[index]['name'] + " " + data[index]['lastName']),
         ),
+        DataCell(SizedBox(
+          child: Obx(() => Row(
+                children: [
+                  Text(AppLocalizations.of(context!)!.assigned),
+                  Checkbox(value: assigned.value, onChanged: (value) {}),
+                ],
+              )),
+        )),
         DataCell(
           ElevatedButton(
             onPressed: () {
@@ -97,19 +107,20 @@ class AssignCanidateProjectData extends DataTableSource {
                                                             ['candidateId']
                                                         .toString());
 
-                                        if (result.containsKey('createdAt')) {
+                                        if (result['message'].toString().contains(
+                                            "Candidate has started the process")) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
                                             content: Center(
-                                                child:
-                                                    Text(result['createdAt'])),
+                                                child: Text(result['message'])),
                                             backgroundColor: Colors.green,
                                           ));
+                                          assigned.value = true;
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
                                             content: Center(
-                                                child: Text(result['messeje'])),
+                                                child: Text(result['message'])),
                                             backgroundColor: Colors.red,
                                           ));
                                         }

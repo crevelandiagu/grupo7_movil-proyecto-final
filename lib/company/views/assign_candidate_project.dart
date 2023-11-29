@@ -42,19 +42,15 @@ class AssignCandidateProject extends StatelessWidget {
                         style: GoogleFonts.workSans(
                             fontSize: 20, fontWeight: FontWeight.w500))),
                 columns: [
-                  // DataColumn(
-                  //     label: Text(AppLocalizations.of(context)!.project)),
                   DataColumn(
                       label: Text(AppLocalizations.of(context)!.candidate)),
-                  // DataColumn(
-                  //     label: Text(AppLocalizations.of(context)!.evaluator)),
-                  // DataColumn(label: Text(AppLocalizations.of(context)!.score)),
+                  DataColumn(label: Text(AppLocalizations.of(context)!.state)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.assign)),
                 ],
                 source: performances,
                 rowsPerPage: 8,
-                horizontalMargin: 60,
-                columnSpacing: 100,
+                horizontalMargin: 50,
+                columnSpacing: 40,
                 showCheckboxColumn: false,
               ),
             ],

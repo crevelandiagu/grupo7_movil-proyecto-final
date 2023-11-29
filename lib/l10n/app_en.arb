@@ -572,6 +572,16 @@
     "testEvaluationSuccess": "Evaluation done",
     "@testEvaluationSuccess": {
         "description": "search"
+    },
+
+    "state": "State",
+    "@state": {
+        "description": "State"
+    },
+
+    "assigned": "assigned",
+    "@assigned": {
+        "description": "assigned"
     }
 
 
