@@ -1,9 +1,5 @@
 import 'dart:convert';
 
-import 'package:abc_jobs/candidates/controllers/validator_controller.dart';
-import 'package:abc_jobs/candidates/services/auth_service.dart';
-import 'package:abc_jobs/candidates/views/dashboard.dart';
-import 'package:abc_jobs/candidates/views/signup.dart';
 import 'package:abc_jobs/company/services/company_service.dart';
 import 'package:abc_jobs/company/services/performance_service.dart';
 import 'package:abc_jobs/company/views/company_dashboard.dart';
