@@ -48,4 +48,7 @@ class Constants {
   //buscar candidato para agregar a proyecto
   static String buscarCandidatoParaProyectoUri =
       "http://10.0.2.2:3008/search-tool/search";
+
+  static String candidateStartProcess =
+      "http://10.0.2.2:3008/search-tool/search/cv/chosen-one";
 }

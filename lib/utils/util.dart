@@ -65,7 +65,7 @@ List<Map<String, dynamic>> processProjects(List<dynamic>? projects) {
   List<Map<String, dynamic>> list = [];
 
   projects?.forEach((element) {
-    list.add({"label": element.projectName, "value": element.id});
+    list.add({"label": element['projectName'], "value": element['id']});
   });
   return list;
 }
@@ -74,7 +74,7 @@ List<Map<String, dynamic>> processEmployees(List<dynamic>? employees) {
   List<Map<String, dynamic>> list = [];
 
   employees?.forEach((element) {
-    list.add({"label": element.email, "value": element.id});
+    list.add({"label": element['email'], "value": element['id']});
   });
   return list;
 }

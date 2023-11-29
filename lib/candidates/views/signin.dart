@@ -123,7 +123,7 @@ class Signin extends StatelessWidget {
                             },
                             scaffold: scaffold);
                       } catch (e) {
-                        showSnackbar(e.toString(), scaffold: scaffold);
+                        showSnackbar("Error", scaffold: scaffold);
                       }
                     } else {
                       showSnackbar(AppLocalizations.of(context)!.emptyFields,
