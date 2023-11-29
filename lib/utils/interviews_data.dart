@@ -123,9 +123,9 @@ class InterviewsData extends DataTableSource {
 
   Color colorStatus(String value) {
     switch (value) {
-      case "reject":
+      case "Rejected":
         return const Color.fromARGB(255, 255, 82, 82);
-      case "pass":
+      case "Approved":
         return const Color.fromARGB(255, 76, 175, 80);
       default:
         return const Color.fromARGB(255, 130, 177, 255);

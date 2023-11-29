@@ -221,7 +221,6 @@ PreferredSizeWidget customAppBar() {
         onPressed: () {},
         icon: const Icon(Icons.notifications),
       ),
-
       PopupMenuButton(
         offset: const Offset(-8, 40),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -243,10 +242,6 @@ PreferredSizeWidget customAppBar() {
           }
         },
       ),
-      // IconButton(
-      //   onPressed: () {},
-      //   icon: const Icon(Icons.account_circle),
-      // ),
     ],
   );
 }
