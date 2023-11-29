@@ -9,7 +9,7 @@ import 'package:mockito/mockito.dart';
 import 'candidate_list_performance_test.mocks.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'performance_results_test.mocks.dart';
+import 'assign_candidate_project_test.mocks.dart';
 
 void main() {
   MockPerformanceService service = MockPerformanceService();

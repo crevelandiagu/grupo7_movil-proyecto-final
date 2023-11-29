@@ -78,6 +78,24 @@ class MockPerformanceService extends _i1.Mock
       ) as _i3.Future<List<dynamic>>);
 
   @override
+  _i3.Future<Map<String, dynamic>> startProcess({
+    required String? projectId,
+    required String? candidateId,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #startProcess,
+          [],
+          {
+            #projectId: projectId,
+            #candidateId: candidateId,
+          },
+        ),
+        returnValue:
+            _i3.Future<Map<String, dynamic>>.value(<String, dynamic>{}),
+      ) as _i3.Future<Map<String, dynamic>>);
+
+  @override
   _i3.Future<Map<dynamic, dynamic>> evaluarTest({
     required int? score,
     required int? assementId,
@@ -96,13 +114,18 @@ class MockPerformanceService extends _i1.Mock
       ) as _i3.Future<Map<dynamic, dynamic>>);
 
   @override
-  _i3.Future<List<dynamic>> buscarCandidatoParaProyecto(
-          {required String? skills}) =>
+  _i3.Future<List<dynamic>> buscarCandidatoParaProyecto({
+    String? skills,
+    String? experience,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #buscarCandidatoParaProyecto,
           [],
-          {#skills: skills},
+          {
+            #skills: skills,
+            #experience: experience,
+          },
         ),
         returnValue: _i3.Future<List<dynamic>>.value(<dynamic>[]),
       ) as _i3.Future<List<dynamic>>);

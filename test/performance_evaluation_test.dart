@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import 'performance_results_test.mocks.dart';
+import 'assign_candidate_project_test.mocks.dart';
 
 void main() {
   Future<List<dynamic>> mockData() async {
