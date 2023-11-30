@@ -29,16 +29,10 @@ class TestResultCompany extends DataTableSource {
         DataCell(
           Text(data[index]['candidate_name']),
         ),
-        DataCell(
-          Text(data[index]['progress_status']),
-        ),
-        DataCell(Text(data[index]['score'] ?? "")),
-        DataCell(
-          Text(data[index]['comments']),
-        ),
+        DataCell(Text(data[index]['score'].toString() ?? "")),
         DataCell(
           ElevatedButton(
-            onPressed: data[index]['score'] == null
+            onPressed: data[index]['score'].toString() == null
                 ? () {
                     showDialog(
                         context: context!,
@@ -64,29 +58,10 @@ class TestResultCompany extends DataTableSource {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          initialValue: data[index]
-                                              ['project_name'],
-                                          readOnly: true,
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  AppLocalizations.of(context)!
-                                                      .project),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          initialValue: data[index]
-                                              ['candidate_name'],
-                                          readOnly: true,
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  AppLocalizations.of(context)!
-                                                      .candidate),
-                                        ),
-                                      ),
+                                          padding: EdgeInsets.all(8),
+                                          child: Text(
+                                              AppLocalizations.of(context)!
+                                                  .assesment)),
                                       Padding(
                                         padding: EdgeInsets.all(8),
                                         child: TextFormField(
@@ -122,16 +97,6 @@ class TestResultCompany extends DataTableSource {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          controller: commentController,
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  AppLocalizations.of(context)!
-                                                      .comments),
-                                        ),
-                                      ),
-                                      Padding(
                                         padding: const EdgeInsets.all(8),
                                         child: ElevatedButton(
                                             onPressed: () {
@@ -156,7 +121,7 @@ class TestResultCompany extends DataTableSource {
                                             },
                                             child: Text(
                                                 AppLocalizations.of(context)!
-                                                    .save)),
+                                                    .evaluate)),
                                       )
                                     ],
                                   ),

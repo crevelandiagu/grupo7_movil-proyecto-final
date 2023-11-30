@@ -18,17 +18,11 @@ class TestResultCandidate extends DataTableSource {
   DataRow getRow(int index) {
     return DataRow(
       cells: [
-        DataCell(Text(data[index]['project'])),
+        DataCell(Text(data[index]['project_name'])),
         DataCell(
-          Text(data[index]['company']),
+          Text(data[index]['company_name']),
         ),
-        DataCell(
-          Text(data[index]['test']),
-        ),
-        DataCell(Text(data[index]['score'])),
-        DataCell(
-          Text(data[index]['comments']),
-        )
+        DataCell(Text(data[index]['score'].toString() ?? "")),
       ],
     );
   }

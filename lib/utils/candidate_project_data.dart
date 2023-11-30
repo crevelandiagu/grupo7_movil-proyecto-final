@@ -146,7 +146,7 @@ class AssignCanidateProjectData extends DataTableSource {
                     );
                   });
             },
-            child: Text(AppLocalizations.of(context!)!.assign),
+            child: Text(AppLocalizations.of(context!)!.startProcess),
           ),
         ),
       ],

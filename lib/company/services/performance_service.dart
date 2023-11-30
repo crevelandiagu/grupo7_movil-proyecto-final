@@ -183,4 +183,21 @@ class PerformanceService {
       throw Exception(e);
     }
   }
+
+  Future<Map<String, dynamic>> evaluarPerformance(
+      {required int score, required int performanceId}) async {
+    try {
+      http.Response res = await http.post(
+          Uri.parse(Constants.companyEvaluatePerformanceUri),
+          body: jsonEncode({"score": score, "performanceId": performanceId}),
+          headers: buildHeaders());
+
+      if (res.statusCode == 200) {
+        return jsonDecode(res.body);
+      }
+      return {};
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }

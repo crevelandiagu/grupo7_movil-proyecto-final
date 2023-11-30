@@ -69,7 +69,7 @@
         "description": "snackbar's title when a candidate is created"
     },
 
-    "welcome": "Welcome",
+    "welcome": "Welcome Back!",
     "@welcome": {
         "description": "welcome message"
     },
@@ -582,7 +582,21 @@
     "assigned": "assigned",
     "@assigned": {
         "description": "assigned"
+    },
+    "startProcess": "Start Process",
+    "@startProcess": {
+        "description": "assigned"
+    },
+    "assesments": "Assesments",
+    "@assesments": {
+        "description": "assesments"
+    },
+    "assesment": "Assesment",
+    "@assesment": {
+        "description": "assesments"
     }
+
+
 
 
 

@@ -35,7 +35,8 @@ class PerformanceEvaluation extends StatelessWidget {
               ),
               PaginatedDataTable(
                 header: Center(
-                    child: Text(AppLocalizations.of(context)!.evaluation,
+                    child: Text(
+                        AppLocalizations.of(context)!.performanceEvaluation,
                         style: GoogleFonts.workSans(
                             fontSize: 20, fontWeight: FontWeight.w500))),
                 columns: [
@@ -43,11 +44,7 @@ class PerformanceEvaluation extends StatelessWidget {
                       label: Text(AppLocalizations.of(context)!.project)),
                   DataColumn(
                       label: Text(AppLocalizations.of(context)!.candidate)),
-                  DataColumn(
-                      label: Text(AppLocalizations.of(context)!.evaluator)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.score)),
-                  DataColumn(
-                      label: Text(AppLocalizations.of(context)!.comments)),
                   DataColumn(
                       label: Text(AppLocalizations.of(context)!.actions)),
                 ],

@@ -25,17 +25,11 @@ class PerformanceDataEvaluation extends DataTableSource {
   DataRow getRow(int index) {
     return DataRow(
       cells: [
-        DataCell(Text(data[index]['project'])),
+        DataCell(Text(data[index]['project_name'])),
         DataCell(
-          Text(data[index]['candidate']),
+          Text(data[index]['candidate_name']),
         ),
-        DataCell(
-          Text(data[index]['evaluator']),
-        ),
-        DataCell(Text(data[index]['score'] ?? "")),
-        DataCell(
-          Text(data[index]['comments'] ?? ""),
-        ),
+        DataCell(Text(data[index]['score'].toString() ?? "")),
         DataCell(
           ElevatedButton(
             onPressed: data[index]['score'] == null
@@ -65,26 +59,9 @@ class PerformanceDataEvaluation extends DataTableSource {
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          initialValue: data[index]['project'],
-                                          readOnly: true,
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  AppLocalizations.of(context)!
-                                                      .project),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          initialValue: data[index]
-                                              ['candidate'],
-                                          readOnly: true,
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  AppLocalizations.of(context)!
-                                                      .candidate),
-                                        ),
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .performance),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(8),
@@ -121,27 +98,49 @@ class PerformanceDataEvaluation extends DataTableSource {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          controller: commentController,
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  AppLocalizations.of(context)!
-                                                      .comments),
-                                        ),
-                                      ),
-                                      Padding(
                                         padding: const EdgeInsets.all(8),
                                         child: ElevatedButton(
-                                            onPressed: () {
+                                            onPressed: () async {
                                               if (_formkey.currentState!
                                                   .validate()) {
-                                                //llamada api
+                                                Map<String, dynamic> res =
+                                                    await service!
+                                                        .evaluarPerformance(
+                                                            score: int.parse(
+                                                                scoreController
+                                                                    .text),
+                                                            performanceId:
+                                                                data[index]
+                                                                    ['id']);
+
+                                                if (res['message']
+                                                    .toString()
+                                                    .contains(
+                                                        "Performance successfully")) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(SnackBar(
+                                                    content: Text(
+                                                      res['message'],
+                                                    ),
+                                                    backgroundColor:
+                                                        Colors.green,
+                                                  ));
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(SnackBar(
+                                                    content: Text(
+                                                      res['message'],
+                                                    ),
+                                                    backgroundColor: Colors.red,
+                                                  ));
+
+                                                  Navigator.of(context).pop();
+                                                }
                                               }
                                             },
                                             child: Text(
                                                 AppLocalizations.of(context)!
-                                                    .save)),
+                                                    .evaluate)),
                                       )
                                     ],
                                   ),

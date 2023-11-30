@@ -25,42 +25,9 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
   GlobalKey<ScaffoldMessengerState> scaffold =
       GlobalKey<ScaffoldMessengerState>();
 
-  String _projectValue = "";
-  String _candidateValue = "";
-  String _employeeValue = "";
-  String _scoreValue = "";
-
-  List<Map<String, dynamic>> projects = [
-    {'label': 'Project 1', 'value': 1},
-    {'label': 'Project 2', 'value': 2},
-    {'label': 'Project 3', 'value': 3},
-  ];
-
-  List<Map<String, dynamic>> employees = [
-    {'label': 'Evaluator 1', 'value': 1},
-    {'label': 'Evaluator 2', 'value': 2},
-    {'label': 'Evaluator 3', 'value': 3},
-  ];
-
-  List<Map<String, dynamic>> candidates = [
-    {'label': 'Candidate 1', 'value': 1},
-    {'label': 'Candidate 2', 'value': 2},
-    {'label': 'Candidate 3', 'value': 3},
-  ];
-
   @override
   void initState() {
     super.initState();
-
-    _getValues();
-  }
-
-  Future<void> _getValues() async {
-    // var projectsToProcess = await widget.service?.getAllProjects();
-    // projects = processProjects(projectsToProcess);
-
-    // var employeesToProcess = await widget.service?.getAllEmployees();
-    // employees = processEmployees(employeesToProcess);
   }
 
   @override

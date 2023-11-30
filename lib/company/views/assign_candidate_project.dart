@@ -45,7 +45,8 @@ class AssignCandidateProject extends StatelessWidget {
                   DataColumn(
                       label: Text(AppLocalizations.of(context)!.candidate)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.state)),
-                  DataColumn(label: Text(AppLocalizations.of(context)!.assign)),
+                  DataColumn(
+                      label: Text(AppLocalizations.of(context)!.startProcess)),
                 ],
                 source: performances,
                 rowsPerPage: 8,
