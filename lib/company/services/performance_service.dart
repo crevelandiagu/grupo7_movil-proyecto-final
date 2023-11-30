@@ -147,7 +147,7 @@ class PerformanceService {
   //   }
   // }
 
-  Future<Map<dynamic, dynamic>> evaluarTest(
+  Future<Map<String, dynamic>> evaluarAssesment(
       {required int score, required int assementId}) async {
     try {
       http.Response res = await http.post(

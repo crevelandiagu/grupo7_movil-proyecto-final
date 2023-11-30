@@ -32,106 +32,108 @@ class TestResultCompany extends DataTableSource {
         DataCell(Text(data[index]['score'].toString() ?? "")),
         DataCell(
           ElevatedButton(
-            onPressed: data[index]['score'].toString() == null
-                ? () {
-                    showDialog(
-                        context: context!,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: Stack(
-                              clipBehavior: Clip.none,
+            onPressed: () {
+              showDialog(
+                  context: context!,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                            right: -40,
+                            top: -40,
+                            child: InkResponse(
+                              onTap: () => Navigator.of(context).pop(),
+                              child: const CircleAvatar(
+                                backgroundColor: Colors.red,
+                                child: Icon(Icons.close),
+                              ),
+                            ),
+                          ),
+                          Form(
+                            key: _formkey,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
                               children: [
-                                Positioned(
-                                  right: -40,
-                                  top: -40,
-                                  child: InkResponse(
-                                    onTap: () => Navigator.of(context).pop(),
-                                    child: const CircleAvatar(
-                                      backgroundColor: Colors.red,
-                                      child: Icon(Icons.close),
-                                    ),
+                                Padding(
+                                    padding: EdgeInsets.all(8),
+                                    child: Text(AppLocalizations.of(context)!
+                                        .assesment)),
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: TextFormField(
+                                    controller: scoreController,
+                                    decoration: InputDecoration(
+                                        labelText: AppLocalizations.of(context)!
+                                            .score),
+                                    validator: (String? value) {
+                                      if (value != null && value.isEmpty) {
+                                        return AppLocalizations.of(context)!
+                                            .enterNumber;
+                                      }
+                                      try {
+                                        double number = double.parse(value!);
+                                        if (number >= 0 && number <= 100) {
+                                          return null;
+                                        } else {
+                                          return AppLocalizations.of(context)!
+                                              .enterNumber0100;
+                                        }
+                                      } catch (e) {
+                                        return AppLocalizations.of(context)!
+                                            .invalidaNumberFormat;
+                                      }
+                                    },
                                   ),
                                 ),
-                                Form(
-                                  key: _formkey,
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Padding(
-                                          padding: EdgeInsets.all(8),
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .assesment)),
-                                      Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: TextFormField(
-                                          controller: scoreController,
-                                          decoration: InputDecoration(
-                                              labelText:
-                                                  AppLocalizations.of(context)!
-                                                      .score),
-                                          validator: (String? value) {
-                                            if (value != null &&
-                                                value.isEmpty) {
-                                              return AppLocalizations.of(
-                                                      context)!
-                                                  .enterNumber;
-                                            }
-                                            try {
-                                              double number =
-                                                  double.parse(value!);
-                                              if (number >= 0 &&
-                                                  number <= 100) {
-                                                return null;
-                                              } else {
-                                                return AppLocalizations.of(
-                                                        context)!
-                                                    .enterNumber0100;
-                                              }
-                                            } catch (e) {
-                                              return AppLocalizations.of(
-                                                      context)!
-                                                  .invalidaNumberFormat;
-                                            }
-                                          },
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8),
-                                        child: ElevatedButton(
-                                            onPressed: () {
-                                              if (_formkey.currentState!
-                                                  .validate()) {
-                                                //llamada api
-                                                // service.evaluarTest(
-                                                //     score: int.parse(
-                                                //         scoreController.text),
-                                                //     assementId: int.parse(
-                                                //         data[index]['id']));
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(SnackBar(
-                                                  content: Text(AppLocalizations
-                                                          .of(context)!
-                                                      .testEvaluationSuccess),
-                                                  backgroundColor: Colors.green,
-                                                ));
+                                Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: ElevatedButton(
+                                      onPressed: () async {
+                                        if (_formkey.currentState!.validate()) {
+                                          Map<String, dynamic> res =
+                                              await service.evaluarAssesment(
+                                                  score: int.parse(
+                                                      scoreController.text),
+                                                  assementId: data[index]
+                                                      ['id']);
 
-                                                Navigator.of(context).pop();
-                                              }
-                                            },
-                                            child: Text(
-                                                AppLocalizations.of(context)!
-                                                    .evaluate)),
-                                      )
-                                    ],
-                                  ),
+                                          if (res['approve']
+                                              .toString()
+                                              .contains(
+                                                  "Technical Interview")) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .testEvaluationSuccess),
+                                              backgroundColor: Colors.green,
+                                            ));
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(SnackBar(
+                                              content: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .testEvaluationSuccess),
+                                              backgroundColor: Colors.green,
+                                            ));
+                                          }
+
+                                          Navigator.of(context).pop();
+                                        }
+                                      },
+                                      child: Text(AppLocalizations.of(context)!
+                                          .evaluate)),
                                 )
                               ],
                             ),
-                          );
-                        });
-                  }
-                : null,
+                          )
+                        ],
+                      ),
+                    );
+                  });
+            },
             child: Text(AppLocalizations.of(context!)!.evaluate),
           ),
         ),
