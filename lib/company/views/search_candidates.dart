@@ -10,6 +10,7 @@ import 'package:abc_jobs/utils/constants.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -54,6 +55,9 @@ class SearchCandidate extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(15, 15, 40, 15),
                     child: TextField(
                       controller: experienceController,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
                       decoration: InputDecoration(
                           labelText: AppLocalizations.of(context)!.experience),
                     )),
