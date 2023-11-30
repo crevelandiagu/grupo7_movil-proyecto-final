@@ -98,14 +98,6 @@ class Education extends StatelessWidget {
                                     : "",
                                 style: GoogleFonts.workSans(
                                     fontSize: 20, fontWeight: FontWeight.w500)),
-
-                            /* Text(education[index]['skills'].toString(),
-
-                      style: GoogleFonts.workSans(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400
-                           )), */
-
                             Column(
                               children: [
                                 for (var text in education[index]['skills'])
@@ -115,11 +107,6 @@ class Education extends StatelessWidget {
                                   )
                               ],
                             )
-
-                            /* Column(
-                        children: education[index]['skills'].isNotEmpty ?
-                        agregarSkills(education[index]['skills']) : [Text('No skills')]
-                      ) */
                           ],
                         ));
                   })

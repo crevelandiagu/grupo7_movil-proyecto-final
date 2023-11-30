@@ -119,7 +119,9 @@
     "assignSuccess": "Candidato asignado con exíto",
     "searchCandidate": "Buscar candidato",
     "search": "Buscar",
-    "testEvaluationSuccess": "La evaluación se realizó con exito"
+    "testEvaluationSuccess": "La evaluación se realizó con exito",
+    "state": "Estado",
+    "assigned": "Asignado"
 
     
 

@@ -34,6 +34,7 @@ class Experience extends StatelessWidget {
               }
 
               var data = snapshot.data!;
+
               List<dynamic> experience = data['experience'];
 
               return experience.isNotEmpty
@@ -55,16 +56,13 @@ class Experience extends StatelessWidget {
                                   style: GoogleFonts.workSans(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500)),
-
                               Text(experience[index]['company_name'],
                                   style: GoogleFonts.workSans(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400)),
-
                               const SizedBox(
                                 height: 5,
                               ),
-
                               Text(AppLocalizations.of(context)!.startDate_e,
                                   style: GoogleFonts.workSans(
                                       fontSize: 20,
@@ -75,60 +73,34 @@ class Experience extends StatelessWidget {
                                 style: GoogleFonts.workSans(
                                     fontSize: 16, fontWeight: FontWeight.w400),
                               ),
-
                               const SizedBox(
                                 height: 5,
                               ),
-
                               Text(AppLocalizations.of(context)!.endDate_e,
                                   style: GoogleFonts.workSans(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500)),
-
                               Text(
                                 Jiffy.parse(experience[index]['end_date'])
                                     .yMMMMd,
                                 style: GoogleFonts.workSans(
                                     fontSize: 16, fontWeight: FontWeight.w400),
                               ),
-
                               const SizedBox(
                                 height: 5,
                               ),
-
                               Text(AppLocalizations.of(context)!.position_e,
                                   style: GoogleFonts.workSans(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500)),
-
                               Text(
                                 experience[index]['position'],
                                 style: GoogleFonts.workSans(
                                     fontSize: 16, fontWeight: FontWeight.w400),
                               ),
-
                               const SizedBox(
                                 height: 5,
                               ),
-
-                              // Text('Place ',
-                              //      style: GoogleFonts.workSans(
-                              //       fontSize: 20,
-                              //       fontWeight: FontWeight.w500
-                              //      )
-                              //      ),
-
-                              // Text(experience[index]['place'],
-                              // style: GoogleFonts.workSans(
-                              //       fontSize: 16,
-                              //       fontWeight: FontWeight.w400
-                              //      ),
-                              //      ),
-
-                              // const SizedBox(
-                              //   height: 5,
-                              // ),
-
                               Text(
                                   experience[index]['skills'].isNotEmpty
                                       ? AppLocalizations.of(context)!.skills_e
@@ -136,7 +108,6 @@ class Experience extends StatelessWidget {
                                   style: GoogleFonts.workSans(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500)),
-
                               Column(
                                 children: [
                                   for (var text in experience[index]['skills'])

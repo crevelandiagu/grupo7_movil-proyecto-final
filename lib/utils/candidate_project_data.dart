@@ -1,25 +1,26 @@
+import 'package:abc_jobs/company/services/performance_service.dart';
+import 'package:abc_jobs/company/views/candidate_cv_project.dart';
+import 'package:abc_jobs/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 class AssignCanidateProjectData extends DataTableSource {
-  AssignCanidateProjectData({required this.data, this.context});
+  AssignCanidateProjectData({required this.data, this.context, this.projects});
 
   final data;
   BuildContext? context;
+
+  var assigned = false.obs;
 
   String projectValue = "";
 
   final _formkey = GlobalKey<FormState>();
 
   TextEditingController scoreController = TextEditingController();
-  TextEditingController commentController = TextEditingController();
 
-  List<Map<String, dynamic>> projects = [
-    {'label': 'Project 1', 'value': 1},
-    {'label': 'Project 2', 'value': 2},
-    {'label': 'Project 3', 'value': 3},
-  ];
+  final projects;
 
   @override
   bool get isRowCountApproximate => false;
@@ -34,11 +35,25 @@ class AssignCanidateProjectData extends DataTableSource {
       cells: [
         // DataCell(Text(data[index]['project'])),
         DataCell(
-          Text(data[index]['candidate']),
+          onTap: () => Get.to(
+              () => CandidateCVProject(
+                    service: PerformanceService(),
+                  ),
+              arguments: {"id": data[index]['candidateId']}),
+          Text(data[index]['name'] + " " + data[index]['lastName']),
         ),
+        DataCell(SizedBox(
+          child: Obx(() => Row(
+                children: [
+                  Text(AppLocalizations.of(context!)!.assigned),
+                  Checkbox(value: assigned.value, onChanged: (value) {}),
+                ],
+              )),
+        )),
         DataCell(
           ElevatedButton(
             onPressed: () {
+              final projectsS = processProjects(projects);
               showDialog(
                   context: context!,
                   builder: (context) {
@@ -68,7 +83,7 @@ class AssignCanidateProjectData extends DataTableSource {
                                   padding: EdgeInsets.all(8),
                                   child: SelectFormField(
                                     type: SelectFormFieldType.dialog,
-                                    items: projects,
+                                    items: projectsS,
                                     labelText:
                                         AppLocalizations.of(context)!.project,
                                     validator: (value) {
@@ -80,6 +95,7 @@ class AssignCanidateProjectData extends DataTableSource {
                                     },
                                     onChanged: ((value) {
                                       projectValue = value ?? "";
+                                      debugPrint(projectValue);
                                     }),
                                   ),
                                 ),
@@ -87,13 +103,34 @@ class AssignCanidateProjectData extends DataTableSource {
                                   padding: EdgeInsets.all(8),
                                   child: ElevatedButton(
                                     key: const Key('dialogsubmit'),
-                                    onPressed: () {
+                                    onPressed: () async {
                                       if (_formkey.currentState!.validate()) {
-                                        // widget.service?.crearEvaluacionDesempeno(
-                                        //     candidateId: int.parse(_candidateValue),
-                                        //     projectId: int.parse(_projectValue),
-                                        //     employeeId: int.parse(_employeeValue),
-                                        //     score: 100);
+                                        Map<String, dynamic> result =
+                                            await PerformanceService()
+                                                .startProcess(
+                                                    projectId: projectValue,
+                                                    candidateId: data[index]
+                                                            ['candidateId']
+                                                        .toString());
+
+                                        if (result['message'].toString().contains(
+                                            "Candidate has started the process")) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Center(
+                                                child: Text(result['message'])),
+                                            backgroundColor: Colors.green,
+                                          ));
+                                          assigned.value = true;
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                            content: Center(
+                                                child: Text(result['message'])),
+                                            backgroundColor: Colors.red,
+                                          ));
+                                        }
+
                                         Navigator.of(context).pop();
                                       }
                                     },

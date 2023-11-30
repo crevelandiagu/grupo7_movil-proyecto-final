@@ -18,7 +18,7 @@ class AssignCandidateProject extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigationCompany((index) => null, context, 2),
       body: FutureBuilder<List<dynamic>>(
-        future: getDataMock(), //
+        future: getData(), //
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -26,8 +26,10 @@ class AssignCandidateProject extends StatelessWidget {
 
           var data = snapshot.data!;
 
-          var performances =
-              AssignCanidateProjectData(data: data, context: context);
+          var performances = AssignCanidateProjectData(
+              data: data[0]['data'],
+              context: context,
+              projects: data[0]['project']);
 
           return Column(
             children: [
@@ -40,19 +42,15 @@ class AssignCandidateProject extends StatelessWidget {
                         style: GoogleFonts.workSans(
                             fontSize: 20, fontWeight: FontWeight.w500))),
                 columns: [
-                  // DataColumn(
-                  //     label: Text(AppLocalizations.of(context)!.project)),
                   DataColumn(
                       label: Text(AppLocalizations.of(context)!.candidate)),
-                  // DataColumn(
-                  //     label: Text(AppLocalizations.of(context)!.evaluator)),
-                  // DataColumn(label: Text(AppLocalizations.of(context)!.score)),
+                  DataColumn(label: Text(AppLocalizations.of(context)!.state)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.assign)),
                 ],
                 source: performances,
                 rowsPerPage: 8,
-                horizontalMargin: 60,
-                columnSpacing: 100,
+                horizontalMargin: 50,
+                columnSpacing: 40,
                 showCheckboxColumn: false,
               ),
             ],
@@ -62,66 +60,80 @@ class AssignCandidateProject extends StatelessWidget {
     );
   }
 
-  // Future<List<dynamic>> getData() {
-  //   var arguments = Get.arguments;
-  //   var string = arguments.search;
+  Future<List<dynamic>> getData() async {
+    var arguments = Get.arguments;
 
-  //   return this.service.getAllSearchedCandidates(string);
-  // }
+    debugPrint(arguments['skills']);
+    debugPrint(arguments['experience']);
+
+    // debugPrint(arguments);
+    var skills = arguments['skills'];
+    var experience = arguments['experience'];
+    // var experience = arguments.experience;
+
+    var result = {};
+
+    result['data'] = await service.buscarCandidatoParaProyecto(
+        skills: skills, experience: experience);
+
+    result['project'] = await service.getAllProjects();
+
+    return Future(() => [result]);
+  }
 }
 
-Future<List<dynamic>> getDataMock() async {
-  var list = [
-    {
-      "project": "project 1",
-      "candidate": "candidate 1",
-      "score": null,
-      "evaluator": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 2",
-      "candidate": "candidate 2",
-      "score": "30",
-      "evaluator": "evaluator 3",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 3",
-      "candidate": "candidate 3",
-      "score": null,
-      "evaluator": "evaluator 3",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 4",
-      "candidate": "candidate 4",
-      "score": "30",
-      "evaluator": "evaluator 4",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 5",
-      "candidate": "candidate 5",
-      "score": null,
-      "evaluator": "evaluator 5",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "candidate": "candidate 1",
-      "score": "30",
-      "evaluator": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "candidate": "candidate 1",
-      "score": "30",
-      "evaluator": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-  ];
+// Future<List<dynamic>> getDataMock() async {
+//   var list = [
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": null,
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 2",
+//       "candidate": "candidate 2",
+//       "score": "30",
+//       "evaluator": "evaluator 3",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 3",
+//       "candidate": "candidate 3",
+//       "score": null,
+//       "evaluator": "evaluator 3",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 4",
+//       "candidate": "candidate 4",
+//       "score": "30",
+//       "evaluator": "evaluator 4",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 5",
+//       "candidate": "candidate 5",
+//       "score": null,
+//       "evaluator": "evaluator 5",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "candidate": "candidate 1",
+//       "score": "30",
+//       "evaluator": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//   ];
 
-  return list;
-}
+//   return list;
+// }

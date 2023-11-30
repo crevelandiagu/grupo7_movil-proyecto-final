@@ -88,9 +88,9 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
                       height: 50,
                     ),
                     cardDashboardCompany(
-                        AppLocalizations.of(context)!.performance, context, () {
-                      crearEvaluacion(context);
-                    }, () {
+                        AppLocalizations.of(context)!.performance,
+                        context,
+                        () {}, () {
                       Get.to(() =>
                           PerformanceEvaluation(service: PerformanceService()));
                     }),
@@ -107,142 +107,5 @@ class _CompanyDashBoardState extends State<CompanyDashBoard> {
             bottomNavigationCompany((index) => null, context, 0),
       ),
     );
-  }
-
-  void crearEvaluacion(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Positioned(
-                  right: -40,
-                  top: -40,
-                  child: InkResponse(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const CircleAvatar(
-                      backgroundColor: Colors.red,
-                      child: Icon(Icons.close),
-                    ),
-                  ),
-                ),
-                Form(
-                  key: _formkey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(8),
-                        child: SelectFormField(
-                          type: SelectFormFieldType.dialog,
-                          items: projects,
-                          labelText: AppLocalizations.of(context)!.project,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return AppLocalizations.of(context)!.enterText;
-                            }
-                            return null;
-                          },
-                          onChanged: (value) => setState(() {
-                            _projectValue = value ?? "";
-                          }),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8),
-                        child: SelectFormField(
-                          type: SelectFormFieldType.dialog,
-                          items: candidates,
-                          labelText: AppLocalizations.of(context)!.candidate,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return AppLocalizations.of(context)!.enterText;
-                            }
-                            return null;
-                          },
-                          onChanged: (value) => setState(() {
-                            _candidateValue = value ?? "";
-                          }),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8),
-                        child: SelectFormField(
-                          type: SelectFormFieldType.dialog,
-                          items: employees,
-                          labelText: AppLocalizations.of(context)!.evaluator,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return AppLocalizations.of(context)!.enterText;
-                            }
-                            return null;
-                          },
-                          onChanged: (value) => setState(() {
-                            _employeeValue = value ?? "";
-                          }),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            labelText: AppLocalizations.of(context)!.score,
-                          ),
-                          validator: (value) {
-                            if (value != null && value.isEmpty) {
-                              return AppLocalizations.of(context)!.enterNumber;
-                            }
-                            try {
-                              double number = double.parse(value!);
-                              if (number >= 0 && number <= 100) {
-                                return null;
-                              } else {
-                                return AppLocalizations.of(context)!
-                                    .enterNumber0100;
-                              }
-                            } catch (e) {
-                              return AppLocalizations.of(context)!
-                                  .invalidaNumberFormat;
-                            }
-                          },
-                          onChanged: (value) => setState(() {
-                            _scoreValue = value ?? "";
-                          }),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          key: const Key('dialogsubmit'),
-                          onPressed: () {
-                            if (_formkey.currentState!.validate()) {
-                              // widget.service?.crearEvaluacionDesempeno(
-                              //     candidateId: int.parse(_candidateValue),
-                              //     projectId: int.parse(_projectValue),
-                              //     employeeId: int.parse(_employeeValue),
-                              //     score: 100);
-                              Navigator.of(context).pop();
-                              showSnackbar(
-                                  AppLocalizations.of(context)!
-                                      .performanceEvaluationSuccess,
-                                  scaffold: scaffold,
-                                  error: false);
-                            }
-                          },
-                          child:
-                              Text(AppLocalizations.of(context)!.createButton),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
   }
 }

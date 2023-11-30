@@ -155,7 +155,8 @@ class Signup extends StatelessWidget {
                           passwordController.text = "";
                           passwordRController.text = "";
                         } catch (e) {
-                          showSnackbar(e.toString(), scaffold: scaffold);
+                          showSnackbar("An error ocurred. Please try again",
+                              scaffold: scaffold);
                         }
                       } else {
                         showSnackbar(AppLocalizations.of(context)!.emptyFields,
@@ -182,7 +183,7 @@ class Signup extends StatelessWidget {
                       Text(AppLocalizations.of(context)!.already_account),
                       TextButton(
                         onPressed: () {
-                          Get.offNamed('/');
+                          Get.off(() => Signin());
                         },
                         child: Text(
                           AppLocalizations.of(context)!.signin,

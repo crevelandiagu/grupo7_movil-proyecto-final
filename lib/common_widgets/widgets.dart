@@ -72,11 +72,9 @@ Widget bottomNavigationCompany(
             Get.to(() => CompanyDashBoard());
             break;
           case 1:
-            // Get.to(() => PerformanceEvaluation(service: PerformanceService()));
             Get.to(() => TestResultsCompanyView(service: PerformanceService()));
             break;
           case 2:
-            // Get.to(() => AssignCandidateProject(service: PerformanceService()));
             Get.to(() => SearchCandidate());
 
             break;
@@ -90,14 +88,11 @@ Widget bottomNavigationCompany(
         NavigationDestination(
             icon: Icon(Icons.home_outlined), label: "Dashboard"),
         NavigationDestination(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(Icons.school_outlined),
             label: AppLocalizations.of(context)!.tests),
         NavigationDestination(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(Icons.search_outlined),
             label: AppLocalizations.of(context)!.search),
-        // NavigationDestination(
-        //     icon: Icon(Icons.person_outline),
-        //     label: AppLocalizations.of(context)!.search),
       ]);
 
   return navigation;
@@ -160,19 +155,11 @@ Widget cardDashboardCompany(String title, BuildContext context,
           ),
         ),
         ElevatedButton(
-          key: const Key("createButton"),
-          style: ElevatedButton.styleFrom(
-              fixedSize: const Size(120, 20),
-              backgroundColor: Color.fromARGB(255, 58, 0, 229)),
-          onPressed: function,
-          child: Text(AppLocalizations.of(context)!.createButton),
-        ),
-        ElevatedButton(
           style: ElevatedButton.styleFrom(
               fixedSize: const Size(120, 20),
               backgroundColor: Color.fromARGB(255, 58, 0, 229)),
           onPressed: functionB,
-          child: Text(AppLocalizations.of(context)!.details),
+          child: Text(AppLocalizations.of(context)!.evaluate),
         ),
       ],
     ),
@@ -234,7 +221,6 @@ PreferredSizeWidget customAppBar() {
         onPressed: () {},
         icon: const Icon(Icons.notifications),
       ),
-
       PopupMenuButton(
         offset: const Offset(-8, 40),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -242,7 +228,7 @@ PreferredSizeWidget customAppBar() {
         itemBuilder: (context) {
           return [
             PopupMenuItem<int>(
-              padding: EdgeInsets.zero,
+              padding: EdgeInsets.only(left: 10),
               value: 0,
               child: Text(AppLocalizations.of(context)!.logout),
             ),
@@ -256,10 +242,6 @@ PreferredSizeWidget customAppBar() {
           }
         },
       ),
-      // IconButton(
-      //   onPressed: () {},
-      //   icon: const Icon(Icons.account_circle),
-      // ),
     ],
   );
 }

@@ -10,6 +10,7 @@ import 'package:abc_jobs/utils/constants.dart';
 import 'package:abc_jobs/utils/util.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,6 +23,7 @@ class SearchCandidate extends StatelessWidget {
   ProfileSchoolController controller = Get.put(ProfileSchoolController());
 
   TextEditingController skillController = TextEditingController();
+  TextEditingController experienceController = TextEditingController();
 
   GlobalKey<ScaffoldMessengerState> scaffold =
       GlobalKey<ScaffoldMessengerState>();
@@ -46,6 +48,19 @@ class SearchCandidate extends StatelessWidget {
                       style: GoogleFonts.workSans(
                           fontSize: 23, fontWeight: FontWeight.w500)),
                 ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 15, 40, 15),
+                    child: TextField(
+                      controller: experienceController,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      ],
+                      decoration: InputDecoration(
+                          labelText: AppLocalizations.of(context)!.experience),
+                    )),
                 const SizedBox(
                   height: 30,
                 ),
@@ -128,7 +143,8 @@ class SearchCandidate extends StatelessWidget {
                         () => AssignCandidateProject(
                             service: PerformanceService()),
                         arguments: {
-                          "search": controller.formatSearch(controller.skills)
+                          "skills": controller.formatSearch(controller.skills),
+                          "experience": experienceController.text
                         });
                   },
                   child: Text(

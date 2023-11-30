@@ -17,7 +17,7 @@ class PerformanceEvaluation extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigationCompany((index) => null, context, 1),
       body: FutureBuilder<List<dynamic>>(
-        future: getData(), //?.getAllEvaluationsCompany(),
+        future: service?.getAllEvaluationsCompany(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
