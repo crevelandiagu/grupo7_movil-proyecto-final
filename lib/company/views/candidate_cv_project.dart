@@ -65,14 +65,14 @@ class CandidateCVProject extends StatelessWidget {
   }
 
   Widget showCertificates(var listCertificates) {
-    return ListView.separated(
-        separatorBuilder: (context, index) => Divider(),
-        padding: const EdgeInsets.all(30),
+    return ListView.builder(
+        // padding: const EdgeInsets.all(30),
+        scrollDirection: Axis.horizontal,
         itemCount: listCertificates.length,
         itemBuilder: (context, index) {
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            color: Colors.grey[200],
+          return Padding(
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+            //    color: Colors.grey[200],
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -196,15 +196,14 @@ class CandidateCVProject extends StatelessWidget {
   }
 
   Widget showEducation(var listEducation) {
-    return ListView.separated(
+    return ListView.builder(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.all(40),
-        separatorBuilder: (BuildContext context, int index) => Divider(),
+        //   padding: const EdgeInsets.all(30),
         itemCount: listEducation.length,
         itemBuilder: (context, index) {
-          return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-              color: Colors.grey[200],
+          return Padding(
+              padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+              // color: Colors.grey[200],
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 //crossAxisAlignment: CrossAxisAlignment.start,
@@ -267,15 +266,14 @@ class CandidateCVProject extends StatelessWidget {
   }
 
   Widget showExperience(var listExperience) {
-    return ListView.separated(
+    return ListView.builder(
       scrollDirection: Axis.horizontal,
-      separatorBuilder: (BuildContext context, int index) => Divider(),
-      padding: EdgeInsets.all(40),
+      //  padding: EdgeInsets.all(30),
       itemCount: listExperience.length,
       itemBuilder: (context, index) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-          color: Colors.grey[200],
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+          //    color: Colors.grey[200],
           child: Column(
             //crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,

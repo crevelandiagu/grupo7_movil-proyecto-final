@@ -139,12 +139,18 @@ class SearchCandidate extends StatelessWidget {
                     backgroundColor: Color.fromARGB(255, 58, 0, 229),
                   ),
                   onPressed: () async {
+                    var experience = "";
+                    if (experienceController.text.isEmpty) {
+                      experience = "0";
+                    } else {
+                      experience = experienceController.text;
+                    }
                     Get.to(
                         () => AssignCandidateProject(
                             service: PerformanceService()),
                         arguments: {
                           "skills": controller.formatSearch(controller.skills),
-                          "experience": experienceController.text
+                          "experience": experience
                         });
                   },
                   child: Text(

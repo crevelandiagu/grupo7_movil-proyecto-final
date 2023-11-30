@@ -12,7 +12,7 @@
     "password_error_equal": "Las contraseñas no son iguales",
     "message_signup_success": "Cuenta creada",
     "account_created": "Cuenta Creada. Por favor inicia sesión",
-    "welcome": "Bienvenido",
+    "welcome": "Bienvenido!",
     "dont_account": "¿Aun no tienes una cuenta?",
     "success": "Éxito",
     "applications": "Applicaciones",
@@ -37,10 +37,10 @@
     "companyLabel": "Ingresa nombre de la empresa",
     "school": "Institución",
     "schoolLabel": "Ingresa nombre de la institución",
-    "degree": "grado",
+    "degree": "titulo",
     "degreeLabel": "Ingresa grado",
     "next": "Siguiente",
-    "organization": "Organización que expedió el certificado",
+    "organization": "Organización que expidió el certificado",
     "organizationLabel": "Ingresa el nombre de la organnización",
     "certification": "certificado",
     "certificationLabel": "Ingresa el certificado",
@@ -121,7 +121,12 @@
     "search": "Buscar",
     "testEvaluationSuccess": "La evaluación se realizó con exito",
     "state": "Estado",
-    "assigned": "Asignado"
+    "assigned": "Asignado",
+    "startProcess": "Iniciar Proceso",
+    "assesments": "Evaluaciónes",
+    "assesment": "Evaluación",
+    "youAreCompany": "Soy una emprersa",
+    "youAreCandidate": "Soy un candidato"
 
     
 

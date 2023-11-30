@@ -16,7 +16,7 @@ class TestResults extends StatelessWidget {
       appBar: customAppBar(),
       bottomNavigationBar: bottomNavigation((index) => null, context, 2),
       body: FutureBuilder<List<dynamic>>(
-        future: mockData(), //.getAllTestResults(),
+        future: service.getAllTestResults(),
         builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
@@ -33,7 +33,7 @@ class TestResults extends StatelessWidget {
               ),
               PaginatedDataTable(
                 header: Center(
-                    child: Text(AppLocalizations.of(context)!.testResults,
+                    child: Text(AppLocalizations.of(context)!.assesments,
                         style: GoogleFonts.workSans(
                             fontSize: 20, fontWeight: FontWeight.w500))),
                 columns: [
@@ -41,10 +41,7 @@ class TestResults extends StatelessWidget {
                       label: Text(AppLocalizations.of(context)!.project)),
                   DataColumn(
                       label: Text(AppLocalizations.of(context)!.company)),
-                  DataColumn(label: Text(AppLocalizations.of(context)!.test)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.score)),
-                  DataColumn(
-                      label: Text(AppLocalizations.of(context)!.comments)),
                 ],
                 source: testResults,
                 rowsPerPage: 8,
@@ -60,59 +57,59 @@ class TestResults extends StatelessWidget {
   }
 }
 
-Future<List<dynamic>> mockData() async {
-  //await Future.delayed(Duration(milliseconds: 2000));
-  var list = [
-    {
-      "project": "project 1",
-      "company": "company 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "company": "company 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "company": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "company": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "company": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "company": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-    {
-      "project": "project 1",
-      "company": "candidate 1",
-      "score": "30",
-      "test": "evaluator 1",
-      "comments": "lorem ipsum ordo seclorum"
-    },
-  ];
+// Future<List<dynamic>> mockData() async {
+//   //await Future.delayed(Duration(milliseconds: 2000));
+//   var list = [
+//     {
+//       "project": "project 1",
+//       "company": "company 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "company": "company 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "company": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "company": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "company": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "company": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//     {
+//       "project": "project 1",
+//       "company": "candidate 1",
+//       "score": "30",
+//       "test": "evaluator 1",
+//       "comments": "lorem ipsum ordo seclorum"
+//     },
+//   ];
 
-  return list;
-}
+//   return list;
+// }

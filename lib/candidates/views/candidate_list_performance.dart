@@ -40,10 +40,10 @@ class PerformanceListCandidate extends StatelessWidget {
                             fontSize: 20, fontWeight: FontWeight.w500))),
                 columns: [
                   DataColumn(
+                      label: Text(AppLocalizations.of(context)!.company)),
+                  DataColumn(
                       label: Text(AppLocalizations.of(context)!.project)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.score)),
-                  DataColumn(
-                      label: Text(AppLocalizations.of(context)!.comments)),
                 ],
                 source: performances,
                 rowsPerPage: 8,

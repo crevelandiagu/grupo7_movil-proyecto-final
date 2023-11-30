@@ -15,53 +15,9 @@ void main() {
     //await Future.delayed(Duration(milliseconds: 2000));
     var list = [
       {
-        "project": "project 1",
-        "company": "company 1",
+        "project_name": "project 1",
+        "company_name": "company 1",
         "score": "30",
-        "test": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "company": "company 1",
-        "score": "30",
-        "test": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "company": "candidate 1",
-        "score": "30",
-        "test": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "company": "candidate 1",
-        "score": "30",
-        "test": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "company": "candidate 1",
-        "score": "30",
-        "test": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "company": "candidate 1",
-        "score": "30",
-        "test": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "company": "candidate 1",
-        "score": "30",
-        "test": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
       },
     ];
 
@@ -85,11 +41,9 @@ void main() {
 
     await tester.pump();
 
-    expect(find.text("Test results"), findsWidgets);
+    expect(find.text("Assesments"), findsWidgets);
     expect(find.text("Project"), findsWidgets);
     expect(find.text("Company"), findsWidgets);
     expect(find.text("Score"), findsWidgets);
-    expect(find.text("Test"), findsWidgets);
-    expect(find.text("Comments"), findsWidgets);
   });
 }

@@ -43,7 +43,6 @@ class ListInterviews extends StatelessWidget {
                   DataColumn(label: Text(AppLocalizations.of(context)!.score)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.date)),
                   DataColumn(label: Text(AppLocalizations.of(context)!.time)),
-                  // DataColumn(label: Text(AppLocalizations.of(context)!.link)),
                   DataColumn(
                       label: Text(AppLocalizations.of(context)!.details)),
                 ],

@@ -14,58 +14,22 @@ import 'assign_candidate_project_test.mocks.dart';
 void main() {
   MockPerformanceService service = MockPerformanceService();
 
-  Future<List<dynamic>> mockData() async {
+  Future<List<dynamic>> mockData1() async {
     //await Future.delayed(Duration(milliseconds: 2000));
     var list = [
       {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
+        "project_name": "project 1",
+        "id": "1",
       },
-      {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
+    ];
+
+    return list;
+  }
+
+  Future<List<dynamic>> mockData2() async {
+    //await Future.delayed(Duration(milliseconds: 2000));
+    var list = [
+      {"lastName": "lastName", "name": "name", "candidateId": "1"},
     ];
 
     return list;
@@ -74,7 +38,8 @@ void main() {
   testWidgets("test assing candidate project", (WidgetTester tester) async {
     FlutterError.onError = ignoreOverflowErrors;
 
-    //when(service.getAllEvaluationsCompany()).thenAnswer((_) => mockData());
+    when(service.buscarCandidatoParaProyecto()).thenAnswer((_) => mockData2());
+    when(service.getAllProjects()).thenAnswer((_) => mockData1());
 
     await tester.pumpWidget(
       GetMaterialApp(
@@ -87,10 +52,10 @@ void main() {
       ),
     );
 
-    // await tester.pump();
+    await tester.pump();
 
-    //expect(find.text("Assign project"), findsWidgets);
+    expect(find.text("Assign project"), findsNothing);
     // expect(find.text("Candidate"), findsWidgets);
-    // expect(find.text("Assign"), findsWidgets);
+    // expect(find.text("Start Process"), findsWidgets);
   });
 }

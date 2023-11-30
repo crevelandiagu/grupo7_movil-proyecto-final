@@ -89,7 +89,7 @@ Widget bottomNavigationCompany(
             icon: Icon(Icons.home_outlined), label: "Dashboard"),
         NavigationDestination(
             icon: Icon(Icons.school_outlined),
-            label: AppLocalizations.of(context)!.tests),
+            label: AppLocalizations.of(context)!.assesment),
         NavigationDestination(
             icon: Icon(Icons.search_outlined),
             label: AppLocalizations.of(context)!.search),

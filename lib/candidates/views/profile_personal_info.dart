@@ -219,7 +219,7 @@ class PersonalInfo extends StatelessWidget {
                     }
                   },
                   child: Text(
-                    AppLocalizations.of(context)!.next,
+                    AppLocalizations.of(context)!.save,
                     style: GoogleFonts.workSans(
                       textStyle: const TextStyle(
                         fontSize: 23,
