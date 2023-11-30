@@ -133,9 +133,8 @@ class PerformanceDataEvaluation extends DataTableSource {
                                                     ),
                                                     backgroundColor: Colors.red,
                                                   ));
-
-                                                  Navigator.of(context).pop();
                                                 }
+                                                Navigator.of(context).pop();
                                               }
                                             },
                                             child: Text(
