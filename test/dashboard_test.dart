@@ -19,7 +19,7 @@ void main() {
     expect(find.text("Hello"), findsOneWidget);
     expect(find.text("Performance"), findsWidgets);
     expect(find.text("Interviews"), findsWidgets);
-    expect(find.text("Tests"), findsWidgets);
+    expect(find.text("Assesment"), findsWidgets);
     expect(find.text("Profile"), findsWidgets);
     expect(find.text("View Details"), findsWidgets);
     expect(find.byType(SingleChildScrollView), findsWidgets);

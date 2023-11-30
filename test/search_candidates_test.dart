@@ -26,7 +26,7 @@ void main() {
     expect(find.text("Search Candidate"), findsWidgets);
 
     expect(find.text("Dashboard"), findsWidgets);
-    expect(find.text("Tests"), findsWidgets);
+    expect(find.text("Assesment"), findsWidgets);
     expect(find.byKey(Key("scroll")), findsWidgets);
     expect(find.byKey(Key("padding")), findsWidgets);
     expect(find.byKey(Key("skill")), findsWidgets);
