@@ -50,8 +50,8 @@ class Dashboard extends StatelessWidget {
                   SizedBox(
                     height: 50,
                   ),
-                  cardDashboard(AppLocalizations.of(context)!.tests, context,
-                      () {
+                  cardDashboard(
+                      AppLocalizations.of(context)!.assesment, context, () {
                     Get.to(() =>
                         TestResults(service: CandidatePerformanceService()));
                   }),

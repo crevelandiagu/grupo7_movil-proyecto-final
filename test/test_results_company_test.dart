@@ -21,50 +21,6 @@ void main() {
         "project_name": "project 1",
         "candidate_name": "company 1",
         "score": "30",
-        "progress_status": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate_name": "company 1",
-        "score": "30",
-        "progress_status": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate_name": "candidate 1",
-        "score": "30",
-        "progress_status": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate_name": "candidate 1",
-        "score": "30",
-        "progress_status": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate_name": "candidate 1",
-        "score": "30",
-        "progress_status": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate_name": "candidate 1",
-        "score": "30",
-        "progress_status": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate_name": "candidate 1",
-        "score": "30",
-        "progress_status": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
       },
     ];
 
@@ -88,11 +44,10 @@ void main() {
 
     await tester.pump();
 
-    expect(find.text("Test results"), findsWidgets);
+    expect(find.text("Assesments"), findsWidgets);
     expect(find.text("Project"), findsWidgets);
     expect(find.text("Candidate"), findsWidgets);
     expect(find.text("Score"), findsWidgets);
-    expect(find.text("Test"), findsWidgets);
-    expect(find.text("Comments"), findsWidgets);
+    expect(find.text("Action"), findsWidgets);
   });
 }

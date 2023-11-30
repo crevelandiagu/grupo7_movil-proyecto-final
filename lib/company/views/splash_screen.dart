@@ -39,7 +39,7 @@ class SplashScreen extends StatelessWidget {
                 Get.to(() => SigninC());
               },
               child: Text(
-                AppLocalizations.of(context)!.signinAsCompany,
+                AppLocalizations.of(context)!.youAreCompany,
                 style: GoogleFonts.workSans(
                     fontSize: 23, fontWeight: FontWeight.w500),
               ),
@@ -60,7 +60,7 @@ class SplashScreen extends StatelessWidget {
                 Get.to(() => Signin());
               },
               child: Text(
-                AppLocalizations.of(context)!.signinAsCandidate,
+                AppLocalizations.of(context)!.youAreCandidate,
                 style: GoogleFonts.workSans(
                     fontSize: 23, fontWeight: FontWeight.w500),
               ),

@@ -17,8 +17,8 @@ void main() {
     );
 
     expect(find.text("ABC Jobs"), findsOneWidget);
-    expect(find.text("Sign in as company"), findsWidgets);
-    expect(find.text("Sign in as candidate"), findsOneWidget);
+    expect(find.text("You are a company"), findsWidgets);
+    expect(find.text("You are a candidate"), findsOneWidget);
     expect(find.byType(ElevatedButton), findsWidgets);
     expect(find.byType(Column), findsWidgets);
     expect(find.byType(Padding), findsWidgets);

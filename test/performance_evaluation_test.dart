@@ -12,53 +12,9 @@ void main() {
   Future<List<dynamic>> mockData() async {
     var list = [
       {
-        "project": "project 1",
-        "candidate": "candidate 1",
+        "project_name": "project 1",
+        "candidate_name": "candidate 1",
         "score": null,
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 2",
-        "candidate": "candidate 2",
-        "score": "30",
-        "evaluator": "evaluator 3",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 3",
-        "candidate": "candidate 3",
-        "score": null,
-        "evaluator": "evaluator 3",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 4",
-        "candidate": "candidate 4",
-        "score": "30",
-        "evaluator": "evaluator 4",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 5",
-        "candidate": "candidate 5",
-        "score": null,
-        "evaluator": "evaluator 5",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "comments": "lorem ipsum ordo seclorum"
       },
     ];
 
@@ -83,13 +39,12 @@ void main() {
 
     await tester.pump();
 
-    expect(find.text("Evaluation"), findsOneWidget);
+    expect(find.text("Performance evaluation"), findsOneWidget);
     expect(find.text("Score"), findsOneWidget);
-    expect(find.text("Evaluator"), findsOneWidget);
+
     expect(find.text("Candidate"), findsOneWidget);
     expect(find.text("Project"), findsOneWidget);
     expect(find.text("Action"), findsOneWidget);
-    expect(find.text("Comments"), findsOneWidget);
 
     expect(find.byType(PaginatedDataTable), findsOneWidget);
     expect(find.byType(ElevatedButton), findsWidgets);

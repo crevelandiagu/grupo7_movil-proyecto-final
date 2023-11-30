@@ -594,6 +594,15 @@
     "assesment": "Assesment",
     "@assesment": {
         "description": "assesments"
+    },
+
+    "youAreCompany": "You are a company",
+    "@youAreCompany": {
+        "description": "assesments"
+    },
+    "youAreCandidate": "You are a candidate",
+    "@youAreCandidate": {
+        "description": "assesments"
     }
 
 

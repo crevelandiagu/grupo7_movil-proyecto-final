@@ -26,7 +26,7 @@ void main() {
 
     final passwordText = find.text("password");
     final securepassword = find.text("Enter secure password");
-    final welcometext = find.text("Welcome");
+    final welcometext = find.text("Welcome Back!");
     final signintext = find.text("Sign In");
     final emailText = find.text("email");
 

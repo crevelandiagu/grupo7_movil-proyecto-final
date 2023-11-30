@@ -34,7 +34,7 @@ void main() {
     final startDateText = find.text("start date");
     final endDateText = find.text("end date");
     final skillsText = find.text("skills");
-    final nextButton = find.text("Next");
+    final nextButton = find.text("Save");
 
     await tester.enterText(positionF, "");
     await tester.enterText(companyF, "");

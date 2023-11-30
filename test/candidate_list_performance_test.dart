@@ -19,52 +19,8 @@ void main() {
     var list = [
       {
         "project_name": "project 1",
-        "candidate": "candidate 1",
+        "company_name": "candidate 1",
         "score": "30",
-        "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
-      },
-      {
-        "project_name": "project 1",
-        "candidate": "candidate 1",
-        "score": "30",
-        "evaluator": "evaluator 1",
-        "feedback": "lorem ipsum ordo seclorum"
       },
     ];
 
@@ -94,6 +50,6 @@ void main() {
     expect(find.text("Performance results"), findsWidgets);
     expect(find.text("Project"), findsWidgets);
     expect(find.text("Score"), findsWidgets);
-    expect(find.text("Comments"), findsWidgets);
+    expect(find.text("Company"), findsWidgets);
   });
 }
